@@ -426,6 +426,7 @@ spawn_root = NodePath("../DropsContainer")
 visible = false
 
 [node name="menu_ui" parent="HUD" unique_id=885035941 node_paths=PackedStringArray("hotbar_ui", "main_menu") instance=ExtResource("10_bsumw")]
+visible = false
 hotbar_ui = NodePath("../hotbar_ui")
 main_menu = NodePath("../../CanvasLayer/MainMenu")
 

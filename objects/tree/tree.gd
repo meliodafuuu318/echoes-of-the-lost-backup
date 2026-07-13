@@ -112,24 +112,38 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		_try_collect()
 		
 func _try_collect() -> void:
+	if Dialogic.current_timeline != null:
+		return
+	
 	var last_collection_day = GameManager.get_data_value(get_path(), "last_collection_day")
 	
 	if last_collection_day == current_day:
 		print("🌳 Already collected from this tree today! Come back tomorrow.")
+		Dialogic.VAR.set_variable("Item.already_collected", true)
+		Dialogic.start("item_collect_timeline")
 		return
 	
 	var _item: InvItem = load("res://inventory/resources/inventory_items/apple.tres")
 	var _inv: Inventory = load("res://inventory/resources/player_inv.tres")
-	var collected_amount = randi_range(2, 4)
 	
 	if _item == null or _inv == null:
 		push_warning("apple: missing item or inventory resource.")
+		Dialogic.VAR.set_variable("Item.already_collected", true)
+		Dialogic.start("item_collect_timeline")
 		return
+	
+	var collected_amount = randi_range(2, 4)
+	
+	Dialogic.VAR.set_variable("Item.already_collected", false)
+	Dialogic.VAR.set_variable("Item.name", _item.name)
+	Dialogic.VAR.set_variable("Item.amount", collected_amount)
 	
 	GameManager.store_data_value(get_path(), "last_collection_day", current_day)
 	_inv.insert(_item, collected_amount)
 	print("🍎 Collected %d apples! Come back tomorrow for more." % collected_amount)
 	DailyTaskManager.update_task_progress("1", collected_amount)
+	
+	Dialogic.start("item_collect_timeline")
 	
 func _on_mouse_entered() -> void:
 	_hovered = true

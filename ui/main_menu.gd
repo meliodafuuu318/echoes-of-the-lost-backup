@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func _on_play_button_pressed() -> void:
 	# Get map from save if implemented
-	var map = Events.Map.OUTSIDE
+	var _map = Events.Map.OUTSIDE
 	Events.new_game_started.emit()
 	#get_tree().current_scene.switch_map(map)
 	await Events.scene_load_finished

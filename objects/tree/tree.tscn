@@ -48,5 +48,3 @@ light_mask = 512
 visibility_layer = 512
 position = Vector2(0, -39)
 shape = SubResource("CapsuleShape2D_dutb6")
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]

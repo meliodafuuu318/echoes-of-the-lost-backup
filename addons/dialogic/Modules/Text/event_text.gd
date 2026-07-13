@@ -92,7 +92,7 @@ func _execute() -> void:
 
 	## Handle style changes
 	if dialogic.has_subsystem("Styles"):
-		var current_base_style: String = dialogic.current_state_info.get("base_style")
+		var current_base_style: String = dialogic.current_state_info.get("base_style", "Default")
 		var current_style: String = dialogic.current_state_info.get("style", "")
 		var character_style: String = "" if not character else character.custom_info.get("style", "")
 

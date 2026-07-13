@@ -48,6 +48,12 @@ func _on_death() -> void:
 	# Bigger stones drop more loot: base 1-2, plus bonus per scale tier above 1.0
 	var bonus_loot = int(scale_factor) - 1
 	var stone_count = randi_range(1, 2) + bonus_loot
+	
+	Dialogic.VAR.set_variable("Item.name", "Stone")
+	Dialogic.VAR.set_variable("Item.amount", stone_count)
+	Dialogic.VAR.set_variable("Item.already_collected", false)
+	
+	Dialogic.start("item_collect_timeline")
 
 	player_inv.insert(stone_item, stone_count)
 	DailyTaskManager.update_task_progress("5", stone_count)

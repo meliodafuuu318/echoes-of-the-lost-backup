@@ -42,6 +42,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "bridge_timeline": "res://dialogic/timelines/bridge_timeline.dtl",
+"item_collect_timeline": "res://dialogic/timelines/item_collect_timeline.dtl",
 "sleep_timeline": "res://dialogic/timelines/sleep_timeline.dtl"
 }
 layout/style_directory={}
@@ -49,6 +50,11 @@ variables={
 "Bridge": {
 "HasHammer": false,
 "LogsRequired": ""
+},
+"Item": {
+"already_collected": false,
+"amount": 0,
+"name": ""
 }
 }
 extensions_folder="res://addons/dialogic_additions"
@@ -84,6 +90,9 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+layout/style_list=[]
+layout/default_style="Default"
+glossary/default_case_sensitive=true
 
 [display]
 
