@@ -109,6 +109,13 @@ func claim_reward(task_id: String) -> bool:
 	if not task.is_completed or task.reward_claimed:
 		return false
 	
+	Dialogic.VAR.set_variable("Quest.type", "Daily Task")
+	Dialogic.VAR.set_variable("Quest.title", task.task_name)
+	Dialogic.VAR.set_variable("Quest.reward_item", task.reward_item.name)
+	Dialogic.VAR.set_variable("Quest.reward_amount", task.reward_item_amount)
+	
+	Dialogic.start("quest_completed_timeline")
+	
 	# Apply rewards - give the reward item from the task resource
 	if task.reward_item and task.reward_item_amount > 0:
 		var inv = load("res://inventory/resources/player_inv.tres") as Inventory

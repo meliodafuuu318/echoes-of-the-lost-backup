@@ -43,6 +43,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "bridge_timeline": "res://dialogic/timelines/bridge_timeline.dtl",
 "item_collect_timeline": "res://dialogic/timelines/item_collect_timeline.dtl",
+"quest_completed_timeline": "res://dialogic/timelines/quest_completed_timeline.dtl",
 "sleep_timeline": "res://dialogic/timelines/sleep_timeline.dtl"
 }
 layout/style_directory={}
@@ -55,6 +56,13 @@ variables={
 "already_collected": false,
 "amount": 0,
 "name": ""
+},
+"Quest": {
+"has_reward": true,
+"reward_amount": 0,
+"reward_item": "",
+"title": "",
+"type": ""
 }
 }
 extensions_folder="res://addons/dialogic_additions"

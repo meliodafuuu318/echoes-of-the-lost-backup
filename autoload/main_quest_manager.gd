@@ -22,6 +22,7 @@ func reload_from_save() -> void:
 		var quest_data = saved_data.get(quest_id, {})
 		if quest_data:
 			quests[quest_id].from_dict(quest_data)
+			quest_updated.emit(quests[quest_id])
 
 func initialize_quests() -> void:
 	if main_quests_initialized:
@@ -63,14 +64,19 @@ func update_quest_progress(quest_id: String, amount: int = 1) -> void:
 		return
 
 	quest.current_progress += amount
+	var just_completed := false
 	if quest.is_complete() and not quest.is_completed:
 		quest.is_completed = true
-		quest_completed.emit(quest)
-		claim_reward(quest_id)
+		just_completed = true
 		print("[MainQuests] Quest completed: %s" % quest.quest_name)
 
 	quest_updated.emit(quest)
 	save_quests()
+	
+	if just_completed:
+		quest_completed.emit(quest)
+		print("[MainQuests] Quest completed: %s" % quest.quest_name)
+		claim_reward(quest_id)
 
 func claim_reward(quest_id: String) -> bool:
 	if not quests.has(quest_id):
@@ -88,6 +94,18 @@ func claim_reward(quest_id: String) -> bool:
 			print("[MainQuests] Reward claimed for quest: %s (+%d %s)" % [quest.quest_name, quest.reward_amount, quest.reward_item.name])
 
 	quest.reward_claimed = true
+	
+	Dialogic.VAR.set_variable("Quest.type", "Main Quest")
+	Dialogic.VAR.set_variable("Quest.title", quest.quest_name)
+	if (quest.reward_item):
+		Dialogic.VAR.set_variable("Quest.has_reward", true)
+		Dialogic.VAR.set_variable("Quest.reward_item", quest.reward_item.name)
+		Dialogic.VAR.set_variable("Quest.reward_amount", quest.reward_amount)
+	else:
+		Dialogic.VAR.set_variable("Quest.has_reward", false)
+	
+	Dialogic.start("quest_completed_timeline")
+	
 	save_quests()
 	return true
 

@@ -6,6 +6,7 @@ extends Control
 var sections: Array
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	sections = [task_list_ui, main_quest_list_ui]
 	for section in sections:
 		section.section_toggled.connect(_on_section_toggled)
