@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://gnbdcit45onv"]
+
+[ext_resource type="Texture2D" uid="uid://b4scajwct2pg6" path="res://crafting/assets/recipe_base.png" id="1_eoikt"]
+[ext_resource type="Script" uid="uid://dg8g6bcdcqdrp" path="res://crafting/ui_scripts/recipe_ui.gd" id="1_pfedv"]
+[ext_resource type="Texture2D" uid="uid://bkyjba2qgn11q" path="res://crafting/assets/recipe_selected.png" id="2_pfedv"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="4_s4iig"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4iig"]
+atlas = ExtResource("1_eoikt")
+region = Rect2(0, 0, 107, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tnsk"]
+atlas = ExtResource("2_pfedv")
+region = Rect2(0, 0, 108, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dutb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4iig")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tnsk")
+}],
+"loop": 1,
+"name": &"selected",
+"speed": 5.0
+}]
+
+[node name="recipe_ui" type="Panel" unique_id=193015825]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(108, 18)
+offset_top = 1.0
+offset_right = 108.0
+offset_bottom = 19.0
+script = ExtResource("1_pfedv")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1454458827]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 18.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect" unique_id=1778426711]
+position = Vector2(54, 9)
+sprite_frames = SubResource("SpriteFrames_dutb6")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=1963493595]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 1.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_s4iig")
+theme_override_font_sizes/font_size = 16
+text = "lorem ipsum"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="NinePatchRect" unique_id=1045847330]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(15, 16)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 22.0
+offset_bottom = 17.0
+
+[node name="item_display" type="Sprite2D" parent="NinePatchRect/Panel" unique_id=2118502996]
+position = Vector2(7, 8)

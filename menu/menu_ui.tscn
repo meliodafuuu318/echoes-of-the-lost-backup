@@ -1,0 +1,334 @@
+[gd_scene format=3 uid="uid://btipt2uux5qw1"]
+
+[ext_resource type="Texture2D" uid="uid://bmnlkgpi0rclg" path="res://inventory/assets/main_menu_bg.png" id="1_86ygs"]
+[ext_resource type="Script" uid="uid://8nkl7g8r3t4j" path="res://menu/menu_ui.gd" id="1_qa6pt"]
+[ext_resource type="PackedScene" uid="uid://ddl00ardxj1k7" path="res://inventory/scenes/inventory_ui.tscn" id="2_b5e6c"]
+[ext_resource type="PackedScene" uid="uid://dyq8nopml7d5j" path="res://tasks/scenes/quest_panel_controller_ui.tscn" id="2_oogfd"]
+[ext_resource type="Texture2D" uid="uid://ep8phhbe3oya" path="res://inventory/assets/char_view_bg.png" id="4_3y6qt"]
+[ext_resource type="Texture2D" uid="uid://dwib4miphw4to" path="res://characters/player/assets/sprites/walk.png" id="5_wvcyl"]
+[ext_resource type="PackedScene" uid="uid://d1qgggbcr8kqn" path="res://inventory/scenes/artifact_slot_ui.tscn" id="7_sys31"]
+[ext_resource type="PackedScene" uid="uid://dc48ewx7anll3" path="res://inventory/scenes/health_bar_sprite.tscn" id="7_wvcyl"]
+[ext_resource type="Texture2D" uid="uid://dm86nn4addsws" path="res://crafting/assets/ui_bg.png" id="10_r2nwl"]
+[ext_resource type="PackedScene" uid="uid://djdctilgeiaxy" path="res://crafting/scenes/recipe_list_ui.tscn" id="11_cvuir"]
+[ext_resource type="PackedScene" uid="uid://cx4lu8x5qonlj" path="res://crafting/scenes/crafting_ui.tscn" id="12_dgai8"]
+[ext_resource type="Texture2D" uid="uid://bsa20o08gfvpa" path="res://guide/assets/bg.png" id="13_ife3i"]
+[ext_resource type="Texture2D" uid="uid://5h0y7t4b5sil" path="res://settings/assets/settings_bg.png" id="14_ewbfs"]
+[ext_resource type="PackedScene" uid="uid://c2genglyom37o" path="res://guide/scenes/guide_ui.tscn" id="14_oogfd"]
+[ext_resource type="PackedScene" uid="uid://cjiognj6crq3e" path="res://settings/scenes/settings_ui.tscn" id="15_ewbfs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ife3i"]
+atlas = ExtResource("5_wvcyl")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dutb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ife3i")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="menu_ui" type="Control" unique_id=885035941]
+z_index = 10
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+script = ExtResource("1_qa6pt")
+metadata/_edit_horizontal_guides_ = [44.0]
+metadata/_edit_vertical_guides_ = [128.0]
+
+[node name="dark_overlay" type="ColorRect" parent="." unique_id=1067121196]
+modulate = Color(0, 0, 0, 0.57254905)
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -333.0
+offset_top = -228.5
+offset_right = 333.0
+offset_bottom = 228.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+
+[node name="inventory" type="NinePatchRect" parent="." unique_id=1099475165]
+light_mask = 4
+visibility_layer = 4
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.95
+offset_top = -95.0
+offset_right = 152.95
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_86ygs")
+
+[node name="inventory_ui" parent="inventory" unique_id=1659296847 instance=ExtResource("2_b5e6c")]
+layout_mode = 1
+offset_left = -119.0
+offset_top = 21.0
+offset_right = -159.0
+offset_bottom = -46.0
+
+[node name="player_view" type="NinePatchRect" parent="inventory" unique_id=521040755]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13100001
+anchor_top = 0.29700002
+anchor_right = 0.13100001
+anchor_bottom = 0.29700002
+offset_left = -20.086002
+offset_top = -30.430004
+offset_right = 19.913998
+offset_bottom = 36.569996
+texture = ExtResource("4_3y6qt")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="inventory/player_view" unique_id=258351825]
+position = Vector2(21.81308, 37)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_dutb6")
+autoplay = "default"
+
+[node name="HealthBarSprite" parent="inventory" unique_id=203065318 instance=ExtResource("7_wvcyl")]
+z_index = 2
+position = Vector2(99, 88)
+scale = Vector2(1.05, 1.05)
+
+[node name="artifact_slots" type="GridContainer" parent="inventory" unique_id=651948238]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -66.5
+offset_right = -49.0
+offset_bottom = -49.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="artifact_slot_ui" parent="inventory/artifact_slots" unique_id=731823642 instance=ExtResource("7_sys31")]
+layout_mode = 2
+
+[node name="artifact_slot_ui2" parent="inventory/artifact_slots" unique_id=1943478940 instance=ExtResource("7_sys31")]
+visible = false
+layout_mode = 2
+
+[node name="quest_panel_controller_ui" parent="inventory" unique_id=69840059 instance=ExtResource("2_oogfd")]
+z_index = 2
+layout_mode = 1
+anchor_left = 0.509
+anchor_top = -0.042000003
+anchor_right = 0.92100006
+anchor_bottom = 1.026
+offset_left = 0.09686279
+offset_top = -10.0199995
+offset_right = 0.06604004
+offset_bottom = -9.940002
+
+[node name="Label" type="Label" parent="inventory" unique_id=1220402588]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 11.0
+offset_right = 122.0
+offset_bottom = 30.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Inventory"
+
+[node name="tabs" type="Node2D" parent="inventory" unique_id=1910921682]
+
+[node name="crafting" type="Panel" parent="inventory/tabs" unique_id=1185395673]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 284.0
+offset_top = 20.0
+offset_right = 305.0
+offset_bottom = 39.0
+
+[node name="guide" type="Panel" parent="inventory/tabs" unique_id=896897544]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 284.0
+offset_top = 40.0
+offset_right = 306.0
+offset_bottom = 58.0
+
+[node name="settings" type="Panel" parent="inventory/tabs" unique_id=1920476322]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 284.0
+offset_top = 59.0
+offset_right = 305.0
+offset_bottom = 78.0
+
+[node name="crafting" type="NinePatchRect" parent="." unique_id=1070109932]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.4501
+offset_top = -94.5
+offset_right = 151.44989
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_r2nwl")
+
+[node name="recipe_list_ui" parent="crafting" unique_id=1259639000 instance=ExtResource("11_cvuir")]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 138.0
+offset_bottom = 128.0
+
+[node name="crafting_ui" parent="crafting" unique_id=567155504 instance=ExtResource("12_dgai8")]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 18.0
+offset_right = 282.0
+offset_bottom = 154.0
+
+[node name="tabs" type="Node2D" parent="crafting" unique_id=276310398]
+
+[node name="inventory" type="Panel" parent="crafting/tabs" unique_id=957263907]
+self_modulate = Color(1, 1, 1, 0)
+offset_top = 6.0
+offset_right = 22.0
+offset_bottom = 25.0
+
+[node name="guide" type="Panel" parent="crafting/tabs" unique_id=2089087617]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 292.0
+offset_top = 39.0
+offset_right = 314.0
+offset_bottom = 58.0
+
+[node name="settings" type="Panel" parent="crafting/tabs" unique_id=68101426]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 291.0
+offset_top = 58.0
+offset_right = 313.0
+offset_bottom = 77.0
+
+[node name="guide" type="NinePatchRect" parent="." unique_id=438510004]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.73343
+offset_top = -93.28333
+offset_right = 151.06656
+offset_bottom = 94.61666
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_ife3i")
+
+[node name="guide_ui" parent="guide" unique_id=2093522622 instance=ExtResource("14_oogfd")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 881.58453
+offset_bottom = 539.0232
+
+[node name="tabs" type="Node2D" parent="guide" unique_id=1194333168]
+
+[node name="inventory" type="Panel" parent="guide/tabs" unique_id=1744835112]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 20.0
+
+[node name="crafting" type="Panel" parent="guide/tabs" unique_id=1905426493]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -1.0
+offset_top = 21.0
+offset_right = 19.0
+offset_bottom = 40.0
+
+[node name="settings" type="Panel" parent="guide/tabs" unique_id=205163715]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 290.0
+offset_top = 57.0
+offset_right = 310.0
+offset_bottom = 76.0
+
+[node name="settings" type="NinePatchRect" parent="." unique_id=14314597]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -93.333336
+offset_right = 151.33334
+offset_bottom = 93.666664
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_ewbfs")
+
+[node name="tabs" type="Node2D" parent="settings" unique_id=17113993]
+
+[node name="inventory" type="Panel" parent="settings/tabs" unique_id=985283694]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 20.0
+
+[node name="crafting" type="Panel" parent="settings/tabs" unique_id=422942296]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -1.0
+offset_top = 21.0
+offset_right = 19.0
+offset_bottom = 40.0
+
+[node name="guide" type="Panel" parent="settings/tabs" unique_id=27564099]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -0.33333337
+offset_top = 38.333332
+offset_right = 19.666666
+offset_bottom = 57.333332
+
+[node name="settings_ui" parent="settings" unique_id=445130079 instance=ExtResource("15_ewbfs")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057000004
+anchor_right = 0.95500004
+anchor_bottom = 0.952
+offset_left = -0.13633537
+offset_right = 0.054992676
+offset_bottom = -0.024002075

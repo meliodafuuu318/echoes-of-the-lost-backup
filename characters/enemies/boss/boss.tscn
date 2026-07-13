@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://bi7bu6gcsxqgl"]
+
+[ext_resource type="Script" uid="uid://doay122f24vqc" path="res://characters/enemies/boss/boss.gd" id="1_d103n"]
+[ext_resource type="Texture2D" uid="uid://dpbw8l1n3xqnb" path="res://characters/enemies/manananggal/assets/sprites/manananggal.png" id="2_d103n"]
+[ext_resource type="Resource" uid="uid://bg76y623874po" path="res://monsters/resources/boss.tres" id="2_squ8f"]
+[ext_resource type="PackedScene" uid="uid://b1f0lb50hrd31" path="res://components/health/health_component.tscn" id="3_squ8f"]
+[ext_resource type="PackedScene" uid="uid://dlnflck3cqa14" path="res://components/hurtbox/hurtbox_component.tscn" id="4_02nrl"]
+[ext_resource type="PackedScene" uid="uid://ujqj0ltkv4rr" path="res://components/hitbox/hitbox_component.tscn" id="5_0auqc"]
+[ext_resource type="Script" uid="uid://dp3mcwv8k6n5f" path="res://components/state_machine/state_machine.gd" id="6_xuobd"]
+[ext_resource type="Script" uid="uid://el2uw7mge5un" path="res://characters/enemies/manananggal/states/wander.gd" id="7_b04o6"]
+[ext_resource type="Script" uid="uid://b8myi4kv0x3ax" path="res://characters/enemies/manananggal/follow.gd" id="8_o2ps8"]
+[ext_resource type="Script" uid="uid://bssnyx448430u" path="res://characters/enemies/manananggal/knocked_back.gd" id="9_ktgx2"]
+[ext_resource type="AudioStream" uid="uid://edjifmrqltcg" path="res://characters/enemies/manananggal/assets/sfx/manananggal_hurt.mp3" id="10_ckmoc"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="11_1obtl"]
+[ext_resource type="PackedScene" uid="uid://0rtls0t01f03" path="res://ui/health_bar.tscn" id="12_d103n"]
+
+[sub_resource type="Animation" id="Animation_ulp8i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_xclqn"]
+resource_name = "fly_down"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_e53ke"]
+resource_name = "fly_up"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e53ke"]
+_data = {
+&"RESET": SubResource("Animation_ulp8i"),
+&"fly_down": SubResource("Animation_xclqn"),
+&"fly_up": SubResource("Animation_e53ke")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxb3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxb3u"]
+size = Vector2(30, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtr1d"]
+size = Vector2(20, 31)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fpo3a"]
+random_pitch = 1.0656005
+streams_count = 1
+stream_0/stream = ExtResource("10_ckmoc")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wtr1d"]
+radius = 150.0
+
+[node name="Boss" type="CharacterBody2D" unique_id=274057768]
+z_index = 5
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_d103n")
+stats = ExtResource("2_squ8f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1669022227]
+self_modulate = Color(0.54838043, 0.30772448, 0.91690254, 1)
+position = Vector2(0, -37)
+scale = Vector2(2, 2)
+texture = ExtResource("2_d103n")
+hframes = 3
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=490906258]
+libraries/ = SubResource("AnimationLibrary_e53ke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1488453338]
+shape = SubResource("CircleShape2D_oxb3u")
+
+[node name="HealthComponent" parent="." unique_id=1222556066 node_paths=PackedStringArray("sprite_2d") instance=ExtResource("3_squ8f")]
+sprite_2d = NodePath("../Sprite2D")
+max_health = 150.0
+
+[node name="HurtboxComponent" parent="." unique_id=1562833728 node_paths=PackedStringArray("health_component") instance=ExtResource("4_02nrl")]
+visible = false
+position = Vector2(0, -2)
+collision_layer = 8
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=984565806]
+position = Vector2(0, -40)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_oxb3u")
+
+[node name="HitboxComponent" parent="." unique_id=1825321196 instance=ExtResource("5_0auqc")]
+position = Vector2(0, -16)
+collision_mask = 2
+monitoring = true
+attack_damage = 3.0
+knockback_force = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=190672045]
+position = Vector2(0, -25.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_wtr1d")
+debug_color = Color(1, 0, 0, 0.20784314)
+
+[node name="StateMachine" type="Node" parent="." unique_id=703364018 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_xuobd")
+initial_state = NodePath("Wander")
+metadata/_custom_type_script = "uid://dp3mcwv8k6n5f"
+
+[node name="Wander" type="Node" parent="StateMachine" unique_id=1478961167]
+script = ExtResource("7_b04o6")
+speed = 30.0
+follow_range = 150.0
+metadata/_custom_type_script = "uid://el2uw7mge5un"
+
+[node name="Follow" type="Node" parent="StateMachine" unique_id=1318806334]
+script = ExtResource("8_o2ps8")
+max_range = 175.0
+speed = 45.0
+metadata/_custom_type_script = "uid://b8myi4kv0x3ax"
+
+[node name="KnockedBack" type="Node" parent="StateMachine" unique_id=130758702]
+script = ExtResource("9_ktgx2")
+friction = 600.0
+metadata/_custom_type_script = "uid://bssnyx448430u"
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="." unique_id=556654894]
+stream = SubResource("AudioStreamRandomizer_fpo3a")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("11_1obtl")]
+width_ratio = 0.4
+
+[node name="HealthUI" type="CanvasLayer" parent="." unique_id=683720870]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="HealthUI" unique_id=1587410884]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_right = 240.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HealthUI/MarginContainer" unique_id=2095047909]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HealthUI/MarginContainer/VBoxContainer" unique_id=1231812960]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Manananggal Boss"
+
+[node name="HealthBar" parent="HealthUI/MarginContainer/VBoxContainer" unique_id=1101841603 instance=ExtResource("12_d103n")]
+custom_minimum_size = Vector2(480, 8)
+layout_mode = 2
+
+[node name="ShowHealthBarDetection" type="Area2D" parent="." unique_id=1843815526]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShowHealthBarDetection" unique_id=1681829225]
+shape = SubResource("CircleShape2D_wtr1d")
+
+[connection signal="body_entered" from="ShowHealthBarDetection" to="." method="_on_show_health_bar_detection_body_entered"]
+[connection signal="body_exited" from="ShowHealthBarDetection" to="." method="_on_show_health_bar_detection_body_exited"]

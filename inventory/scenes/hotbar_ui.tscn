@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://b1w3xirxma8nw"]
+
+[ext_resource type="Script" uid="uid://ietxwguhoptf" path="res://inventory/ui_scripts/hotbar_ui.gd" id="1_dsadf"]
+[ext_resource type="Texture2D" uid="uid://bcl0hrtsym4jx" path="res://inventory/assets/hotbar_bg.png" id="1_xe2sl"]
+[ext_resource type="PackedScene" uid="uid://dbpx0wkyll3hw" path="res://inventory/scenes/hotbar_slot_ui.tscn" id="2_jfdrg"]
+[ext_resource type="PackedScene" uid="uid://dc48ewx7anll3" path="res://inventory/scenes/health_bar_sprite.tscn" id="4_dsadf"]
+
+[node name="hotbar_ui" type="Control" unique_id=385176462]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 584.6666
+offset_right = -987.3333
+offset_bottom = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0, 1)
+script = ExtResource("1_dsadf")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1487212371]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1057302270]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HealthBarSprite" parent="MarginContainer/VBoxContainer" unique_id=203065318 instance=ExtResource("4_dsadf")]
+position = Vector2(47, -12)
+scale = Vector2(1.2857143, 1.2857143)
+
+[node name="hotbar_items" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1822650287]
+custom_maximum_size = Vector2(140, -1)
+layout_mode = 2
+texture = ExtResource("1_xe2sl")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/hotbar_items" unique_id=424520753]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -8.0
+offset_right = 64.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/hotbar_items/MarginContainer" unique_id=805381167]
+layout_mode = 2
+
+[node name="hotbar_slot_ui" parent="MarginContainer/VBoxContainer/hotbar_items/MarginContainer/GridContainer" unique_id=142587982 instance=ExtResource("2_jfdrg")]
+layout_mode = 2
+
+[node name="hotbar_slot_ui2" parent="MarginContainer/VBoxContainer/hotbar_items/MarginContainer/GridContainer" unique_id=1728440278 instance=ExtResource("2_jfdrg")]
+layout_mode = 2
+
+[node name="hotbar_slot_ui3" parent="MarginContainer/VBoxContainer/hotbar_items/MarginContainer/GridContainer" unique_id=1298223197 instance=ExtResource("2_jfdrg")]
+layout_mode = 2
+
+[node name="hotbar_slot_ui4" parent="MarginContainer/VBoxContainer/hotbar_items/MarginContainer/GridContainer" unique_id=210937301 instance=ExtResource("2_jfdrg")]
+layout_mode = 2
+
+[node name="hotbar_slot_ui5" parent="MarginContainer/VBoxContainer/hotbar_items/MarginContainer/GridContainer" unique_id=1841218390 instance=ExtResource("2_jfdrg")]
+layout_mode = 2
+
+[node name="hotbar_slot_ui6" parent="MarginContainer/VBoxContainer/hotbar_items/MarginContainer/GridContainer" unique_id=357826103 instance=ExtResource("2_jfdrg")]
+layout_mode = 2

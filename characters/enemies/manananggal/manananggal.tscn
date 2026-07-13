@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://buckmemkx0asn"]
+
+[ext_resource type="Script" uid="uid://1uialsjnri57" path="res://characters/enemies/manananggal/manananggal.gd" id="1_7182o"]
+[ext_resource type="Texture2D" uid="uid://dpbw8l1n3xqnb" path="res://characters/enemies/manananggal/assets/sprites/manananggal.png" id="1_fjlc8"]
+[ext_resource type="Script" uid="uid://dp3mcwv8k6n5f" path="res://components/state_machine/state_machine.gd" id="3_pts0a"]
+[ext_resource type="PackedScene" uid="uid://b1f0lb50hrd31" path="res://components/health/health_component.tscn" id="3_ulp8i"]
+[ext_resource type="AudioStream" uid="uid://edjifmrqltcg" path="res://characters/enemies/manananggal/assets/sfx/manananggal_hurt.mp3" id="4_5kjqh"]
+[ext_resource type="Script" uid="uid://el2uw7mge5un" path="res://characters/enemies/manananggal/states/wander.gd" id="4_s3my2"]
+[ext_resource type="PackedScene" uid="uid://dlnflck3cqa14" path="res://components/hurtbox/hurtbox_component.tscn" id="4_xclqn"]
+[ext_resource type="PackedScene" uid="uid://ujqj0ltkv4rr" path="res://components/hitbox/hitbox_component.tscn" id="5_073j3"]
+[ext_resource type="Script" uid="uid://b8myi4kv0x3ax" path="res://characters/enemies/manananggal/follow.gd" id="7_e53ke"]
+[ext_resource type="Script" uid="uid://bssnyx448430u" path="res://characters/enemies/manananggal/knocked_back.gd" id="8_vyl4s"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="11_a0ep0"]
+
+[sub_resource type="Animation" id="Animation_ulp8i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_xclqn"]
+resource_name = "fly_down"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_e53ke"]
+resource_name = "fly_up"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e53ke"]
+_data = {
+&"RESET": SubResource("Animation_ulp8i"),
+&"fly_down": SubResource("Animation_xclqn"),
+&"fly_up": SubResource("Animation_e53ke")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxb3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxb3u"]
+size = Vector2(30, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtr1d"]
+size = Vector2(20, 31)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fpo3a"]
+random_pitch = 1.0656005
+streams_count = 1
+stream_0/stream = ExtResource("4_5kjqh")
+
+[node name="Manananggal" type="CharacterBody2D" unique_id=274057768]
+z_index = 5
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_7182o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1669022227]
+position = Vector2(0, -23)
+texture = ExtResource("1_fjlc8")
+hframes = 3
+vframes = 3
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=490906258]
+libraries/ = SubResource("AnimationLibrary_e53ke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1488453338]
+shape = SubResource("CircleShape2D_oxb3u")
+
+[node name="HealthComponent" parent="." unique_id=1222556066 node_paths=PackedStringArray("sprite_2d") instance=ExtResource("3_ulp8i")]
+sprite_2d = NodePath("../Sprite2D")
+max_health = 20.0
+
+[node name="HurtboxComponent" parent="." unique_id=1562833728 node_paths=PackedStringArray("health_component") instance=ExtResource("4_xclqn")]
+collision_layer = 8
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=984565806]
+position = Vector2(0, -25.5)
+shape = SubResource("RectangleShape2D_oxb3u")
+
+[node name="HitboxComponent" parent="." unique_id=1825321196 instance=ExtResource("5_073j3")]
+collision_mask = 2
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=190672045]
+position = Vector2(0, -25.5)
+shape = SubResource("RectangleShape2D_wtr1d")
+debug_color = Color(1, 0, 0, 0.20784314)
+
+[node name="StateMachine" type="Node" parent="." unique_id=703364018 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_pts0a")
+initial_state = NodePath("Wander")
+metadata/_custom_type_script = "uid://dp3mcwv8k6n5f"
+
+[node name="Wander" type="Node" parent="StateMachine" unique_id=1478961167]
+script = ExtResource("4_s3my2")
+metadata/_custom_type_script = "uid://el2uw7mge5un"
+
+[node name="Follow" type="Node" parent="StateMachine" unique_id=1318806334]
+script = ExtResource("7_e53ke")
+metadata/_custom_type_script = "uid://b8myi4kv0x3ax"
+
+[node name="KnockedBack" type="Node" parent="StateMachine" unique_id=130758702]
+script = ExtResource("8_vyl4s")
+metadata/_custom_type_script = "uid://bssnyx448430u"
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="." unique_id=556654894]
+stream = SubResource("AudioStreamRandomizer_fpo3a")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("11_a0ep0")]
+width_ratio = 0.4

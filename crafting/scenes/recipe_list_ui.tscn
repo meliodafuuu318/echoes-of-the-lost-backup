@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://djdctilgeiaxy"]
+
+[ext_resource type="Script" uid="uid://cf5vxam0r7qq0" path="res://crafting/ui_scripts/recipe_list_ui.gd" id="1_2riws"]
+[ext_resource type="PackedScene" uid="uid://gnbdcit45onv" path="res://crafting/scenes/recipe_ui.tscn" id="2_vfdk7"]
+
+[node name="recipe_list_ui" type="Control" unique_id=1259639000]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 108.0
+offset_bottom = 111.0
+script = ExtResource("1_2riws")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1282285197]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 108.0
+offset_bottom = 115.0
+
+[node name="recipe_ui" parent="GridContainer" unique_id=193015825 instance=ExtResource("2_vfdk7")]
+layout_mode = 2
+
+[node name="recipe_ui2" parent="GridContainer" unique_id=1117848707 instance=ExtResource("2_vfdk7")]
+layout_mode = 2
+
+[node name="recipe_ui3" parent="GridContainer" unique_id=436634474 instance=ExtResource("2_vfdk7")]
+layout_mode = 2
+
+[node name="recipe_ui4" parent="GridContainer" unique_id=1937484891 instance=ExtResource("2_vfdk7")]
+layout_mode = 2
+
+[node name="recipe_ui5" parent="GridContainer" unique_id=1689459195 instance=ExtResource("2_vfdk7")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=922509976]
+layout_mode = 0
+offset_left = 21.000002
+offset_top = -12.0
+offset_right = 93.0
+offset_bottom = 7.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Crafting"

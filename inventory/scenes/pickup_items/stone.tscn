@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bthdaaali5t6t"]
+
+[ext_resource type="Script" uid="uid://38ixs36y4m5v" path="res://inventory/item_scripts/stone.gd" id="1_4xwgx"]
+[ext_resource type="Texture2D" uid="uid://d1gv8qfkenx3q" path="res://inventory/assets/items/rock16X16-1.png" id="1_js322"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="3_jurb1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2g58"]
+radius = 9.0
+
+[node name="stone" type="Area2D" unique_id=621483448]
+script = ExtResource("1_4xwgx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=634482620]
+position = Vector2(0, -7)
+texture = ExtResource("1_js322")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1163293342]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_m2g58")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("3_jurb1")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

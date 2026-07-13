@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponItem" format=3 uid="uid://bmdgshv0cqx6r"]
+
+[ext_resource type="Script" uid="uid://c2kjv2djbb0ny" path="res://inventory/resource_scripts/weapon_inv_item.gd" id="1_7hyjt"]
+[ext_resource type="Texture2D" uid="uid://catnbav3hb055" path="res://inventory/assets/items/hammer.png" id="2_7hyjt"]
+
+[resource]
+script = ExtResource("1_7hyjt")
+damage = 5
+target = 1
+id = "8"
+name = "Hammer"
+texture = ExtResource("2_7hyjt")
+max_stack = 1
+description = "A weathered tool of construction and destruction. Its head is scarred by countless blows, yet it remains steadfast, ready to shape the world anew."
+item_type = 1
+metadata/_custom_type_script = "uid://c2kjv2djbb0ny"

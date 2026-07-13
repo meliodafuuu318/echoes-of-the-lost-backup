@@ -1,0 +1,271 @@
+[gd_scene format=3 uid="uid://c2genglyom37o"]
+
+[ext_resource type="Script" uid="uid://bebcxrt5sr142" path="res://guide/ui_scripts/guide_ui.gd" id="1_6iq1g"]
+[ext_resource type="Texture2D" uid="uid://dr8a1a71rtbml" path="res://guide/assets/back_button.png" id="1_528hi"]
+[ext_resource type="Texture2D" uid="uid://b4scajwct2pg6" path="res://crafting/assets/recipe_base.png" id="1_lrurd"]
+[ext_resource type="Texture2D" uid="uid://bkyjba2qgn11q" path="res://crafting/assets/recipe_selected.png" id="2_26ug5"]
+[ext_resource type="PackedScene" uid="uid://djdctilgeiaxy" path="res://crafting/scenes/recipe_list_ui.tscn" id="4_7ltk2"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="4_ketg8"]
+[ext_resource type="PackedScene" uid="uid://hy5ntpcukv6r" path="res://guide/scenes/item_list_ui.tscn" id="4_xgym5"]
+[ext_resource type="PackedScene" uid="uid://dx7afhio8kuvi" path="res://guide/scenes/item_info_ui.tscn" id="6_xgym5"]
+[ext_resource type="PackedScene" uid="uid://dv37bem447e5q" path="res://guide/scenes/monster_list_ui.tscn" id="7_gdogc"]
+[ext_resource type="PackedScene" uid="uid://cx4lu8x5qonlj" path="res://crafting/scenes/crafting_ui.tscn" id="7_qbiuk"]
+[ext_resource type="PackedScene" uid="uid://ctrjm4ixe0kwd" path="res://guide/scenes/monster_info_ui.tscn" id="10_rru8b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iq1g"]
+atlas = ExtResource("1_lrurd")
+region = Rect2(0, 0, 107, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ltk2"]
+atlas = ExtResource("2_26ug5")
+region = Rect2(0, 0, 108, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dutb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iq1g")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ltk2")
+}],
+"loop": 1,
+"name": &"selected",
+"speed": 5.0
+}]
+
+[node name="guide_ui" type="Control" unique_id=2093522622]
+layout_mode = 3
+anchor_right = 0.26000002
+anchor_bottom = 0.26000002
+offset_right = 852.48
+offset_bottom = 479.52
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.26, 0.26)
+script = ExtResource("1_6iq1g")
+
+[node name="header" type="Label" parent="." unique_id=1047068266]
+layout_mode = 0
+offset_left = 211.53833
+offset_top = 23.07692
+offset_right = 438.46143
+offset_bottom = 99.07692
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="main_categories" type="NinePatchRect" parent="." unique_id=91043403]
+layout_mode = 0
+offset_left = 69.230774
+offset_right = 575.99994
+offset_bottom = 648.0
+
+[node name="items_tab" type="Panel" parent="main_categories" unique_id=2098209994]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.30771
+offset_top = -211.53851
+offset_right = 217.30771
+offset_bottom = -142.30774
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_categories/items_tab" unique_id=2044088365]
+position = Vector2(218.54327, 34.076958)
+scale = Vector2(4.0833035, 4.2788496)
+sprite_frames = SubResource("SpriteFrames_dutb6")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="main_categories/items_tab" unique_id=2087027216]
+layout_mode = 0
+offset_left = 107.69214
+offset_right = 334.61523
+offset_bottom = 75.99999
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ketg8")
+theme_override_font_sizes/font_size = 32
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="crafting_tab" type="Panel" parent="main_categories" unique_id=31653971]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.30771
+offset_top = -123.076904
+offset_right = 217.30771
+offset_bottom = -53.84613
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_categories/crafting_tab" unique_id=2062148605]
+position = Vector2(218.54327, 34.076958)
+scale = Vector2(4.0833035, 4.2788496)
+sprite_frames = SubResource("SpriteFrames_dutb6")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="main_categories/crafting_tab" unique_id=303030154]
+layout_mode = 0
+offset_left = 106.23082
+offset_top = -0.9230881
+offset_right = 333.15393
+offset_bottom = 75.07691
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ketg8")
+theme_override_font_sizes/font_size = 32
+text = "Crafting"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="monsters_tab" type="Panel" parent="main_categories" unique_id=68116109]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.30771
+offset_top = -34.615387
+offset_right = 217.30771
+offset_bottom = 34.615387
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="main_categories/monsters_tab" unique_id=1119230594]
+position = Vector2(218.54327, 34.076958)
+scale = Vector2(4.0833035, 4.2788496)
+sprite_frames = SubResource("SpriteFrames_dutb6")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="main_categories/monsters_tab" unique_id=2012824049]
+layout_mode = 0
+offset_left = 106.230835
+offset_top = -0.92308044
+offset_right = 333.15393
+offset_bottom = 75.07692
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ketg8")
+theme_override_font_sizes/font_size = 32
+text = "Monsters"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="items_tab" type="NinePatchRect" parent="." unique_id=160598004]
+visible = false
+layout_mode = 0
+offset_left = 69.230774
+offset_right = 575.99994
+offset_bottom = 648.0
+
+[node name="item_list_ui" parent="items_tab" unique_id=550080397 instance=ExtResource("4_xgym5")]
+layout_mode = 0
+offset_left = 34.615387
+offset_top = 115.38462
+offset_right = 465.38464
+offset_bottom = 619.2308
+
+[node name="crafting_tab" type="NinePatchRect" parent="." unique_id=1735017180]
+visible = false
+layout_mode = 0
+offset_left = 69.230774
+offset_right = 575.99994
+offset_bottom = 648.0
+
+[node name="recipe_list_ui" parent="crafting_tab" unique_id=1259639000 instance=ExtResource("4_7ltk2")]
+layout_mode = 0
+offset_left = 38.461525
+offset_top = 92.30769
+offset_right = 146.46153
+offset_bottom = 203.30774
+scale = Vector2(4, 4)
+
+[node name="monsters_tab" type="NinePatchRect" parent="." unique_id=1679420573]
+visible = false
+layout_mode = 0
+offset_left = 69.231
+offset_right = 576.00006
+offset_bottom = 648.0
+
+[node name="monster_list_ui" parent="monsters_tab" unique_id=477262947 instance=ExtResource("7_gdogc")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+offset_left = 3.8459265
+offset_top = -30.769234
+offset_right = 12.461304
+offset_bottom = -101.84625
+
+[node name="info_section" type="NinePatchRect" parent="." unique_id=1324914354]
+layout_mode = 0
+offset_left = 576.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="item_info" type="NinePatchRect" parent="info_section" unique_id=1999988335]
+visible = false
+layout_mode = 0
+offset_left = 74.0
+offset_right = 500.9231
+offset_bottom = 648.0
+
+[node name="item_info_ui" parent="info_section/item_info" unique_id=1699776385 instance=ExtResource("6_xgym5")]
+layout_mode = 1
+
+[node name="recipe_info" type="NinePatchRect" parent="info_section" unique_id=553357575]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 74.0
+offset_right = 500.9231
+offset_bottom = 648.0
+
+[node name="crafting_ui" parent="info_section/recipe_info" unique_id=567155504 instance=ExtResource("7_qbiuk")]
+z_index = 2
+layout_mode = 0
+offset_top = 50.000015
+offset_right = 109.0
+offset_bottom = 186.00002
+scale = Vector2(4, 4)
+
+[node name="monster_info" type="NinePatchRect" parent="info_section" unique_id=205858508]
+layout_mode = 0
+offset_left = 74.0
+offset_right = 500.923
+offset_bottom = 648.0
+
+[node name="monster_info_ui" parent="info_section/monster_info" unique_id=37030422 instance=ExtResource("10_rru8b")]
+layout_mode = 1
+anchor_right = 1.0
+offset_right = 0.0
+
+[node name="back_button" type="TextureButton" parent="." unique_id=1336588071]
+layout_mode = 0
+offset_left = 1069.2307
+offset_top = -50.000015
+offset_right = 1109.2307
+offset_bottom = -10.000015
+scale = Vector2(3.74, 3.74)
+texture_normal = ExtResource("1_528hi")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://c7fdc7ub1fuun"]
+
+[ext_resource type="Script" uid="uid://bd0uwms5htkhu" path="res://crafting/resource_scripts/ingredient.gd" id="1_0rmgb"]
+[ext_resource type="Resource" uid="uid://c7ec1dbxrid84" path="res://crafting/resources/ingredients/sword1.tres" id="2_u2u72"]
+[ext_resource type="Resource" uid="uid://cnryhuqibc0u" path="res://crafting/resources/ingredients/sword2.tres" id="3_6682m"]
+[ext_resource type="Resource" uid="uid://cd42opetmfuqv" path="res://inventory/resources/inventory_items/sword.tres" id="4_6hbdr"]
+[ext_resource type="Script" uid="uid://cso2ko871nwd0" path="res://crafting/resource_scripts/recipe.gd" id="5_va1be"]
+
+[resource]
+script = ExtResource("5_va1be")
+id = "3"
+name = "Sword"
+ingredients = Array[ExtResource("1_0rmgb")]([ExtResource("2_u2u72"), ExtResource("3_6682m")])
+product = ExtResource("4_6hbdr")
+metadata/_custom_type_script = "uid://cso2ko871nwd0"

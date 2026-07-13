@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bdsxwh71efwr3"]
+
+[ext_resource type="Script" uid="uid://djnb33o0m2dw4" path="res://autoload/item_manager.gd" id="1_xbg3m"]
+[ext_resource type="Script" uid="uid://bhamvq1lajjdf" path="res://inventory/resource_scripts/inventory_item.gd" id="2_kqmtm"]
+[ext_resource type="Resource" uid="uid://tjqankqipfe7" path="res://inventory/resources/inventory_items/artifact/anting-anting.tres" id="3_nnmfd"]
+[ext_resource type="Resource" uid="uid://dkjnsdqo4euow" path="res://inventory/resources/inventory_items/apple.tres" id="4_eptyw"]
+[ext_resource type="Resource" uid="uid://don4yxked8ve" path="res://inventory/resources/inventory_items/axe.tres" id="5_rm60j"]
+[ext_resource type="Resource" uid="uid://bmdgshv0cqx6r" path="res://inventory/resources/inventory_items/hammer.tres" id="6_q1urr"]
+[ext_resource type="Resource" uid="uid://cnkt4rivm68pq" path="res://inventory/resources/inventory_items/log.tres" id="7_n5lu3"]
+[ext_resource type="Resource" uid="uid://dvg7qv1mvy0th" path="res://inventory/resources/inventory_items/stone.tres" id="8_flhih"]
+[ext_resource type="Resource" uid="uid://cd42opetmfuqv" path="res://inventory/resources/inventory_items/sword.tres" id="9_t26wx"]
+
+[node name="ItemManager" type="Node" unique_id=677585866]
+script = ExtResource("1_xbg3m")
+items = Array[ExtResource("2_kqmtm")]([ExtResource("3_nnmfd"), ExtResource("4_eptyw"), ExtResource("5_rm60j"), ExtResource("6_q1urr"), ExtResource("7_n5lu3"), ExtResource("8_flhih"), ExtResource("9_t26wx")])

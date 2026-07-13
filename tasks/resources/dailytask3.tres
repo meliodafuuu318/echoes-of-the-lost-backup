@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Task" format=3 uid="uid://ccnsbd7cxderf"]
+
+[ext_resource type="Resource" uid="uid://dvg7qv1mvy0th" path="res://inventory/resources/inventory_items/stone.tres" id="1_i5t00"]
+[ext_resource type="Script" uid="uid://b6dk4cvvnwlv7" path="res://tasks/resource_scripts/task.gd" id="2_msvyt"]
+
+[resource]
+script = ExtResource("2_msvyt")
+task_id = "3"
+task_name = "Chop Trees"
+description = "Chop down 3 trees"
+task_type = 2
+target_amount = 3
+reward_item = ExtResource("1_i5t00")
+reward_item_amount = 2
+metadata/_custom_type_script = "uid://b6dk4cvvnwlv7"

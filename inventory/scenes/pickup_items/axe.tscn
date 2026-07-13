@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://fq0rpqcft4tv"]
+
+[ext_resource type="Script" uid="uid://cagdttifkp65u" path="res://inventory/item_scripts/axe.gd" id="1_0k3cr"]
+[ext_resource type="Texture2D" uid="uid://brsjoflxkro1n" path="res://inventory/assets/items/AXE16x16-1.png.png" id="1_8gaga"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="3_6d5bc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 13.038404
+
+[node name="axe" type="Area2D" unique_id=1930831341]
+script = ExtResource("1_0k3cr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=827804148]
+position = Vector2(0, -11)
+texture = ExtResource("1_8gaga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1557633517]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("3_6d5bc")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

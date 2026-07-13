@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MaterialItem" format=3 uid="uid://cnkt4rivm68pq"]
+
+[ext_resource type="Script" uid="uid://bt73fxi71tjnc" path="res://inventory/resource_scripts/material_inv_item.gd" id="1_jitv5"]
+[ext_resource type="PackedScene" uid="uid://dwgnkkl26upt0" path="res://inventory/scenes/pickup_items/log.tscn" id="1_sh8bp"]
+[ext_resource type="Texture2D" uid="uid://cbp6akqv7bvdr" path="res://inventory/assets/items/log.png" id="2_sh8bp"]
+
+[resource]
+script = ExtResource("1_jitv5")
+id = "5"
+name = "Log"
+texture = ExtResource("2_sh8bp")
+max_stack = 64
+description = "Weathered timber from the world's forgotten trees. Solid, steadfast—a foundation for something new."
+pickup_scene = ExtResource("1_sh8bp")
+item_type = 2
+metadata/_custom_type_script = "uid://bt73fxi71tjnc"

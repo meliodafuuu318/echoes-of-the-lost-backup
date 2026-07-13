@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://q4c6xbqrtvlh"]
+
+[ext_resource type="Script" uid="uid://dskl1vk3yl43a" path="res://objects/shadow/shadow.gd" id="1_2qp4x"]
+
+[node name="Shadow" type="Node2D" unique_id=96700984]
+show_behind_parent = true
+script = ExtResource("1_2qp4x")

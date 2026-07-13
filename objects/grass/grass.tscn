@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cw5txf6irrcxu"]
+
+[ext_resource type="Texture2D" uid="uid://chp10388sqatq" path="res://objects/grass/grass_frames.png" id="1_3aaqj"]
+[ext_resource type="Script" uid="uid://bfj4ndxr7m7ue" path="res://objects/grass/grass.gd" id="1_wnpr3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnpr3"]
+atlas = ExtResource("1_3aaqj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n32no"]
+atlas = ExtResource("1_3aaqj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m2g58"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnpr3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n32no")
+}],
+"loop": 1,
+"name": &"stepped_on",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ykry"]
+radius = 6.0
+
+[node name="grass" type="Area2D" unique_id=1885423261]
+script = ExtResource("1_wnpr3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1202964096]
+modulate = Color(0.32941177, 0.5254902, 1, 1)
+sprite_frames = SubResource("SpriteFrames_m2g58")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1750734477]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_8ykry")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

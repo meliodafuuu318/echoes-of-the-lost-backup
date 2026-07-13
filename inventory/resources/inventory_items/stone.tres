@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MaterialItem" format=3 uid="uid://dvg7qv1mvy0th"]
+
+[ext_resource type="Script" uid="uid://bt73fxi71tjnc" path="res://inventory/resource_scripts/material_inv_item.gd" id="1_7ty2v"]
+[ext_resource type="Texture2D" uid="uid://d1gv8qfkenx3q" path="res://inventory/assets/items/rock16X16-1.png" id="2_bi480"]
+
+[resource]
+script = ExtResource("1_7ty2v")
+id = "7"
+name = "Stone"
+texture = ExtResource("2_bi480")
+max_stack = 64
+description = "A rough, unadorned fragment of earth. Heavy with potential, yet patient—waiting for the hands of a craftsman to give it meaning."
+item_type = 2
+metadata/_custom_type_script = "uid://bt73fxi71tjnc"

@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://cx4lu8x5qonlj"]
+
+[ext_resource type="Script" uid="uid://b3m64soxj3bt7" path="res://crafting/ui_scripts/crafting_ui.gd" id="1_io8h8"]
+[ext_resource type="PackedScene" uid="uid://cexfxdkfqww4j" path="res://crafting/scenes/ingredient_ui.tscn" id="1_meftn"]
+[ext_resource type="Texture2D" uid="uid://b5r5xkac6d3rg" path="res://crafting/assets/product_view.png" id="1_mnya2"]
+[ext_resource type="Texture2D" uid="uid://cp5um6yju6wpk" path="res://crafting/assets/craft_button.png" id="3_raqar"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="3_uequ7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grabber"]
+content_margin_left = 0.75
+content_margin_right = 0.75
+bg_color = Color(0, 0, 0, 0.5)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grabber_highlight"]
+content_margin_left = 0.75
+content_margin_right = 0.75
+bg_color = Color(0, 0, 0, 0.75)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scroll_track"]
+content_margin_left = 0.75
+content_margin_right = 0.75
+bg_color = Color(1, 1, 1, 0.12)
+
+[sub_resource type="Theme" id="Theme_thin_scrollbar"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_grabber")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_grabber_highlight")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_grabber_highlight")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_scroll_track")
+
+[node name="crafting_ui" type="Control" unique_id=567155504]
+custom_minimum_size = Vector2(109, 136)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 106.0
+offset_bottom = 102.0
+script = ExtResource("1_io8h8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=469571996]
+custom_minimum_size = Vector2(109, 136)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="product_ui" type="Panel" parent="NinePatchRect" unique_id=1933519737]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(33, 33)
+layout_mode = 0
+offset_left = 37.0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 38.0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/product_ui" unique_id=1580417488]
+position = Vector2(17, 17)
+texture = ExtResource("1_mnya2")
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/product_ui" unique_id=216346991]
+custom_minimum_size = Vector2(33, 33)
+layout_mode = 0
+offset_right = 33.0
+offset_bottom = 33.0
+
+[node name="item_display" type="Sprite2D" parent="NinePatchRect/product_ui/CenterContainer" unique_id=1587478905]
+position = Vector2(17, 17)
+scale = Vector2(1.5, 1.5)
+
+[node name="product_name" type="Label" parent="NinePatchRect/product_ui" unique_id=1196125744]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 37.0
+offset_right = 117.48483
+offset_bottom = 56.0
+scale = Vector2(0.66, 0.66)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_uequ7")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/product_ui" unique_id=588721118]
+layout_mode = 0
+offset_left = -36.0
+offset_top = 55.0
+offset_right = 73.0
+offset_bottom = 89.0
+theme = SubResource("Theme_thin_scrollbar")
+horizontal_scroll_mode = 0
+
+[node name="Panel" type="Panel" parent="NinePatchRect/product_ui/ScrollContainer" unique_id=523636776]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="product_description" type="Label" parent="NinePatchRect/product_ui/ScrollContainer/Panel" unique_id=1014860516]
+custom_minimum_size = Vector2(77, 32)
+layout_mode = 0
+offset_left = 7.9999995
+offset_right = 286.78784
+offset_bottom = 109.0909
+scale = Vector2(0.33, 0.33)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_uequ7")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ingredients_grid" type="GridContainer" parent="NinePatchRect" unique_id=91502898]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 99.0
+offset_right = 83.0
+offset_bottom = 115.0
+columns = 3
+
+[node name="ingredient_ui" parent="NinePatchRect/ingredients_grid" unique_id=1115781863 instance=ExtResource("1_meftn")]
+layout_mode = 2
+
+[node name="ingredient_ui3" parent="NinePatchRect/ingredients_grid" unique_id=1197896326 instance=ExtResource("1_meftn")]
+layout_mode = 2
+
+[node name="ingredient_ui2" parent="NinePatchRect/ingredients_grid" unique_id=1315766105 instance=ExtResource("1_meftn")]
+layout_mode = 2
+
+[node name="craft_button" type="TextureButton" parent="NinePatchRect" unique_id=676137707]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 123.0
+offset_right = 91.0
+offset_bottom = 140.0
+texture_normal = ExtResource("3_raqar")

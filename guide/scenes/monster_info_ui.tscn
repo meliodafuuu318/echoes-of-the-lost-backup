@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://ctrjm4ixe0kwd"]
+
+[ext_resource type="Script" uid="uid://dr4s2n3pgcmqa" path="res://guide/ui_scripts/monster_info_ui.gd" id="1_mc71k"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="2_mc71k"]
+
+[node name="monster_info_ui" type="Control" unique_id=37030422]
+layout_mode = 3
+anchor_right = 0.37500003
+anchor_bottom = 1.0
+offset_right = -3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mc71k")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=609404108]
+layout_mode = 0
+offset_right = 426.923
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="NinePatchRect" unique_id=83875666]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.231
+anchor_right = 0.5
+anchor_bottom = 0.231
+offset_left = -54.0
+offset_top = -56.688004
+offset_right = 53.999985
+offset_bottom = 56.311996
+grow_horizontal = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/Panel" unique_id=134778927]
+layout_mode = 0
+offset_right = 108.5385
+offset_bottom = 111.0
+
+[node name="monster_display" type="Sprite2D" parent="NinePatchRect/Panel/CenterContainer" unique_id=87390014]
+position = Vector2(55.538494, 56.999996)
+scale = Vector2(5, 5)
+
+[node name="monster_stats" type="Label" parent="NinePatchRect" unique_id=1898880639]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 240.0
+offset_right = 381.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mc71k")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect" unique_id=69349979]
+custom_minimum_size = Vector2(328, 220)
+layout_mode = 0
+offset_top = 300.0
+offset_right = 436.0
+offset_bottom = 608.0
+horizontal_scroll_mode = 0
+scroll_hint_mode = 2
+
+[node name="content" type="MarginContainer" parent="NinePatchRect/ScrollContainer" unique_id=1698064605]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="monster_description" type="Label" parent="NinePatchRect/ScrollContainer/content" unique_id=75543921]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mc71k")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 2

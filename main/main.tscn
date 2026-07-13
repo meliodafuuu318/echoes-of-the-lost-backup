@@ -1,0 +1,468 @@
+[gd_scene format=3 uid="uid://ddec742yofrsg"]
+
+[ext_resource type="Script" uid="uid://cv13se4jlyddr" path="res://main/main.gd" id="1_53q0u"]
+[ext_resource type="Script" uid="uid://bjnhi7uc63e83" path="res://main/world_container.gd" id="2_4dugh"]
+[ext_resource type="Script" uid="uid://cu47cgnlk8f54" path="res://day_night/day_night_cycle.gd" id="2_pjrb6"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://day_night/day_night_cycle_gradient_texture.tres" id="3_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://ceolcwatpaicu" path="res://day_night/ui/day_night_cycle_ui.tscn" id="4_c651c"]
+[ext_resource type="PackedScene" uid="uid://wmmb64bnb3pn" path="res://day_night/audio/sound_machine.tscn" id="5_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://pbocopymbreb" path="res://characters/player/player.tscn" id="6_kfbq2"]
+[ext_resource type="Script" uid="uid://bm4d8kvxeua6m" path="res://inventory/managers/item_drop_manager.gd" id="8_67ri8"]
+[ext_resource type="Script" uid="uid://b0xm2jqm6rj17" path="res://ui/controls_help.gd" id="9_ctrlhelp"]
+[ext_resource type="PackedScene" uid="uid://cssgo4awamqw0" path="res://ui/main_menu.tscn" id="9_grrlh"]
+[ext_resource type="PackedScene" uid="uid://btipt2uux5qw1" path="res://menu/menu_ui.tscn" id="10_bsumw"]
+[ext_resource type="PackedScene" uid="uid://b1w3xirxma8nw" path="res://inventory/scenes/hotbar_ui.tscn" id="11_fwcvl"]
+[ext_resource type="Texture2D" uid="uid://gjv6832hvevp" path="res://inventory/assets/items/anting-anting.png" id="12_fwcvl"]
+[ext_resource type="Shader" uid="uid://b124s7dln7xrl" path="res://main/main.gdshader" id="14_73k8k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3onaq"]
+shader = ExtResource("14_73k8k")
+shader_parameter/scanline_color = Color(0, 0, 0, 1)
+shader_parameter/flicker_color = Color(0, 0, 0, 1)
+shader_parameter/scanlines_count = 10.0
+shader_parameter/scanlines_intensity = 0.05
+shader_parameter/flicker_speed = 30.0
+shader_parameter/flicker_intensity = 0.025
+shader_parameter/color_offset = 1.5
+shader_parameter/blur = 0.15
+
+[node name="Main" type="Node2D" unique_id=1144406930]
+y_sort_enabled = true
+script = ExtResource("1_53q0u")
+
+[node name="WorldContainer" type="Node2D" parent="." unique_id=994377854]
+y_sort_enabled = true
+script = ExtResource("2_4dugh")
+
+[node name="DropsContainer" type="Node2D" parent="." unique_id=2052306593]
+y_sort_enabled = true
+
+[node name="Player" parent="." unique_id=526460507 instance=ExtResource("6_kfbq2")]
+
+[node name="DayNightCycle" type="CanvasModulate" parent="." unique_id=669445507]
+color = Color(0.13333334, 0.14901961, 0.25882354, 1)
+script = ExtResource("2_pjrb6")
+gradient = ExtResource("3_xwkvk")
+ingame_speed = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=313321479]
+
+[node name="DayNightCycleUI" parent="CanvasLayer" unique_id=1929152440 instance=ExtResource("4_c651c")]
+mouse_filter = 2
+use_24_hour_time = false
+
+[node name="MainMenu" parent="CanvasLayer" unique_id=1721133168 node_paths=PackedStringArray("hud") instance=ExtResource("9_grrlh")]
+hud = NodePath("../../HUD")
+
+[node name="controls_help" type="NinePatchRect" parent="CanvasLayer" unique_id=1174099611 node_paths=PackedStringArray("main_menu")]
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(500, 450)
+offset_left = 327.0
+offset_top = 67.0
+offset_right = 827.0
+offset_bottom = 517.0
+script = ExtResource("9_ctrlhelp")
+main_menu = NodePath("../MainMenu")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/controls_help" unique_id=180805305]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(500, 450)
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 450.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/controls_help/Panel" unique_id=180805306]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer" unique_id=524808384]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer" unique_id=524808385]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="Headers" type="GridContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer" unique_id=1453782982]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/Headers" unique_id=659742738]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Action"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/Headers" unique_id=1218371492]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Key / Input"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer" unique_id=524808386]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer" unique_id=524808387]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=524808388]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="move" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=683397510]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Move"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="move_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=683397511]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "WASD"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="action" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=212708410]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Attack / Chop / Mine"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="action_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=212708411]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Spacebar"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="interact" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=212708412]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="interact_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=212708413]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="use_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=212708414]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Use Held Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="use_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=212708415]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="block" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1807838400]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Block"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="block_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1807838401]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Shift"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="hotbar" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1807838402]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Select Hotbar Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="hotbar_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1807838403]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "1-6 / Scroll Wheel"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="menu" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1752798050]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Open / Close Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="menu_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1752798051]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Tab"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="collect" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1046440850]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Collect Apples / Select Menu Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="collect_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1046440851]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Left Click"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="drop_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=530082810]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Drop Item from Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="drop_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=530082811]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Right Click"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="move_slot" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1752798040]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Move Inventory Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="move_slot_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1779799297]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Drag and Drop"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="split_stack" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1046440839]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Split Item Stack"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="split_stack_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=2114349431]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Ctrl + Drag and Drop"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="force_swap" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1046440840]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Force Swap Inventory Slots"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="force_swap_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=2114349432]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Shift + Drag and Drop"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="equip_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=675061625]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Equip Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="equip_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1183452710]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="toggle_help" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=375990422]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Toggle Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="toggle_help_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1812131701]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "F1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SoundMachine" parent="." unique_id=650265235 instance=ExtResource("5_3wy1v")]
+process_mode = 3
+
+[node name="item_drop_manager" type="Node" parent="." unique_id=887579969 node_paths=PackedStringArray("spawn_root")]
+script = ExtResource("8_67ri8")
+spawn_root = NodePath("../DropsContainer")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=362309350]
+visible = false
+
+[node name="menu_ui" parent="HUD" unique_id=885035941 node_paths=PackedStringArray("hotbar_ui", "main_menu") instance=ExtResource("10_bsumw")]
+hotbar_ui = NodePath("../hotbar_ui")
+main_menu = NodePath("../../CanvasLayer/MainMenu")
+
+[node name="hotbar_ui" parent="HUD" unique_id=385176462 instance=ExtResource("11_fwcvl")]
+
+[node name="anting_anting_found" type="Node2D" parent="HUD" unique_id=794313499]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="HUD/anting_anting_found" unique_id=877839867]
+modulate = Color(0, 0, 0, 0.46400002)
+z_index = -1
+offset_right = 1151.0
+offset_bottom = 649.0
+
+[node name="Label" type="Label" parent="HUD/anting_anting_found" unique_id=224956376]
+offset_left = 313.0
+offset_top = 428.0
+offset_right = 853.0
+offset_bottom = 492.0
+theme_override_font_sizes/font_size = 64
+text = "Artifact Found!"
+
+[node name="TextureRect" type="TextureRect" parent="HUD/anting_anting_found" unique_id=989016783]
+offset_left = 323.0
+offset_top = -32.0
+offset_right = 363.0
+offset_bottom = 8.0
+scale = Vector2(15, 15)
+texture = ExtResource("12_fwcvl")
+
+[node name="CRT" type="CanvasLayer" parent="." unique_id=1884377545]
+
+[node name="ColorRect" type="ColorRect" parent="CRT" unique_id=1589077502]
+material = SubResource("ShaderMaterial_3onaq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

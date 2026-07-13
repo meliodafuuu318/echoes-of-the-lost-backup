@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://btipt2uux5qw1"]
+
+[ext_resource type="Texture2D" uid="uid://bmnlkgpi0rclg" path="res://inventory/assets/main_menu_bg.png" id="1_86ygs"]
+[ext_resource type="Script" uid="uid://8nkl7g8r3t4j" path="res://inventory/ui/menu_ui.gd" id="1_qa6pt"]
+[ext_resource type="PackedScene" uid="uid://ddl00ardxj1k7" path="res://inventory/scenes/inventory_ui.tscn" id="2_b5e6c"]
+[ext_resource type="Texture2D" uid="uid://ep8phhbe3oya" path="res://inventory/assets/char_view_bg.png" id="4_3y6qt"]
+[ext_resource type="Texture2D" uid="uid://dwib4miphw4to" path="res://characters/player/assets/sprites/walk.png" id="5_wvcyl"]
+[ext_resource type="PackedScene" uid="uid://d1qgggbcr8kqn" path="res://inventory/scenes/artifact_slot_ui.tscn" id="7_sys31"]
+[ext_resource type="PackedScene" uid="uid://dc48ewx7anll3" path="res://inventory/scenes/health_bar_sprite.tscn" id="7_wvcyl"]
+[ext_resource type="PackedScene" uid="uid://bqwqui1yqmbc" path="res://tasks/scenes/task_list_ui.tscn" id="8_sys31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sys31"]
+atlas = ExtResource("5_wvcyl")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvt8j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sys31")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="menu_ui" type="Control" unique_id=885035941]
+z_index = 10
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qa6pt")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1099475165]
+light_mask = 4
+visibility_layer = 4
+layout_mode = 0
+offset_left = -145.0
+offset_top = -149.0
+offset_right = 161.0
+offset_bottom = 41.0
+texture = ExtResource("1_86ygs")
+
+[node name="inventory_ui" parent="NinePatchRect" unique_id=1659296847 instance=ExtResource("2_b5e6c")]
+layout_mode = 1
+offset_left = -119.0
+offset_top = 18.0
+offset_right = -159.0
+offset_bottom = -49.0
+
+[node name="player_view" type="NinePatchRect" parent="NinePatchRect" unique_id=521040755]
+z_index = 2
+layout_mode = 0
+offset_left = 20.0
+offset_top = 23.0
+offset_right = 60.0
+offset_bottom = 90.0
+texture = ExtResource("4_3y6qt")
+
+[node name="player_sprite" type="Node2D" parent="NinePatchRect/player_view" unique_id=779825736]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect/player_view/player_sprite" unique_id=2014628820]
+position = Vector2(21, 36)
+sprite_frames = SubResource("SpriteFrames_pvt8j")
+autoplay = "default"
+
+[node name="HealthBarSprite" parent="NinePatchRect" unique_id=203065318 instance=ExtResource("7_wvcyl")]
+z_index = 2
+position = Vector2(99, 85)
+scale = Vector2(1.05, 1.05)
+
+[node name="artifact_slots" type="GridContainer" parent="NinePatchRect" unique_id=651948238]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -69.5
+offset_right = -49.0
+offset_bottom = -52.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="artifact_slot_ui" parent="NinePatchRect/artifact_slots" unique_id=731823642 instance=ExtResource("7_sys31")]
+layout_mode = 2
+
+[node name="artifact_slot_ui2" parent="NinePatchRect/artifact_slots" unique_id=1943478940 instance=ExtResource("7_sys31")]
+layout_mode = 2
+
+[node name="task_list_ui" parent="NinePatchRect" unique_id=1010010946 instance=ExtResource("8_sys31")]
+layout_mode = 1
+offset_left = 158.0
+offset_top = 16.0
+offset_right = -22.0
+offset_bottom = -24.0
+
+[node name="dark_overlay" type="ColorRect" parent="." unique_id=1067121196]
+visible = false
+modulate = Color(0, 0, 0, 0.57254905)
+z_index = -2
+layout_mode = 0
+offset_left = -332.0
+offset_top = -276.0
+offset_right = 334.0
+offset_bottom = 181.0
+mouse_filter = 2
+
+[node name="tabs" type="Node2D" parent="." unique_id=635654932]
+
+[node name="inventory" type="Panel" parent="tabs" unique_id=1718986918]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(19, 17)
+offset_left = 140.0
+offset_top = -147.0
+offset_right = 159.0
+offset_bottom = -130.0
+
+[node name="crafting" type="Panel" parent="tabs" unique_id=1298637866]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(19, 17)
+offset_left = 140.0
+offset_top = -128.0
+offset_right = 159.0
+offset_bottom = -111.0
+
+[node name="?" type="Panel" parent="tabs" unique_id=782983427]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(19, 17)
+offset_left = 140.0
+offset_top = -108.0
+offset_right = 159.0
+offset_bottom = -91.0
+
+[node name="settings" type="Panel" parent="tabs" unique_id=793585108]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(19, 17)
+offset_left = 140.0
+offset_top = -89.0
+offset_right = 159.0
+offset_bottom = -72.0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

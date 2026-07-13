@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://cnryhuqibc0u"]
+
+[ext_resource type="Resource" uid="uid://dvg7qv1mvy0th" path="res://inventory/resources/inventory_items/stone.tres" id="1_q8xyb"]
+[ext_resource type="Script" uid="uid://bd0uwms5htkhu" path="res://crafting/resource_scripts/ingredient.gd" id="2_1uhx1"]
+
+[resource]
+script = ExtResource("2_1uhx1")
+material = ExtResource("1_q8xyb")
+amount = 2
+metadata/_custom_type_script = "uid://bd0uwms5htkhu"

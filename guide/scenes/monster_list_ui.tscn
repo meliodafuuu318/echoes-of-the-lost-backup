@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dv37bem447e5q"]
+
+[ext_resource type="Script" uid="uid://c4li057no6igc" path="res://guide/ui_scripts/monster_list_ui.gd" id="1_awvgc"]
+[ext_resource type="PackedScene" uid="uid://fsvqwcp2wheb" path="res://guide/scenes/monster_ui.tscn" id="1_w5ff7"]
+
+[node name="monster_list_ui" type="Control" unique_id=477262947]
+layout_mode = 3
+anchor_right = 0.44000003
+anchor_bottom = 1.0
+offset_right = -0.11099243
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_awvgc")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1513694091]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 134.0
+offset_right = 451.0
+offset_bottom = 480.0
+
+[node name="monster_ui" parent="GridContainer" unique_id=991216918 instance=ExtResource("1_w5ff7")]
+layout_mode = 2
+
+[node name="monster_ui2" parent="GridContainer" unique_id=1709430104 instance=ExtResource("1_w5ff7")]
+layout_mode = 2
+
+[node name="monster_ui3" parent="GridContainer" unique_id=598616228 instance=ExtResource("1_w5ff7")]
+layout_mode = 2
+
+[node name="monster_ui4" parent="GridContainer" unique_id=336406044 instance=ExtResource("1_w5ff7")]
+layout_mode = 2

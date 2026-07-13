@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dhh6b6f3dim7i"]
+
+[ext_resource type="Script" uid="uid://cxrat3dlyb8xo" path="res://autoload/recipe_manager.gd" id="1_ga65a"]
+[ext_resource type="Script" uid="uid://cso2ko871nwd0" path="res://crafting/resource_scripts/recipe.gd" id="2_31vq8"]
+[ext_resource type="Resource" uid="uid://b14jqwtwxlyup" path="res://crafting/resources/recipes/axe_recipe.tres" id="3_03li5"]
+[ext_resource type="Resource" uid="uid://qctfmj3xlke0" path="res://crafting/resources/recipes/hammer_recipe.tres" id="4_03li5"]
+[ext_resource type="Resource" uid="uid://c7fdc7ub1fuun" path="res://crafting/resources/recipes/sword_recipe.tres" id="5_ytmjc"]
+
+[node name="RecipeManager" type="Node" unique_id=998313943]
+script = ExtResource("1_ga65a")
+recipe_resources = Array[ExtResource("2_31vq8")]([ExtResource("3_03li5"), ExtResource("4_03li5"), ExtResource("5_ytmjc")])

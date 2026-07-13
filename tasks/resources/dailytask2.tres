@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Task" format=3 uid="uid://b74vbf3bgwbn8"]
+
+[ext_resource type="Resource" uid="uid://dvg7qv1mvy0th" path="res://inventory/resources/inventory_items/stone.tres" id="1_0i718"]
+[ext_resource type="Script" uid="uid://b6dk4cvvnwlv7" path="res://tasks/resource_scripts/task.gd" id="2_2qxus"]
+
+[resource]
+script = ExtResource("2_2qxus")
+task_id = "2"
+task_name = "Defeat Manananggal"
+description = "Defeat the Manananggal enemy"
+task_type = 1
+target_amount = 3
+reward_item = ExtResource("1_0i718")
+reward_item_amount = 3
+metadata/_custom_type_script = "uid://b6dk4cvvnwlv7"

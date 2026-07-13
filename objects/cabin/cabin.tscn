@@ -1,0 +1,168 @@
+[gd_scene format=4 uid="uid://ds8vpxu7dwye7"]
+
+[ext_resource type="Texture2D" uid="uid://mrmtsg8ectui" path="res://objects/cabin/cabin.png" id="1_jvh2p"]
+[ext_resource type="PackedScene" uid="uid://bqj31sewmuvba" path="res://components/triggers/scene_transition_trigger.tscn" id="2_xpw45"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jvh2p"]
+texture = ExtResource("1_jvh2p")
+0:0/0 = 0
+0:0/0/z_index = 1
+1:0/0 = 0
+1:0/0/z_index = 1
+2:0/0 = 0
+2:0/0/z_index = 1
+3:0/0 = 0
+3:0/0/z_index = 1
+4:0/0 = 0
+4:0/0/z_index = 1
+5:0/0 = 0
+5:0/0/z_index = 1
+6:0/0 = 0
+6:0/0/z_index = 1
+7:0/0 = 0
+7:0/0/z_index = 1
+8:0/0 = 0
+8:0/0/z_index = 1
+0:1/0 = 0
+0:1/0/z_index = 1
+1:1/0 = 0
+1:1/0/z_index = 1
+2:1/0 = 0
+2:1/0/z_index = 1
+3:1/0 = 0
+3:1/0/z_index = 1
+4:1/0 = 0
+4:1/0/z_index = 1
+5:1/0 = 0
+5:1/0/z_index = 1
+6:1/0 = 0
+6:1/0/z_index = 1
+7:1/0 = 0
+7:1/0/z_index = 1
+8:1/0 = 0
+8:1/0/z_index = 1
+0:2/0 = 0
+0:2/0/z_index = 1
+1:2/0 = 0
+1:2/0/z_index = 1
+2:2/0 = 0
+2:2/0/z_index = 1
+3:2/0 = 0
+3:2/0/z_index = 1
+4:2/0 = 0
+4:2/0/z_index = 1
+5:2/0 = 0
+5:2/0/z_index = 1
+6:2/0 = 0
+6:2/0/z_index = 1
+7:2/0 = 0
+7:2/0/z_index = 1
+8:2/0 = 0
+8:2/0/z_index = 1
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_oxb3u"]
+sources/0 = SubResource("TileSetAtlasSource_jvh2p")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_os51x"]
+size = Vector2(15, 20)
+
+[node name="Cabin" type="StaticBody2D" unique_id=1675765062]
+y_sort_enabled = true
+collision_layer = 64
+collision_mask = 0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=768463713]
+tile_map_data = PackedByteArray("AAD7//r/AAAAAAAAAAD7//v/AAAAAAEAAAD7//z/AAAAAAIAAAD7//3/AAAAAAMAAAD7//7/AAAAAAQAAAD7////AAAAAAUAAAD8//r/AAABAAAAAAD8//v/AAABAAEAAAD8//z/AAABAAIAAAD8//3/AAABAAMAAAD8//7/AAABAAQAAAD8////AAABAAUAAAD9//r/AAACAAAAAAD9//v/AAACAAEAAAD9//z/AAACAAIAAAD9//3/AAACAAMAAAD9//7/AAACAAQAAAD9////AAACAAUAAAD+//r/AAADAAAAAAD+//v/AAADAAEAAAD+//z/AAADAAIAAAD+//3/AAADAAMAAAD+//7/AAADAAQAAAD+////AAADAAUAAAD///r/AAAEAAAAAAD///v/AAAEAAEAAAD///z/AAAEAAIAAAD///3/AAAEAAMAAAD///7/AAAEAAQAAAD/////AAAEAAUAAAAAAPr/AAAFAAAAAAAAAPv/AAAFAAEAAAAAAPz/AAAFAAIAAAAAAP3/AAAFAAMAAAAAAP7/AAAFAAQAAAAAAP//AAAFAAUAAAABAPr/AAAGAAAAAAABAPv/AAAGAAEAAAABAPz/AAAGAAIAAAABAP3/AAAGAAMAAAABAP7/AAAGAAQAAAABAP//AAAGAAUAAAACAPr/AAAHAAAAAAACAPv/AAAHAAEAAAACAPz/AAAHAAIAAAACAP3/AAAHAAMAAAACAP7/AAAHAAQAAAACAP//AAAHAAUAAAADAPr/AAAIAAAAAAADAPv/AAAIAAEAAAADAPz/AAAIAAIAAAADAP3/AAAIAAMAAAADAP7/AAAIAAQAAAADAP//AAAIAAUAAAA=")
+tile_set = SubResource("TileSet_oxb3u")
+
+[node name="SceneTransitionTrigger" parent="." unique_id=60058399 instance=ExtResource("2_xpw45")]
+position = Vector2(28.5, -11)
+target_spawn = "ExitDoorSpawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTransitionTrigger" unique_id=2043394659]
+shape = SubResource("RectangleShape2D_os51x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=962940395]
+position = Vector2(-8, 0)
+polygon = PackedVector2Array(62, 0, 62, -79, -62, -79, -62, 0, 28, 0, 28, -22, 45, -22, 45, 0)

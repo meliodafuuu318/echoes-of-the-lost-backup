@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://fsvqwcp2wheb"]
+
+[ext_resource type="Texture2D" uid="uid://cybk10asya230" path="res://guide/assets/recipe_base.png" id="1_o60fi"]
+[ext_resource type="Script" uid="uid://c1tgnvgjcnoeg" path="res://guide/ui_scripts/monster_ui.gd" id="1_x13rb"]
+[ext_resource type="Texture2D" uid="uid://rnhjn4hg4d5u" path="res://guide/assets/recipe_selected.png" id="2_x13rb"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="4_xk1s0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk1s0"]
+atlas = ExtResource("1_o60fi")
+region = Rect2(0, 0, 107, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xvxt"]
+atlas = ExtResource("2_x13rb")
+region = Rect2(0, 0, 108, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dutb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk1s0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xvxt")
+}],
+"loop": 1,
+"name": &"selected",
+"speed": 5.0
+}]
+
+[node name="monster_ui" type="Panel" unique_id=991216918]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(396, 80)
+offset_top = -13.0
+offset_right = 396.0
+offset_bottom = 67.0
+script = ExtResource("1_x13rb")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2116148780]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 396.0
+offset_bottom = 74.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect" unique_id=1349843526]
+position = Vector2(199, 33)
+scale = Vector2(3.7009346, 4)
+sprite_frames = SubResource("SpriteFrames_dutb6")
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=1442408191]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 384.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_xk1s0")
+theme_override_font_sizes/font_size = 32
+text = "lorem ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

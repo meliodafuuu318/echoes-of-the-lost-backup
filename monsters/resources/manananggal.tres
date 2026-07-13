@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Monster" format=3 uid="uid://dya7ge0cpx6fj"]
+
+[ext_resource type="Script" uid="uid://qa7lmujnhp8h" path="res://monsters/monster.gd" id="1_tkppu"]
+[ext_resource type="Texture2D" uid="uid://7msgprvfo6wu" path="res://monsters/assets/manananggal.png" id="2_wij4g"]
+
+[resource]
+script = ExtResource("1_tkppu")
+id = "1"
+name = "Manananggal"
+description = "By day, she wears the face of a quiet neighbor. By night, her torso tears free of her legs, wings unfurling from her back as she takes to the sky in search of prey. Her tongue, thin as a needle and longer than a spear, unspools through roof-thatch and window-gaps to reach those who sleep unprotected below."
+texture = ExtResource("2_wij4g")
+max_health = 10.0
+attack_damage = 1.0
+metadata/_custom_type_script = "uid://qa7lmujnhp8h"

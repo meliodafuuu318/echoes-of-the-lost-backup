@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bfd2ikvbrexa8"]
+
+[ext_resource type="Script" uid="uid://bo7pa8v8502sh" path="res://ui/game_over.gd" id="1_oo8kp"]
+
+[node name="GameOver" type="Control" unique_id=922047989]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oo8kp")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1944492997]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=424016958]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 78
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1209006302]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=867883896]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="StartNewGameButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1363783299]
+custom_minimum_size = Vector2(275, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start New Game"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1469513113]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/StartNewGameButton" to="." method="_on_start_new_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

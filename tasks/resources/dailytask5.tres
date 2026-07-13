@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Task" format=3 uid="uid://cjvnkjyocyuj7"]
+
+[ext_resource type="Resource" uid="uid://cnkt4rivm68pq" path="res://inventory/resources/inventory_items/log.tres" id="1_cct5h"]
+[ext_resource type="Script" uid="uid://b6dk4cvvnwlv7" path="res://tasks/resource_scripts/task.gd" id="2_g5vnl"]
+
+[resource]
+script = ExtResource("2_g5vnl")
+task_id = "5"
+task_name = "Collect Stones"
+description = "Break stones using the hammer"
+target_amount = 3
+reward_item = ExtResource("1_cct5h")
+reward_item_amount = 2
+metadata/_custom_type_script = "uid://b6dk4cvvnwlv7"

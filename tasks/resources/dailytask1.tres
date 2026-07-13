@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Task" format=3 uid="uid://48gdtmvkn6yp"]
+
+[ext_resource type="Resource" uid="uid://cnkt4rivm68pq" path="res://inventory/resources/inventory_items/log.tres" id="1_4b6ea"]
+[ext_resource type="Script" uid="uid://b6dk4cvvnwlv7" path="res://tasks/resource_scripts/task.gd" id="2_c66tq"]
+
+[resource]
+script = ExtResource("2_c66tq")
+task_id = "1"
+task_name = "Pick Apples from Trees"
+description = "Collect apples by clicking trees"
+target_amount = 10
+reward_item = ExtResource("1_4b6ea")
+reward_item_amount = 2
+metadata/_custom_type_script = "uid://b6dk4cvvnwlv7"

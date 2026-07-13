@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://qctfmj3xlke0"]
+
+[ext_resource type="Script" uid="uid://bd0uwms5htkhu" path="res://crafting/resource_scripts/ingredient.gd" id="1_olv2k"]
+[ext_resource type="Resource" uid="uid://b0at3ssx43n7g" path="res://crafting/resources/ingredients/hammer1.tres" id="2_sk5i0"]
+[ext_resource type="Resource" uid="uid://cklnjtuk5xq1j" path="res://crafting/resources/ingredients/hammer2.tres" id="3_ra4d6"]
+[ext_resource type="Script" uid="uid://cso2ko871nwd0" path="res://crafting/resource_scripts/recipe.gd" id="4_kiqq1"]
+[ext_resource type="Resource" uid="uid://bmdgshv0cqx6r" path="res://inventory/resources/inventory_items/hammer.tres" id="4_sk5i0"]
+
+[resource]
+script = ExtResource("4_kiqq1")
+id = "2"
+name = "Hammer"
+ingredients = Array[ExtResource("1_olv2k")]([ExtResource("2_sk5i0"), ExtResource("3_ra4d6")])
+product = ExtResource("4_sk5i0")
+metadata/_custom_type_script = "uid://cso2ko871nwd0"

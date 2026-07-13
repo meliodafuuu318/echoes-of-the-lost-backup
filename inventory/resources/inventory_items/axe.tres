@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponItem" format=3 uid="uid://don4yxked8ve"]
+
+[ext_resource type="PackedScene" uid="uid://fq0rpqcft4tv" path="res://inventory/scenes/pickup_items/axe.tscn" id="1_lrana"]
+[ext_resource type="Script" uid="uid://c2kjv2djbb0ny" path="res://inventory/resource_scripts/weapon_inv_item.gd" id="1_v7os4"]
+[ext_resource type="Texture2D" uid="uid://brsjoflxkro1n" path="res://inventory/assets/items/AXE16x16-1.png.png" id="2_lrana"]
+
+[resource]
+script = ExtResource("1_v7os4")
+damage = 5
+target = 1
+id = "4"
+name = "Axe"
+texture = ExtResource("2_lrana")
+max_stack = 1
+description = "A tool worn by countless hands, its blade still keen. It bites deep where steel is needed most."
+pickup_scene = ExtResource("1_lrana")
+item_type = 1
+metadata/_custom_type_script = "uid://c2kjv2djbb0ny"

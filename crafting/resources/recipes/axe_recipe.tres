@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://b14jqwtwxlyup"]
+
+[ext_resource type="Script" uid="uid://bd0uwms5htkhu" path="res://crafting/resource_scripts/ingredient.gd" id="1_883rp"]
+[ext_resource type="Resource" uid="uid://ct0xqolxkk1vk" path="res://crafting/resources/ingredients/axe1.tres" id="2_ws2mt"]
+[ext_resource type="Resource" uid="uid://byfduwhynr1kg" path="res://crafting/resources/ingredients/axe2.tres" id="3_toima"]
+[ext_resource type="Resource" uid="uid://don4yxked8ve" path="res://inventory/resources/inventory_items/axe.tres" id="4_40cr2"]
+[ext_resource type="Script" uid="uid://cso2ko871nwd0" path="res://crafting/resource_scripts/recipe.gd" id="5_h646x"]
+
+[resource]
+script = ExtResource("5_h646x")
+id = "1"
+name = "Axe"
+ingredients = Array[ExtResource("1_883rp")]([ExtResource("2_ws2mt"), ExtResource("3_toima")])
+product = ExtResource("4_40cr2")
+metadata/_custom_type_script = "uid://cso2ko871nwd0"

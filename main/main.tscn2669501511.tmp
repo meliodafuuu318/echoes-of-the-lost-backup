@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ddec742yofrsg"]
+
+[ext_resource type="Script" uid="uid://cv13se4jlyddr" path="res://main/main.gd" id="1_53q0u"]
+[ext_resource type="Script" uid="uid://bjnhi7uc63e83" path="res://main/world_container.gd" id="2_4dugh"]
+[ext_resource type="Script" uid="uid://cu47cgnlk8f54" path="res://day_night/day_night_cycle.gd" id="2_pjrb6"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://day_night/day_night_cycle_gradient_texture.tres" id="3_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://ceolcwatpaicu" path="res://day_night/ui/day_night_cycle_ui.tscn" id="4_c651c"]
+[ext_resource type="PackedScene" uid="uid://wmmb64bnb3pn" path="res://day_night/audio/sound_machine.tscn" id="5_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://pbocopymbreb" path="res://characters/player/player.tscn" id="6_kfbq2"]
+[ext_resource type="Script" uid="uid://bm4d8kvxeua6m" path="res://inventory/managers/item_drop_manager.gd" id="8_67ri8"]
+[ext_resource type="PackedScene" uid="uid://cssgo4awamqw0" path="res://ui/main_menu.tscn" id="9_grrlh"]
+[ext_resource type="PackedScene" uid="uid://btipt2uux5qw1" path="res://menu/menu_ui.tscn" id="10_bsumw"]
+[ext_resource type="PackedScene" uid="uid://b1w3xirxma8nw" path="res://inventory/scenes/hotbar_ui.tscn" id="11_fwcvl"]
+
+[node name="Main" type="Node2D" unique_id=1144406930]
+y_sort_enabled = true
+script = ExtResource("1_53q0u")
+
+[node name="WorldContainer" type="Node2D" parent="." unique_id=994377854]
+y_sort_enabled = true
+script = ExtResource("2_4dugh")
+
+[node name="DropsContainer" type="Node2D" parent="." unique_id=2052306593]
+y_sort_enabled = true
+
+[node name="Player" parent="." unique_id=526460507 instance=ExtResource("6_kfbq2")]
+
+[node name="DayNightCycle" type="CanvasModulate" parent="." unique_id=669445507]
+color = Color(0.13333334, 0.14901961, 0.25882354, 1)
+script = ExtResource("2_pjrb6")
+gradient = ExtResource("3_xwkvk")
+initial_hour = 20
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=313321479]
+
+[node name="DayNightCycleUI" parent="CanvasLayer" unique_id=1929152440 instance=ExtResource("4_c651c")]
+mouse_filter = 2
+
+[node name="MainMenu" parent="CanvasLayer" unique_id=1721133168 node_paths=PackedStringArray("hud") instance=ExtResource("9_grrlh")]
+hud = NodePath("../../HUD")
+
+[node name="SoundMachine" parent="." unique_id=650265235 instance=ExtResource("5_3wy1v")]
+process_mode = 3
+
+[node name="item_drop_manager" type="Node" parent="." unique_id=887579969 node_paths=PackedStringArray("spawn_root")]
+script = ExtResource("8_67ri8")
+spawn_root = NodePath("../DropsContainer")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=362309350]
+visible = false
+
+[node name="menu_ui" parent="HUD" unique_id=885035941 node_paths=PackedStringArray("hotbar_ui", "main_menu") instance=ExtResource("10_bsumw")]
+hotbar_ui = NodePath("../hotbar_ui")
+main_menu = NodePath("../../CanvasLayer/MainMenu")
+
+[node name="hotbar_ui" parent="HUD" unique_id=385176462 instance=ExtResource("11_fwcvl")]

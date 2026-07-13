@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bikbcp5i10kqp"]
+
+[ext_resource type="Script" uid="uid://c8chaj4cofcx1" path="res://objects/tree/tree.gd" id="1_lhnm0"]
+[ext_resource type="Texture2D" uid="uid://bgwep03ls5j3a" path="res://objects/tree/tree.png" id="1_olndm"]
+[ext_resource type="PackedScene" uid="uid://dlnflck3cqa14" path="res://components/hurtbox/hurtbox_component.tscn" id="3_albtw"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="3_jc7sr"]
+[ext_resource type="PackedScene" uid="uid://b1f0lb50hrd31" path="res://components/health/health_component.tscn" id="4_jc7sr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxb3u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pq47m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dutb6"]
+radius = 19.0
+height = 88.0
+
+[node name="Tree" type="StaticBody2D" unique_id=430900774]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_lhnm0")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("3_jc7sr")]
+position = Vector2(0, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1611303211]
+position = Vector2(0, -39)
+texture = ExtResource("1_olndm")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=262398209]
+shape = SubResource("CircleShape2D_oxb3u")
+
+[node name="HurtboxComponent" parent="." unique_id=1562833728 node_paths=PackedStringArray("health_component") instance=ExtResource("3_albtw")]
+collision_layer = 64
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1520808014]
+shape = SubResource("CircleShape2D_pq47m")
+debug_color = Color(0.88243043, 0.27146682, 0.51229304, 0.41960785)
+
+[node name="HealthComponent" parent="." unique_id=1222556066 node_paths=PackedStringArray("sprite_2d") instance=ExtResource("4_jc7sr")]
+sprite_2d = NodePath("../Sprite2D")
+
+[node name="interaction_area" type="Area2D" parent="." unique_id=1924515771]
+
+[node name="input_collision_shape" type="CollisionShape2D" parent="interaction_area" unique_id=1025788127]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(0, -39)
+shape = SubResource("CapsuleShape2D_dutb6")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

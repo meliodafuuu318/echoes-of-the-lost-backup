@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dyq8nopml7d5j"]
+
+[ext_resource type="PackedScene" uid="uid://bqwqui1yqmbc" path="res://tasks/scenes/task_list_ui.tscn" id="1_lx04w"]
+[ext_resource type="Script" uid="uid://41rk6mnrcfi5" path="res://tasks/ui_scripts/quest_panel_controller_ui.gd" id="1_tp15k"]
+[ext_resource type="PackedScene" uid="uid://diug3y6pi3rto" path="res://tasks/scenes/main_quest_list_ui.tscn" id="2_w4cv0"]
+
+[node name="quest_panel_controller_ui" type="Control" unique_id=69840059]
+custom_minimum_size = Vector2(126, 150)
+layout_mode = 3
+anchor_right = 0.109000005
+anchor_bottom = 0.231
+offset_right = 0.43199158
+offset_bottom = 0.31199646
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_tp15k")
+
+[node name="task_list_ui" parent="." unique_id=1010010946 instance=ExtResource("1_lx04w")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="main_quest_list_ui" parent="." unique_id=189941952 instance=ExtResource("2_w4cv0")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 126.0
+offset_bottom = 150.0
+grow_horizontal = 1
+grow_vertical = 1

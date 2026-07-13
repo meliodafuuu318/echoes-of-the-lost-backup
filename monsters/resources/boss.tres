@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Monster" format=3 uid="uid://bg76y623874po"]
+
+[ext_resource type="Script" uid="uid://qa7lmujnhp8h" path="res://monsters/monster.gd" id="1_up8lj"]
+[ext_resource type="Texture2D" uid="uid://cqhr0ve3a7dad" path="res://monsters/assets/Boss.png" id="2_up8lj"]
+
+[resource]
+script = ExtResource("1_up8lj")
+id = "2"
+name = "Manananggal Boss"
+description = "Through centuries of agonizing exposure or some vile blood-alchemy, her flesh has calcified into a pale, stone-like armor. The morning sun no longer ignites her blood. She does not flee from the light—she uses it to hunt those who mistakenly believe the day brings safety."
+texture = ExtResource("2_up8lj")
+max_health = 150.0
+attack_damage = 3.0
+metadata/_custom_type_script = "uid://qa7lmujnhp8h"

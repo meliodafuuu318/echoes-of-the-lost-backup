@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://vpla1yntpiai"]
+
+[ext_resource type="Script" uid="uid://dloi248ldtv80" path="res://tasks/ui_scripts/task_ui.gd" id="1_84471"]
+[ext_resource type="Texture2D" uid="uid://bvwqp5dc4i5xj" path="res://inventory/assets/task_checkbox.png" id="2_xmfmb"]
+[ext_resource type="Texture2D" uid="uid://btgavy8rddr6b" path="res://inventory/assets/task_checkbox_crossed.png" id="3_84471"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="4_rakbo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84471"]
+atlas = ExtResource("2_xmfmb")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rakbo"]
+atlas = ExtResource("3_84471")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m2g58"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84471")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rakbo")
+}],
+"loop": 1,
+"name": &"done",
+"speed": 5.0
+}]
+
+[node name="task_ui" type="Panel" unique_id=790355026]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(90, 15)
+offset_right = 90.0
+offset_bottom = 15.0
+script = ExtResource("1_84471")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1255041683]
+custom_minimum_size = Vector2(90, 15)
+layout_mode = 0
+
+[node name="Panel" type="Panel" parent="NinePatchRect" unique_id=807341338]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 13.0
+offset_bottom = 13.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect/Panel" unique_id=1432444788]
+position = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_m2g58")
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=2091515939]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -1.0000004
+offset_right = 334.1818
+offset_bottom = 47.484844
+scale = Vector2(0.33, 0.33)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_rakbo")
+theme_override_font_sizes/font_size = 16
+text = "lorem ipsum"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="task_info" type="Panel" parent="." unique_id=1901925021]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 50.0
+offset_top = 35.0
+offset_right = 139.0
+offset_bottom = 72.0
+scale = Vector2(3, 3)
+
+[node name="description" type="Label" parent="task_info" unique_id=1668310043]
+layout_mode = 0
+offset_right = 269.69696
+offset_bottom = 72.727264
+scale = Vector2(0.33, 0.33)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_rakbo")
+theme_override_font_sizes/font_size = 14
+text = "lorem ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="reward" type="Label" parent="task_info" unique_id=640755800]
+layout_mode = 0
+offset_top = 25.000002
+offset_right = 356.0
+offset_bottom = 69.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_rakbo")
+theme_override_font_sizes/font_size = 16
+text = "lorem ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

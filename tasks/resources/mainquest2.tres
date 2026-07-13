@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MainQuest" format=3 uid="uid://comxivwowjegf"]
+
+[ext_resource type="Resource" uid="uid://dkjnsdqo4euow" path="res://inventory/resources/inventory_items/apple.tres" id="1_leykt"]
+[ext_resource type="Script" uid="uid://cao0dkc4rwtg2" path="res://tasks/resource_scripts/main_quest.gd" id="2_me3a2"]
+
+[resource]
+script = ExtResource("2_me3a2")
+quest_id = "2"
+quest_name = "Build the bridge"
+description = "Acquire the required materials and fix the broken bridge"
+target_amount = 1
+reward_item = ExtResource("1_leykt")
+reward_amount = 10
+metadata/_custom_type_script = "uid://cao0dkc4rwtg2"

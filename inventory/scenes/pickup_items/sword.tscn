@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bp5ugko3xdxxh"]
+
+[ext_resource type="Script" uid="uid://b34r6cfhdq2d" path="res://inventory/item_scripts/sword.gd" id="1_6wbwf"]
+[ext_resource type="Texture2D" uid="uid://bxfilcvb5vqbt" path="res://inventory/assets/items/sword.png" id="1_omuvw"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="3_u1eqr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 12.0415945
+
+[node name="sword" type="Area2D" unique_id=348671092]
+script = ExtResource("1_6wbwf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1536279310]
+position = Vector2(0, -10)
+texture = ExtResource("1_omuvw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=952652825]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("3_u1eqr")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

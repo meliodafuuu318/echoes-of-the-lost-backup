@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://s3xhpk7pjlw4"]
+
+[ext_resource type="Script" uid="uid://bjvp11fn3h76k" path="res://inventory/item_scripts/hammer.gd" id="1_hc73u"]
+[ext_resource type="Texture2D" uid="uid://catnbav3hb055" path="res://inventory/assets/items/hammer.png" id="1_scvch"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="3_862hx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 9.055386
+
+[node name="hammer" type="Area2D" unique_id=806294810]
+script = ExtResource("1_hc73u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2060922300]
+position = Vector2(0, -9)
+texture = ExtResource("1_scvch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=894164933]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("3_862hx")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

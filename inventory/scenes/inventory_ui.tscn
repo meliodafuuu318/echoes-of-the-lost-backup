@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://ddl00ardxj1k7"]
+
+[ext_resource type="Script" uid="uid://en6v0y4p0tgg" path="res://inventory/ui_scripts/inventory_ui.gd" id="1_aut80"]
+[ext_resource type="Texture2D" uid="uid://dh3ocw4ool4vt" path="res://inventory/assets/inv_bg.png" id="2_mdwe3"]
+[ext_resource type="PackedScene" uid="uid://bnsakyh0cjo74" path="res://inventory/scenes/inventory_slot_ui.tscn" id="2_ylkvr"]
+[ext_resource type="PackedScene" uid="uid://edpxyxw2vqne" path="res://inventory/scenes/weapon_slot_ui.tscn" id="3_hm3cx"]
+[ext_resource type="PackedScene" uid="uid://b3vfkdyhcv20e" path="res://inventory/scenes/inv_hotbar_slot_ui.tscn" id="3_mnfuu"]
+
+[node name="inventory_ui" type="Control" unique_id=1659296847]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aut80")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1934557787]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mdwe3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="weapon_slot_ui" parent="NinePatchRect" unique_id=487318286 instance=ExtResource("3_hm3cx")]
+layout_mode = 1
+offset_left = 50.115982
+offset_top = -33.0
+offset_right = 68.11598
+offset_bottom = -17.0
+
+[node name="hotbar_slots" type="GridContainer" parent="NinePatchRect" unique_id=1053472860]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -29.0
+offset_right = 59.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6
+
+[node name="inv_hotbar_slot_ui" parent="NinePatchRect/hotbar_slots" unique_id=668456404 instance=ExtResource("3_mnfuu")]
+layout_mode = 2
+
+[node name="inv_hotbar_slot_ui2" parent="NinePatchRect/hotbar_slots" unique_id=1164418549 instance=ExtResource("3_mnfuu")]
+layout_mode = 2
+
+[node name="inv_hotbar_slot_ui3" parent="NinePatchRect/hotbar_slots" unique_id=181604079 instance=ExtResource("3_mnfuu")]
+layout_mode = 2
+
+[node name="inv_hotbar_slot_ui4" parent="NinePatchRect/hotbar_slots" unique_id=773333018 instance=ExtResource("3_mnfuu")]
+layout_mode = 2
+
+[node name="inv_hotbar_slot_ui5" parent="NinePatchRect/hotbar_slots" unique_id=389901893 instance=ExtResource("3_mnfuu")]
+layout_mode = 2
+
+[node name="inv_hotbar_slot_ui6" parent="NinePatchRect/hotbar_slots" unique_id=1831463202 instance=ExtResource("3_mnfuu")]
+layout_mode = 2
+
+[node name="inv_slots" type="GridContainer" parent="NinePatchRect" unique_id=1730667360]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 33.0
+offset_right = 122.0
+offset_bottom = 69.0
+columns = 6
+
+[node name="inventory_slot_ui7" parent="NinePatchRect/inv_slots" unique_id=1772659394 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui8" parent="NinePatchRect/inv_slots" unique_id=48825549 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui9" parent="NinePatchRect/inv_slots" unique_id=557941921 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui10" parent="NinePatchRect/inv_slots" unique_id=972556751 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui11" parent="NinePatchRect/inv_slots" unique_id=1269847144 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui12" parent="NinePatchRect/inv_slots" unique_id=2142756661 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui13" parent="NinePatchRect/inv_slots" unique_id=1545516472 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui14" parent="NinePatchRect/inv_slots" unique_id=1292891131 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui15" parent="NinePatchRect/inv_slots" unique_id=1051977330 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui16" parent="NinePatchRect/inv_slots" unique_id=1533796332 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui17" parent="NinePatchRect/inv_slots" unique_id=1284994135 instance=ExtResource("2_ylkvr")]
+layout_mode = 2
+
+[node name="inventory_slot_ui18" parent="NinePatchRect/inv_slots" unique_id=1868379696 instance=ExtResource("2_ylkvr")]
+layout_mode = 2

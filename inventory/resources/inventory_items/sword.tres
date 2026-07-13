@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponItem" format=3 uid="uid://cd42opetmfuqv"]
+
+[ext_resource type="Script" uid="uid://c2kjv2djbb0ny" path="res://inventory/resource_scripts/weapon_inv_item.gd" id="1_h5xki"]
+[ext_resource type="PackedScene" uid="uid://bp5ugko3xdxxh" path="res://inventory/scenes/pickup_items/sword.tscn" id="1_hdk02"]
+[ext_resource type="Texture2D" uid="uid://bxfilcvb5vqbt" path="res://inventory/assets/items/sword.png" id="2_hdk02"]
+
+[resource]
+script = ExtResource("1_h5xki")
+damage = 5
+id = "6"
+name = "Sword"
+texture = ExtResource("2_hdk02")
+max_stack = 1
+description = "A blade that has seen better days, yet still thirsts for purpose. Its edge glints with fading memory."
+pickup_scene = ExtResource("1_hdk02")
+item_type = 1
+metadata/_custom_type_script = "uid://c2kjv2djbb0ny"

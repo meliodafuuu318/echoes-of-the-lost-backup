@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://bqwqui1yqmbc"]
+
+[ext_resource type="Script" uid="uid://dy4iria02p8qm" path="res://tasks/ui_scripts/task_list_ui.gd" id="1_1yfln"]
+[ext_resource type="Texture2D" uid="uid://d114kpmfksuwm" path="res://tasks/assets/accordion_indicator.png" id="2_1yfln"]
+[ext_resource type="PackedScene" uid="uid://vpla1yntpiai" path="res://tasks/scenes/task_ui.tscn" id="2_dfesl"]
+
+[node name="task_list_ui" type="Control" unique_id=1010010946]
+custom_minimum_size = Vector2(126, 150)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1026.0
+offset_bottom = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1yfln")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=264928995]
+custom_minimum_size = Vector2(126, 23)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -75.0
+offset_right = 63.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Button" parent="NinePatchRect" unique_id=1822475629]
+custom_minimum_size = Vector2(99, 21)
+layout_mode = 0
+offset_left = 15.0
+offset_right = 114.0
+offset_bottom = 21.0
+flat = true
+
+[node name="Label" type="Label" parent="NinePatchRect/Header" unique_id=707524576]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 5.0
+offset_right = 197.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Daily Quest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="refresh_timer" type="Label" parent="NinePatchRect/Header" unique_id=278985965]
+layout_mode = 0
+offset_left = 22.000002
+offset_top = 14.0
+offset_right = 185.63634
+offset_bottom = 41.27272
+scale = Vector2(0.33, 0.33)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "lorem ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="accordion_indicator" type="TextureRect" parent="NinePatchRect/Header" unique_id=2054334992]
+layout_mode = 0
+offset_left = -1.9999914
+offset_top = 16.000002
+offset_right = 30.000008
+offset_bottom = 48.0
+rotation = -1.5707964
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_1yfln")
+
+[node name="BodyClip" type="Control" parent="NinePatchRect" unique_id=1690835674]
+clip_contents = true
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 127.0
+offset_bottom = 116.0
+
+[node name="Body" type="VBoxContainer" parent="NinePatchRect/BodyClip" unique_id=1551214166]
+custom_minimum_size = Vector2(90, 93)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 93.0
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/BodyClip/Body" unique_id=390175694]
+layout_mode = 2
+
+[node name="task_ui" parent="NinePatchRect/BodyClip/Body/GridContainer" unique_id=790355026 instance=ExtResource("2_dfesl")]
+layout_mode = 2
+
+[node name="task_ui2" parent="NinePatchRect/BodyClip/Body/GridContainer" unique_id=1596646956 instance=ExtResource("2_dfesl")]
+layout_mode = 2
+
+[node name="task_ui3" parent="NinePatchRect/BodyClip/Body/GridContainer" unique_id=1028696241 instance=ExtResource("2_dfesl")]
+layout_mode = 2
+
+[node name="task_ui4" parent="NinePatchRect/BodyClip/Body/GridContainer" unique_id=980898244 instance=ExtResource("2_dfesl")]
+layout_mode = 2
+
+[node name="task_ui5" parent="NinePatchRect/BodyClip/Body/GridContainer" unique_id=1903370014 instance=ExtResource("2_dfesl")]
+layout_mode = 2

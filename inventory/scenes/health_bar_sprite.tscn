@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dc48ewx7anll3"]
+
+[ext_resource type="Texture2D" uid="uid://dpcbd8v1yvg4p" path="res://inventory/assets/health_bar.png" id="1_fn685"]
+[ext_resource type="Script" uid="uid://dnnar5qgj0kyy" path="res://inventory/scenes/health_bar_sprite.gd" id="2_myd34"]
+
+[node name="HealthBarSprite" type="Sprite2D" unique_id=203065318]
+texture = ExtResource("1_fn685")
+vframes = 6
+script = ExtResource("2_myd34")

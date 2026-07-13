@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://cssgo4awamqw0"]
+
+[ext_resource type="Script" uid="uid://cvapbe7wroxmo" path="res://ui/main_menu.gd" id="1_0dkrt"]
+[ext_resource type="Texture2D" uid="uid://ddp2ifnry03jb" path="res://ui/assets/Echoes of the Lost Title.png" id="1_t7e0r"]
+[ext_resource type="Texture2D" uid="uid://bht5rx4gx4ghb" path="res://ui/assets/MainMenuBg.jpg" id="2_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://dpkni1bp6078k" path="res://settings/assets/save_slot.png" id="4_rmr83"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="5_8uxxo"]
+
+[node name="MainMenu" type="Control" unique_id=1721133168]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0dkrt")
+
+[node name="Background" type="TextureRect" parent="." unique_id=569078041]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -584.08325
+offset_top = -326.0
+offset_right = 584.08325
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wk0pr")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1276731082]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = -72
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=339779578]
+layout_mode = 2
+theme_override_constants/separation = -80
+alignment = 1
+
+[node name="TitleImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1367631823]
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_t7e0r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=323135757]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=180801788]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "New Game"
+
+[node name="Load Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=23986707]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Load Game"
+
+[node name="Help Button" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=2145356517]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Help"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=97578448]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=993838658]
+visible = false
+custom_minimum_size = Vector2(500, 450)
+layout_mode = 0
+offset_left = 326.0
+offset_top = 114.0
+offset_right = 826.0
+offset_bottom = 564.0
+
+[node name="Panel" type="Panel" parent="NinePatchRect" unique_id=2019976543]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(500, 450)
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 450.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Panel" unique_id=778782826]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 31.0
+offset_right = 161.0
+offset_bottom = 60.0
+scale = Vector2(4, 4)
+
+[node name="slot1" type="TextureButton" parent="NinePatchRect/Panel/VBoxContainer" unique_id=1272592281]
+layout_mode = 2
+texture_normal = ExtResource("4_rmr83")
+
+[node name="slot_number" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot1" unique_id=866142842]
+layout_mode = 0
+offset_left = 4.75
+offset_top = 8.5
+offset_right = 237.75
+offset_bottom = 68.5
+scale = Vector2(0.15, 0.15)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "Slot 1"
+
+[node name="game_time" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot1" unique_id=953437133]
+layout_mode = 0
+offset_left = 47.999996
+offset_top = 7.2500005
+offset_right = 431.0
+offset_bottom = 67.25
+scale = Vector2(0.075, 0.075)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "game time"
+
+[node name="real_time" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot1" unique_id=80383559]
+layout_mode = 0
+offset_left = 47.5
+offset_top = 18.25
+offset_right = 430.5
+offset_bottom = 78.25
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "real time"
+
+[node name="slot2" type="TextureButton" parent="NinePatchRect/Panel/VBoxContainer" unique_id=1532534931]
+layout_mode = 2
+texture_normal = ExtResource("4_rmr83")
+
+[node name="slot_number" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot2" unique_id=316666081]
+layout_mode = 0
+offset_left = 4.75
+offset_top = 8.5
+offset_right = 237.75
+offset_bottom = 68.5
+scale = Vector2(0.15, 0.15)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "Slot 2"
+
+[node name="game_time" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot2" unique_id=1990804296]
+layout_mode = 0
+offset_left = 47.999996
+offset_top = 7.2500005
+offset_right = 431.0
+offset_bottom = 67.25
+scale = Vector2(0.075, 0.075)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "game time"
+
+[node name="real_time" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot2" unique_id=558680286]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 18.25
+offset_right = 431.0
+offset_bottom = 78.25
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "real time"
+
+[node name="slot3" type="TextureButton" parent="NinePatchRect/Panel/VBoxContainer" unique_id=328879544]
+layout_mode = 2
+texture_normal = ExtResource("4_rmr83")
+
+[node name="slot_number" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot3" unique_id=1612106697]
+layout_mode = 0
+offset_left = 4.75
+offset_top = 8.5
+offset_right = 237.75
+offset_bottom = 68.5
+scale = Vector2(0.15, 0.15)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "Slot 3"
+
+[node name="game_time" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot3" unique_id=313220998]
+layout_mode = 0
+offset_left = 47.999996
+offset_top = 7.2500005
+offset_right = 431.0
+offset_bottom = 67.25
+scale = Vector2(0.075, 0.075)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "game time"
+
+[node name="real_time" type="Label" parent="NinePatchRect/Panel/VBoxContainer/slot3" unique_id=1598425580]
+layout_mode = 0
+offset_left = 48.5
+offset_top = 18.25
+offset_right = 431.5
+offset_bottom = 78.25
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8uxxo")
+theme_override_font_sizes/font_size = 60
+text = "real time"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Load Button" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Help Button" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://budr8dcgmudia"
+path="res://.godot/imported/artifact pickup sting.mp3-6db3ae9bfd648bf19568df6c2d225ccf.mp3str"
+
+[deps]
+
+source_file="res://inventory/assets/sfx/artifact pickup sting.mp3"
+dest_files=["res://.godot/imported/artifact pickup sting.mp3-6db3ae9bfd648bf19568df6c2d225ccf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

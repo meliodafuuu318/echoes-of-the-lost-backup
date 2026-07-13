@@ -1,0 +1,244 @@
+[gd_scene format=3 uid="uid://btipt2uux5qw1"]
+
+[ext_resource type="Texture2D" uid="uid://bmnlkgpi0rclg" path="res://inventory/assets/main_menu_bg.png" id="1_86ygs"]
+[ext_resource type="Script" uid="uid://8nkl7g8r3t4j" path="res://menu/menu_ui.gd" id="1_qa6pt"]
+[ext_resource type="PackedScene" uid="uid://ddl00ardxj1k7" path="res://inventory/scenes/inventory_ui.tscn" id="2_b5e6c"]
+[ext_resource type="Texture2D" uid="uid://ep8phhbe3oya" path="res://inventory/assets/char_view_bg.png" id="4_3y6qt"]
+[ext_resource type="Texture2D" uid="uid://b0ud6liw56e0j" path="res://characters/player/assets/sprites/attack.png" id="5_sys31"]
+[ext_resource type="PackedScene" uid="uid://d1qgggbcr8kqn" path="res://inventory/scenes/artifact_slot_ui.tscn" id="7_sys31"]
+[ext_resource type="PackedScene" uid="uid://dc48ewx7anll3" path="res://inventory/scenes/health_bar_sprite.tscn" id="7_wvcyl"]
+[ext_resource type="PackedScene" uid="uid://bqwqui1yqmbc" path="res://tasks/scenes/task_list_ui.tscn" id="8_sys31"]
+[ext_resource type="Texture2D" uid="uid://dm86nn4addsws" path="res://crafting/assets/ui_bg.png" id="10_r2nwl"]
+[ext_resource type="PackedScene" uid="uid://djdctilgeiaxy" path="res://crafting/scenes/recipe_list_ui.tscn" id="11_cvuir"]
+[ext_resource type="PackedScene" uid="uid://cx4lu8x5qonlj" path="res://crafting/scenes/crafting_ui.tscn" id="12_dgai8"]
+[ext_resource type="Texture2D" uid="uid://bsa20o08gfvpa" path="res://guide/assets/bg.png" id="13_ife3i"]
+[ext_resource type="PackedScene" uid="uid://c2genglyom37o" path="res://guide/scenes/guide_ui.tscn" id="14_oogfd"]
+
+[node name="menu_ui" type="Control" unique_id=885035941]
+z_index = 10
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qa6pt")
+metadata/_edit_horizontal_guides_ = [258.0]
+
+[node name="dark_overlay" type="ColorRect" parent="." unique_id=1067121196]
+modulate = Color(0, 0, 0, 0.57254905)
+z_index = 1
+layout_mode = 0
+offset_left = -332.0
+offset_top = -276.0
+offset_right = 334.0
+offset_bottom = 181.0
+mouse_force_pass_scroll_events = false
+
+[node name="inventory" type="NinePatchRect" parent="." unique_id=1099475165]
+light_mask = 4
+visibility_layer = 4
+z_index = 2
+layout_mode = 0
+offset_left = -144.8
+offset_top = -149.0
+offset_right = 161.09999
+offset_bottom = 41.0
+texture = ExtResource("1_86ygs")
+
+[node name="inventory_ui" parent="inventory" unique_id=1659296847 instance=ExtResource("2_b5e6c")]
+layout_mode = 1
+offset_left = -119.0
+offset_top = 21.0
+offset_right = -159.0
+offset_bottom = -46.0
+
+[node name="player_view" type="NinePatchRect" parent="inventory" unique_id=521040755]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13100001
+anchor_top = 0.29700002
+anchor_right = 0.13100001
+anchor_bottom = 0.29700002
+offset_left = -20.086002
+offset_top = -30.430004
+offset_right = 19.913998
+offset_bottom = 36.569996
+texture = ExtResource("4_3y6qt")
+
+[node name="PlayerSprite" type="Sprite2D" parent="inventory/player_view" unique_id=1309779690]
+position = Vector2(23, 39)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_sys31")
+hframes = 6
+vframes = 4
+frame = 1
+
+[node name="HealthBarSprite" parent="inventory" unique_id=203065318 instance=ExtResource("7_wvcyl")]
+z_index = 2
+position = Vector2(99, 88)
+scale = Vector2(1.05, 1.05)
+
+[node name="artifact_slots" type="GridContainer" parent="inventory" unique_id=651948238]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -66.5
+offset_right = -49.0
+offset_bottom = -49.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="artifact_slot_ui" parent="inventory/artifact_slots" unique_id=731823642 instance=ExtResource("7_sys31")]
+layout_mode = 2
+
+[node name="artifact_slot_ui2" parent="inventory/artifact_slots" unique_id=1943478940 instance=ExtResource("7_sys31")]
+layout_mode = 2
+
+[node name="task_list_ui" parent="inventory" unique_id=1010010946 instance=ExtResource("8_sys31")]
+layout_mode = 1
+offset_left = 158.0
+offset_top = 16.0
+offset_right = -22.0
+offset_bottom = -24.0
+
+[node name="Label" type="Label" parent="inventory" unique_id=1220402588]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 11.0
+offset_right = 122.0
+offset_bottom = 30.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Inventory"
+
+[node name="tabs" type="Node2D" parent="inventory" unique_id=1910921682]
+
+[node name="crafting" type="Panel" parent="inventory/tabs" unique_id=1185395673]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 284.0
+offset_top = 20.0
+offset_right = 305.0
+offset_bottom = 39.0
+
+[node name="guide" type="Panel" parent="inventory/tabs" unique_id=896897544]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 284.0
+offset_top = 40.0
+offset_right = 306.0
+offset_bottom = 58.0
+
+[node name="settings" type="Panel" parent="inventory/tabs" unique_id=1920476322]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 284.0
+offset_top = 59.0
+offset_right = 305.0
+offset_bottom = 78.0
+
+[node name="crafting" type="NinePatchRect" parent="." unique_id=1070109932]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = -151.0
+offset_top = -148.0
+offset_right = 159.9
+offset_bottom = 41.0
+texture = ExtResource("10_r2nwl")
+
+[node name="recipe_list_ui" parent="crafting" unique_id=1259639000 instance=ExtResource("11_cvuir")]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 138.0
+offset_bottom = 128.0
+
+[node name="crafting_ui" parent="crafting" unique_id=567155504 instance=ExtResource("12_dgai8")]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 18.0
+offset_right = 282.0
+offset_bottom = 154.0
+
+[node name="tabs" type="Node2D" parent="crafting" unique_id=276310398]
+
+[node name="inventory" type="Panel" parent="crafting/tabs" unique_id=957263907]
+self_modulate = Color(1, 1, 1, 0)
+offset_top = 6.0
+offset_right = 22.0
+offset_bottom = 25.0
+
+[node name="guide" type="Panel" parent="crafting/tabs" unique_id=2089087617]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 292.0
+offset_top = 39.0
+offset_right = 314.0
+offset_bottom = 58.0
+
+[node name="settings" type="Panel" parent="crafting/tabs" unique_id=68101426]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 291.0
+offset_top = 58.0
+offset_right = 313.0
+offset_bottom = 77.0
+
+[node name="guide" type="NinePatchRect" parent="." unique_id=438510004]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = -150.5
+offset_top = -147.0
+offset_right = 158.29999
+offset_bottom = 40.899994
+texture = ExtResource("13_ife3i")
+
+[node name="guide_ui" parent="guide" unique_id=2093522622 instance=ExtResource("14_oogfd")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 881.58453
+offset_bottom = 539.0232
+
+[node name="tabs" type="Node2D" parent="guide" unique_id=1194333168]
+
+[node name="inventory" type="Panel" parent="guide/tabs" unique_id=1744835112]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 20.0
+
+[node name="crafting" type="Panel" parent="guide/tabs" unique_id=1905426493]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -1.0
+offset_top = 21.0
+offset_right = 19.0
+offset_bottom = 40.0
+
+[node name="settings" type="Panel" parent="guide/tabs" unique_id=205163715]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 290.0
+offset_top = 57.0
+offset_right = 310.0
+offset_bottom = 76.0
+
+[node name="settings" type="NinePatchRect" parent="." unique_id=14314597]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = -145.0
+offset_top = -149.0
+offset_right = 161.0
+offset_bottom = 41.0
+texture = ExtResource("1_86ygs")

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bqj31sewmuvba"]
+
+[ext_resource type="Script" uid="uid://ctwf80qhkc2ip" path="res://components/triggers/scene_transition_trigger.gd" id="1_2jk5d"]
+
+[node name="SceneTransitionTrigger" type="Area2D" unique_id=60058399]
+script = ExtResource("1_2jk5d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

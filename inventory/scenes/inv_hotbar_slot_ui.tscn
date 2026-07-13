@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://b3vfkdyhcv20e"]
+
+[ext_resource type="Script" uid="uid://clhlk8n6rw1jm" path="res://inventory/ui_scripts/inventory_slot_ui.gd" id="1_ued0l"]
+[ext_resource type="Texture2D" uid="uid://cuavis6l23e56" path="res://inventory/assets/inv_slot_hotbar.png" id="2_jbl8d"]
+[ext_resource type="Texture2D" uid="uid://djxuuwp5hexab" path="res://inventory/assets/inv_slot_hotbar_selected.png" id="3_r8fic"]
+[ext_resource type="FontFile" uid="uid://drjhmlb8cg30" path="res://inventory/fonts/Boiled Pasta.ttf" id="4_40xnj"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="4_jbl8d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu5kx"]
+atlas = ExtResource("2_jbl8d")
+region = Rect2(0, 0, 19, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ued0l"]
+atlas = ExtResource("3_r8fic")
+region = Rect2(0, 0, 18, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wshhj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu5kx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ued0l")
+}],
+"loop": 1,
+"name": &"selected",
+"speed": 5.0
+}]
+
+[node name="inv_hotbar_slot_ui" type="Panel" unique_id=668456404]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_ued0l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1263797755]
+position = Vector2(9, 7.625)
+scale = Vector2(0.9078949, 0.9583333)
+sprite_frames = SubResource("SpriteFrames_wshhj")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=893971307]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 9.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1020185804]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel" unique_id=1139877553]
+
+[node name="Panel" type="Panel" parent="CenterContainer/Panel/item_display" unique_id=1388215719]
+visible = false
+self_modulate = Color(0.12156863, 0.12156863, 0.12156863, 1)
+z_index = 3
+offset_top = -59.0
+offset_right = 120.0
+offset_bottom = 1.0
+
+[node name="item_info" type="Label" parent="CenterContainer/Panel/item_display/Panel" unique_id=1152600211]
+custom_maximum_size = Vector2(400, 200)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 200.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_jbl8d")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel" unique_id=1062943171]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 24.121208
+offset_bottom = 20.0
+scale = Vector2(0.33, 0.33)
+theme_override_fonts/font = ExtResource("4_40xnj")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 2
+vertical_alignment = 2
+autowrap_mode = 2

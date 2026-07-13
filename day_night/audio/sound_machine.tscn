@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://wmmb64bnb3pn"]
+
+[ext_resource type="Script" uid="uid://eu05thuwfoq2" path="res://day_night/audio/sound_machine.gd" id="1_6plvy"]
+[ext_resource type="AudioStream" uid="uid://5orqlke4fubl" path="res://day_night/audio/day_jingle.mp3" id="2_in7uu"]
+[ext_resource type="AudioStream" uid="uid://wp22gs4aa52j" path="res://day_night/audio/day_soundscape.mp3" id="3_4xjss"]
+
+[node name="SoundMachine" type="Node" unique_id=650265235]
+script = ExtResource("1_6plvy")
+
+[node name="DayJingle" type="AudioStreamPlayer" parent="." unique_id=1041006866]
+stream = ExtResource("2_in7uu")
+bus = &"Outside"
+
+[node name="NightJingle" type="AudioStreamPlayer" parent="." unique_id=1318629570]
+bus = &"Outside"
+
+[node name="DaySoundscape" type="AudioStreamPlayer" parent="." unique_id=1043881834]
+stream = ExtResource("3_4xjss")
+bus = &"Outside"
+
+[node name="NightSoundscape" type="AudioStreamPlayer" parent="." unique_id=1082171102]
+bus = &"Outside"

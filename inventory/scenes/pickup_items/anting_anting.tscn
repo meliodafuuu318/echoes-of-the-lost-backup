@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://d17jlxhursebq"]
+
+[ext_resource type="Script" uid="uid://yy0xjuxbo7ks" path="res://inventory/item_scripts/anting_anting.gd" id="1_iimbc"]
+[ext_resource type="Texture2D" uid="uid://d16tv11jeww5a" path="res://inventory/assets/items/ice_sparkles.png" id="2_iimbc"]
+[ext_resource type="AudioStream" uid="uid://ckh4qqpt3thbl" path="res://inventory/assets/sfx/anting_anting_echo.wav" id="3_p83uf"]
+[ext_resource type="AudioStream" uid="uid://budr8dcgmudia" path="res://inventory/assets/sfx/artifact pickup sting.mp3" id="4_p83uf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_003bj"]
+atlas = ExtResource("2_iimbc")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p83uf"]
+atlas = ExtResource("2_iimbc")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgpo8"]
+atlas = ExtResource("2_iimbc")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvvsa"]
+atlas = ExtResource("2_iimbc")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcvix"]
+atlas = ExtResource("2_iimbc")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dutb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_003bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p83uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgpo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvvsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcvix")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 13.038404
+
+[node name="anting_anting" type="Area2D" unique_id=133703089]
+z_index = 5
+script = ExtResource("1_iimbc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1197433447]
+position = Vector2(1.9999996, 1.4999998)
+scale = Vector2(0.49999997, 0.42187503)
+sprite_frames = SubResource("SpriteFrames_dutb6")
+autoplay = "default"
+frame_progress = 0.20841035
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1517450683]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Echo" type="AudioStreamPlayer2D" parent="." unique_id=1801062104]
+stream = ExtResource("3_p83uf")
+volume_db = 8.0
+autoplay = true
+max_distance = 150.0
+bus = &"Music"
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=2036609550]
+stream = ExtResource("4_p83uf")
+bus = &"SFX"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

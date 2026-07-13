@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponItem" format=3 uid="uid://bxgfs6hkqd4yr"]
+
+[ext_resource type="Script" uid="uid://c2kjv2djbb0ny" path="res://inventory/resource_scripts/weapon_inv_item.gd" id="1_5sy74"]
+[ext_resource type="Texture2D" uid="uid://2fg86tq7i33a" path="res://inventory/assets/items/bow.png" id="2_nqadn"]
+
+[resource]
+script = ExtResource("1_5sy74")
+damage = 5
+id = "2"
+name = "Bow"
+texture = ExtResource("2_nqadn")
+item_type = 1
+metadata/_custom_type_script = "uid://c2kjv2djbb0ny"

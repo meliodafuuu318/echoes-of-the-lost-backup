@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dpf0fj4b5xr03"]
+
+[ext_resource type="Script" uid="uid://kxds6cavu0pm" path="res://inventory/item_scripts/apple.gd" id="1_4lbrk"]
+[ext_resource type="Texture2D" uid="uid://cbqr1km2llkhr" path="res://inventory/assets/items/apple-icon.png" id="2_1ohju"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="3_de57d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lbrk"]
+radius = 6.0
+
+[node name="apple" type="Area2D" unique_id=23155672]
+collision_layer = 32
+script = ExtResource("1_4lbrk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1091737577]
+position = Vector2(0, -6)
+texture = ExtResource("2_1ohju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1438575872]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_4lbrk")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("3_de57d")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

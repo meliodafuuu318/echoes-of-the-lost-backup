@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://wgrl81kypfwk"]
+
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="1_u0f1b"]
+
+[resource]
+font = ExtResource("1_u0f1b")
+font_size = 12
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)

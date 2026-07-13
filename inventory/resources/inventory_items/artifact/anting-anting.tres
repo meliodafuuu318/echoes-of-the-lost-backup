@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArtifactItem" format=3 uid="uid://tjqankqipfe7"]
+
+[ext_resource type="Script" uid="uid://gj6c78fs0tiq" path="res://inventory/resource_scripts/artifact_inv_item.gd" id="1_ikl7e"]
+[ext_resource type="Texture2D" uid="uid://gjv6832hvevp" path="res://inventory/assets/items/anting-anting.png" id="2_up26n"]
+
+[resource]
+script = ExtResource("1_ikl7e")
+health_buff = 5.0
+id = "3"
+name = "Anting-Anting"
+texture = ExtResource("2_up26n")
+max_stack = 1
+description = "An amulet worn smooth by mountain water. The symbol pressed into its face is old — older than the Spanish names for these hills. Hunters from the foothills say Malyari himself breathed into the first one, and that his breath still lives in every copy made since."
+item_type = 3
+metadata/_custom_type_script = "uid://gj6c78fs0tiq"

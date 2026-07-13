@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://3s5rfvjydnns"]
+
+[ext_resource type="Texture2D" uid="uid://dmqihlplc502b" path="res://maps/house/assets/cabin_inside.jpg" id="2_frhdl"]
+[ext_resource type="PackedScene" uid="uid://bg56qrcw4qyi0" path="res://components/interactions/interactable.tscn" id="3_0mefl"]
+[ext_resource type="Script" uid="uid://c3cu1la4um177" path="res://maps/house/bed.gd" id="3_mhr02"]
+[ext_resource type="PackedScene" uid="uid://bqj31sewmuvba" path="res://components/triggers/scene_transition_trigger.tscn" id="3_tpley"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="4_k7ipq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3onaq"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oxb3u"]
+a = Vector2(-140, -3)
+b = Vector2(58, -3)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wtr1d"]
+b = Vector2(48, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pq47m"]
+a = Vector2(0, -86)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gi63w"]
+b = Vector2(264, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxb3u"]
+size = Vector2(31, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtr1d"]
+size = Vector2(44, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxb3u"]
+radius = 31.016125
+
+[sub_resource type="LabelSettings" id="LabelSettings_tpley"]
+font = ExtResource("4_k7ipq")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HouseMap" type="Node2D" unique_id=1696503527]
+
+[node name="CabinInside" type="Sprite2D" parent="." unique_id=1836241847]
+z_index = -2
+position = Vector2(144.8333, 79)
+scale = Vector2(0.20572911, 0.20572917)
+texture = ExtResource("2_frhdl")
+
+[node name="SceneTransitionTrigger" parent="." unique_id=60058399 instance=ExtResource("3_tpley")]
+position = Vector2(220.83327, 157.99998)
+target_map = 1
+target_spawn = "HouseEntranceSpawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTransitionTrigger" unique_id=899105112]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_3onaq")
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1510513195]
+position = Vector2(220.83327, 147.99998)
+
+[node name="ExitDoorSpawn" type="Marker2D" parent="Spawns" unique_id=1138525894]
+position = Vector2(0, -21)
+
+[node name="Collisions" type="StaticBody2D" parent="." unique_id=1975584153]
+position = Vector2(220.83327, 147.99998)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=674792816]
+position = Vector2(-74, 2)
+shape = SubResource("SegmentShape2D_oxb3u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions" unique_id=1022758879]
+position = Vector2(14, -1)
+shape = SubResource("SegmentShape2D_wtr1d")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions" unique_id=2136171999]
+position = Vector2(56, -15)
+shape = SubResource("SegmentShape2D_pq47m")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions" unique_id=1966128158]
+position = Vector2(-208, -16)
+shape = SubResource("SegmentShape2D_pq47m")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Collisions" unique_id=157391753]
+position = Vector2(-209, -102)
+shape = SubResource("SegmentShape2D_gi63w")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collisions" unique_id=493908179]
+position = Vector2(-174.5, -82.5)
+shape = SubResource("RectangleShape2D_oxb3u")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Collisions" unique_id=1627482657]
+position = Vector2(-6, -93)
+shape = SubResource("RectangleShape2D_wtr1d")
+
+[node name="Bed" type="Node2D" parent="." unique_id=1022824335]
+position = Vector2(46, 61)
+script = ExtResource("3_mhr02")
+
+[node name="Interactable" parent="Bed" unique_id=808461377 node_paths=PackedStringArray("interact_label") instance=ExtResource("3_0mefl")]
+interact_label = NodePath("Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/Interactable" unique_id=1362345440]
+shape = SubResource("CircleShape2D_oxb3u")
+
+[node name="Label" type="Label" parent="Bed/Interactable" unique_id=806033548]
+offset_left = -23.0
+offset_top = -27.0
+offset_right = 71.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+text = "Press [E]
+to Sleep"
+label_settings = SubResource("LabelSettings_tpley")
+horizontal_alignment = 1
+vertical_alignment = 1

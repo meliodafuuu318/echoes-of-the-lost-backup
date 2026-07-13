@@ -1,0 +1,3 @@
+This bridge is wrecked. It's going to take {Bridge.LogsRequired} logs and a Hammer to fix it.
+if {Bridge.HasHammer} == true:
+	player_character: I have a hammer in my inventory, but I need to actually EQUIP it first.

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://diug3y6pi3rto"]
+
+[ext_resource type="Script" uid="uid://yuq2fwecd1ne" path="res://tasks/ui_scripts/main_quest_list_ui.gd" id="1_jmbyc"]
+[ext_resource type="PackedScene" uid="uid://edkap041664w" path="res://tasks/scenes/main_quest_ui.tscn" id="2_uib2n"]
+[ext_resource type="Texture2D" uid="uid://d114kpmfksuwm" path="res://tasks/assets/accordion_indicator.png" id="3_ygc32"]
+
+[node name="main_quest_list_ui" type="Control" unique_id=189941952]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(126, 150)
+layout_mode = 3
+anchor_right = 0.109000005
+anchor_bottom = 0.231
+offset_right = 0.43199158
+offset_bottom = 0.31199646
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jmbyc")
+
+[node name="BodyClip" type="Control" parent="." unique_id=380306401]
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 115.0
+offset_bottom = 151.0
+
+[node name="Body" type="VBoxContainer" parent="BodyClip" unique_id=1849770789]
+layout_mode = 0
+offset_right = 126.0
+offset_bottom = 128.0
+
+[node name="main_quest_ui" parent="BodyClip/Body" unique_id=1348139072 instance=ExtResource("2_uib2n")]
+layout_mode = 2
+
+[node name="main_quest_ui2" parent="BodyClip/Body" unique_id=399130126 instance=ExtResource("2_uib2n")]
+layout_mode = 2
+
+[node name="main_quest_ui3" parent="BodyClip/Body" unique_id=1938696630 instance=ExtResource("2_uib2n")]
+layout_mode = 2
+
+[node name="Header" type="Button" parent="." unique_id=49167257]
+custom_minimum_size = Vector2(99, 21)
+layout_mode = 0
+offset_left = 15.0
+offset_right = 114.0
+offset_bottom = 21.0
+flat = true
+
+[node name="Label" type="Label" parent="Header" unique_id=1656911571]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 198.0
+offset_bottom = 29.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Main Quest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="accordion_indicator" type="TextureRect" parent="Header" unique_id=1494775582]
+layout_mode = 0
+offset_left = -1.9999914
+offset_top = 16.000002
+offset_right = 30.000008
+offset_bottom = 48.0
+rotation = -1.5707964
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("3_ygc32")
