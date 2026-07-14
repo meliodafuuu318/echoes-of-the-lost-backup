@@ -33,7 +33,7 @@ var pending_load_position: Vector2 = Vector2.INF
 
 ## How long the "artifact found" popup stays on screen before the
 ## drag-ghost-into-hotbar animation begins.
-const ARTIFACT_FOUND_DISPLAY_TIME := 2.5
+const ARTIFACT_FOUND_DISPLAY_TIME := 4.0
 
 const SKIP_HINT_DELAY_SEC := 2.0
 

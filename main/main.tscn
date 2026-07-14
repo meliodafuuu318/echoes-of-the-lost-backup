@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://btipt2uux5qw1" path="res://menu/menu_ui.tscn" id="10_bsumw"]
 [ext_resource type="PackedScene" uid="uid://b1w3xirxma8nw" path="res://inventory/scenes/hotbar_ui.tscn" id="11_fwcvl"]
 [ext_resource type="Texture2D" uid="uid://gjv6832hvevp" path="res://inventory/assets/items/anting-anting.png" id="12_fwcvl"]
+[ext_resource type="Script" uid="uid://brlbsgswkslfx" path="res://main/light_rays.gd" id="13_5xyti"]
 [ext_resource type="Shader" uid="uid://b124s7dln7xrl" path="res://main/main.gdshader" id="14_73k8k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3onaq"]
@@ -440,6 +441,15 @@ modulate = Color(0, 0, 0, 0.46400002)
 z_index = -1
 offset_right = 1151.0
 offset_bottom = 649.0
+
+[node name="LightRays" type="Node2D" parent="HUD/anting_anting_found" unique_id=555555501]
+position = Vector2(623, 268)
+script = ExtResource("13_5xyti")
+center_position = Vector2(580, 240)
+glow_radius = 200.0
+glow_color = Color(1, 0.9490196, 0.7019608, 0.5019608)
+spin_speed = 0.25
+counter_spin_speed = -0.25
 
 [node name="Label" type="Label" parent="HUD/anting_anting_found" unique_id=224956376]
 offset_left = 313.0
