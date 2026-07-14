@@ -143,7 +143,7 @@ func _on_scene_load_finished(loaded_map: PackedScene) -> void:
 	player.set_physics_process(true)
 	day_night_cycle_ui.show()
 	day_night_cycle.show()
-	day_night_cycle.process_mode = Node.PROCESS_MODE_INHERIT
+	day_night_cycle.process_mode = Node.PROCESS_MODE_PAUSABLE
 	
 	# Whenever a map finishes loading we are, by definition, in gameplay —
 	# whether we got here via New Game, a normal map transition, or a save
