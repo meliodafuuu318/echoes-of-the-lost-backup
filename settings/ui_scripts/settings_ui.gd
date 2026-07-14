@@ -9,8 +9,13 @@ const PANEL_PATHS: Array[String] = [
 
 @onready var quit_button: TextureButton = $NinePatchRect2/quit_button
 @onready var quit_confirm_ui: Control = $quit_confirm_ui
+@onready var overwrite_save_confirm_ui: Control = $overwrite_save_confirm_ui
 
 var _slot_nodes: Array[Dictionary] = []
+
+## Slot awaiting a yes/no answer from overwrite_save_confirm_ui. -1 when no
+## confirmation is in flight.
+var _pending_save_slot: int = -1
 
 ## Delete is destructive, so it's armed with one press ("Delete?") and
 ## committed with a second press on the same slot within CONFIRM_TIMEOUT
@@ -32,6 +37,9 @@ func _ready() -> void:
 
 	quit_button.pressed.connect(_on_quit_pressed)
 	quit_confirm_ui.confirmed.connect(_on_quit_confirmed)
+
+	overwrite_save_confirm_ui.confirmed.connect(_on_overwrite_confirmed)
+	overwrite_save_confirm_ui.cancelled.connect(_on_overwrite_cancelled)
 
 	refresh_all_slots()
 
@@ -106,6 +114,29 @@ func _format_real_time(info: Dictionary) -> String:
 
 func _on_save_pressed(slot_index: int) -> void:
 	_disarm_delete()
+
+	if SaveManager.has_save(slot_index):
+		_pending_save_slot = slot_index
+		overwrite_save_confirm_ui.show()
+		return
+
+	_do_save(slot_index)
+
+
+## User confirmed they want to overwrite the existing save in
+## _pending_save_slot.
+func _on_overwrite_confirmed() -> void:
+	if _pending_save_slot == -1:
+		return
+	_do_save(_pending_save_slot)
+	_pending_save_slot = -1
+
+
+func _on_overwrite_cancelled() -> void:
+	_pending_save_slot = -1
+
+
+func _do_save(slot_index: int) -> void:
 	SaveManager.save_game(slot_index)
 	_refresh_slot(slot_index)
 

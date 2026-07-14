@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bcwbghd0kityy" path="res://settings/assets/recycle-bin.png" id="13_axk6n"]
 [ext_resource type="Texture2D" uid="uid://b4kmnqpd1stwa" path="res://settings/assets/recycle-bin-pressed.png" id="14_c2mom"]
 [ext_resource type="PackedScene" uid="uid://bh7w3ceyn6hst" path="res://settings/scenes/quit_confirm_ui.tscn" id="15_g3qb2"]
+[ext_resource type="PackedScene" uid="uid://briqsb7haskcr" path="res://settings/scenes/overwrite_save_confirm_ui.tscn" id="16_5bint"]
 
 [node name="settings_ui" type="Control" unique_id=445130079]
 custom_minimum_size = Vector2(140, 178)
@@ -483,7 +484,16 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="quit_confirm_ui" parent="." unique_id=1940263550 instance=ExtResource("15_g3qb2")]
+visible = false
 z_index = 1
+layout_mode = 1
+offset_left = -158.0
+offset_top = -58.0
+offset_right = 152.0
+offset_bottom = 63.0
+
+[node name="overwrite_save_confirm_ui" parent="." unique_id=1153328871 instance=ExtResource("16_5bint")]
+visible = false
 layout_mode = 1
 offset_left = -158.0
 offset_top = -58.0
