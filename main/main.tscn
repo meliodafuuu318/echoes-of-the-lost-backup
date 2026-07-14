@@ -470,10 +470,23 @@ mouse_filter = 2
 
 [node name="opening_overlay" type="ColorRect" parent="." unique_id=444681763]
 visible = false
-self_modulate = Color(0, 0, 0, 1)
-top_level = true
-z_index = 20
 offset_left = -1508.0
 offset_top = -958.0
 offset_right = 2837.0
 offset_bottom = 1583.0
+color = Color(0, 0, 0, 1)
+
+[node name="SkipHintLayer" type="CanvasLayer" parent="." unique_id=999999901]
+layer = 100
+
+[node name="skip_text" type="Label" parent="SkipHintLayer" unique_id=1845555734]
+visible = false
+self_modulate = Color(1, 1, 1, 0.5)
+z_index = 1
+offset_left = 577.0
+offset_top = 605.0
+offset_right = 1252.0
+offset_bottom = 665.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 60
+text = "Press escape to skip"

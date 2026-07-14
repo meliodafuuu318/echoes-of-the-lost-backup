@@ -29,10 +29,13 @@ var pending_load_position: Vector2 = Vector2.INF
 @onready var anting_anting_found: Node2D = $HUD/anting_anting_found
 @onready var anting_anting_found_icon: TextureRect = $HUD/anting_anting_found/TextureRect
 @onready var opening_overlay: ColorRect = $opening_overlay
+@onready var skip_text: Label = $SkipHintLayer/skip_text
 
 ## How long the "artifact found" popup stays on screen before the
 ## drag-ghost-into-hotbar animation begins.
 const ARTIFACT_FOUND_DISPLAY_TIME := 2.5
+
+const SKIP_HINT_DELAY_SEC := 2.0
 
 ## Set for the duration of _play_opening_timeline() so _input() knows a
 ## skip press should end the opening cutscene, and so a second
@@ -79,6 +82,7 @@ func _input(event: InputEvent) -> void:
 	if not _opening_timeline_active:
 		return
 	if event.is_action_pressed("ui_cancel"):
+		skip_text.hide()
 		get_viewport().set_input_as_handled()
 		Dialogic.end_timeline()
 
@@ -196,11 +200,18 @@ func _play_opening_timeline() -> void:
 	_opening_timeline_active = true
 	get_tree().paused = true
 	
+	get_tree().create_timer(SKIP_HINT_DELAY_SEC).timeout.connect(
+		func() -> void:
+			if _opening_timeline_active:
+				skip_text.show()
+	)
+	
 	await Dialogic.timeline_ended
 	
 	get_tree().paused = false
 	_opening_timeline_active = false
 	opening_overlay.hide()
+	skip_text.hide()
 
 
 func _on_game_over(win: bool) -> void:
