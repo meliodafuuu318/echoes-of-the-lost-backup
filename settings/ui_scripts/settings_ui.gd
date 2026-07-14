@@ -8,6 +8,7 @@ const PANEL_PATHS: Array[String] = [
 ]
 
 @onready var quit_button: TextureButton = $NinePatchRect2/quit_button
+@onready var quit_confirm_ui: Control = $quit_confirm_ui
 
 var _slot_nodes: Array[Dictionary] = []
 
@@ -30,6 +31,7 @@ func _ready() -> void:
 		nodes.delete_button.pressed.connect(_on_delete_pressed.bind(slot_index))
 
 	quit_button.pressed.connect(_on_quit_pressed)
+	quit_confirm_ui.confirmed.connect(_on_quit_confirmed)
 
 	refresh_all_slots()
 
@@ -132,11 +134,18 @@ func _on_delete_pressed(slot_index: int) -> void:
 	_refresh_slot(slot_index)
 
 
+## Doesn't quit directly — opens the confirm dialog, which blocks mouse
+## interaction with the rest of the menu until the player confirms or
+## cancels. See _on_quit_confirmed() for the actual teardown call.
+func _on_quit_pressed() -> void:
+	_disarm_delete()
+	quit_confirm_ui.show()
+
+
 ## Main owns gameplay teardown (world, player, day/night, HUD) and the
 ## MainMenu overlay, the same way it owns switch_map() — see main_menu.gd's
 ## _on_play_button_pressed() for the mirror-image call on the way back in.
-func _on_quit_pressed() -> void:
-	_disarm_delete()
+func _on_quit_confirmed() -> void:
 	var main: Node = get_tree().current_scene
 	if main and main.has_method("quit_to_main_menu"):
 		main.quit_to_main_menu()
