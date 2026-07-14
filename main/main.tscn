@@ -467,3 +467,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="opening_overlay" type="ColorRect" parent="." unique_id=444681763]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+z_index = 20
+offset_left = -1508.0
+offset_top = -958.0
+offset_right = 2837.0
+offset_bottom = 1583.0

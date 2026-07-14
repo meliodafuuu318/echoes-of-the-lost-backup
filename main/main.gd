@@ -28,13 +28,25 @@ var pending_load_position: Vector2 = Vector2.INF
 @onready var hotbar_ui: Control = $HUD/hotbar_ui
 @onready var anting_anting_found: Node2D = $HUD/anting_anting_found
 @onready var anting_anting_found_icon: TextureRect = $HUD/anting_anting_found/TextureRect
+@onready var opening_overlay: ColorRect = $opening_overlay
 
 ## How long the "artifact found" popup stays on screen before the
 ## drag-ghost-into-hotbar animation begins.
 const ARTIFACT_FOUND_DISPLAY_TIME := 2.5
 
+## Set for the duration of _play_opening_timeline() so _input() knows a
+## skip press should end the opening cutscene, and so a second
+## Events.new_game_started (e.g. an accidental double-click on Play) can't
+## kick off a second overlapping Dialogic.start() call.
+var _opening_timeline_active: bool = false
+
 
 func _ready() -> void:
+	# Main defines no _process()/_physics_process(), so this only affects
+	# _input() below — it lets the opening cutscene's skip key keep working
+	# while get_tree().paused is true.
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	player.hide()
 	player.set_physics_process(false)
 	day_night_cycle_ui.hide()
@@ -55,6 +67,20 @@ func _ready() -> void:
 	Events.artifact_collected.connect(_on_artifact_collected)
 	
 	Events.sleep_sequence_started.connect(_on_sleep_sequence_started)
+
+
+## Lets the player skip the opening cutscene. Bound to "ui_cancel" (Esc by
+## default) since that's built into every Godot project's input map with no
+## extra setup — swap it for a dedicated action (e.g. "skip_dialogue") in
+## Project Settings > Input Map if you'd rather use a different key.
+## Uses _input() rather than _unhandled_input() so the press can't be eaten
+## first by Dialogic's own textbox Control.
+func _input(event: InputEvent) -> void:
+	if not _opening_timeline_active:
+		return
+	if event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		Dialogic.end_timeline()
 
 
 ## Normal in-game map transition (day/night change, going indoors/outdoors,
@@ -132,6 +158,12 @@ func _on_scene_load_finished(loaded_map: PackedScene) -> void:
 
 
 func _on_new_game_started() -> void:
+	# Guards against a second Events.new_game_started (e.g. an accidental
+	# double-click on the main menu's Play button) re-entering this while
+	# the opening cutscene from the first call is still playing.
+	if _opening_timeline_active:
+		return
+	
 	pending_load_position = Vector2.INF
 	next_spawn = "Default"
 	
@@ -140,6 +172,8 @@ func _on_new_game_started() -> void:
 	DailyTaskManager.reset_daily_tasks_for_new_game()
 	day_night_cycle.reset()
 	
+	await _play_opening_timeline()
+	
 	switch_map(Events.Map.OUTSIDE)
 	
 	await Events.scene_load_finished
@@ -147,6 +181,26 @@ func _on_new_game_started() -> void:
 	menu_ui.set_process(true)
 	player.reset_inventory_for_new_game()
 	player.respawn()
+
+
+func _play_opening_timeline() -> void:
+	opening_overlay.show()
+	main_menu.hide()
+	
+	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	var dialog_layout: Node = Dialogic.start("opening_scene_timeline")
+	dialog_layout.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	await get_tree().process_frame
+	
+	_opening_timeline_active = true
+	get_tree().paused = true
+	
+	await Dialogic.timeline_ended
+	
+	get_tree().paused = false
+	_opening_timeline_active = false
+	opening_overlay.hide()
 
 
 func _on_game_over(win: bool) -> void:

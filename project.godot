@@ -43,6 +43,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "bridge_timeline": "res://dialogic/timelines/bridge_timeline.dtl",
 "item_collect_timeline": "res://dialogic/timelines/item_collect_timeline.dtl",
+"opening_scene_timeline": "res://dialogic/timelines/opening_scene_timeline.dtl",
 "quest_completed_timeline": "res://dialogic/timelines/quest_completed_timeline.dtl",
 "sleep_timeline": "res://dialogic/timelines/sleep_timeline.dtl"
 }

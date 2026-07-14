@@ -1,4 +1,4 @@
 if {Item.already_collected} == true:
 	Already collected. Try again tomorrow.
 else:
-	You collected {Item.name} x{Item.amount}
+	You collected {Item.name} x{Item.amount}.
