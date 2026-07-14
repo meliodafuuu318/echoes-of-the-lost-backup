@@ -426,10 +426,11 @@ spawn_root = NodePath("../DropsContainer")
 [node name="HUD" type="CanvasLayer" parent="." unique_id=362309350]
 visible = false
 
-[node name="menu_ui" parent="HUD" unique_id=885035941 node_paths=PackedStringArray("hotbar_ui", "main_menu") instance=ExtResource("10_bsumw")]
+[node name="menu_ui" parent="HUD" unique_id=885035941 node_paths=PackedStringArray("hotbar_ui", "main_menu", "opening_overlay") instance=ExtResource("10_bsumw")]
 visible = false
 hotbar_ui = NodePath("../hotbar_ui")
 main_menu = NodePath("../../CanvasLayer/MainMenu")
+opening_overlay = NodePath("../../opening_overlay")
 
 [node name="hotbar_ui" parent="HUD" unique_id=385176462 instance=ExtResource("11_fwcvl")]
 

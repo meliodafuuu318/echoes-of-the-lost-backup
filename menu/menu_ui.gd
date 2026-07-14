@@ -2,6 +2,7 @@ extends Control
 
 @export var hotbar_ui: Control
 @export var main_menu: Control
+@export var opening_overlay: ColorRect
 
 var current_tab: String = "inventory"
 var is_open: bool = false
@@ -58,7 +59,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("inventory"):
-		if main_menu.visible:
+		if main_menu.visible or opening_overlay.visible:
 			return
 		if is_open:
 			close()
