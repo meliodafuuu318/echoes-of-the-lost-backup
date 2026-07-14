@@ -134,14 +134,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 14
 
-[node name="Movement" type="GridContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=524808388]
+[node name="Movement" type="VBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000010]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 10
-columns = 2
+theme_override_constants/separation = 6
 
-[node name="move" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Movement" unique_id=683397510]
+[node name="Row1" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Movement" unique_id=700000001]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="move" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Movement/Row1" unique_id=683397510]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -151,7 +154,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="move_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Movement" unique_id=683397511]
+[node name="move_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Movement/Row1" unique_id=683397511]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -161,17 +164,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator1" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000002]
+[node name="GroupSep1" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000002]
 layout_mode = 2
 
-[node name="Actions" type="GridContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000003]
+[node name="Actions" type="VBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000020]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 10
-columns = 2
+theme_override_constants/separation = 6
 
-[node name="action" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=212708410]
+[node name="Row1" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=700000002]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="action" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row1" unique_id=212708410]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -181,7 +187,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="action_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=212708411]
+[node name="action_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row1" unique_id=212708411]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -191,7 +197,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="interact" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=212708412]
+[node name="RowSep1" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=800000001]
+layout_mode = 2
+
+[node name="Row2" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=700000003]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="interact" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row2" unique_id=212708412]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -201,7 +215,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="interact_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=212708413]
+[node name="interact_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row2" unique_id=212708413]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -211,7 +225,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="use_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=212708414]
+[node name="RowSep2" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=800000002]
+layout_mode = 2
+
+[node name="Row3" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=700000004]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="use_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row3" unique_id=212708414]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -221,7 +243,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="use_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=212708415]
+[node name="use_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row3" unique_id=212708415]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -231,7 +253,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="block" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=1807838400]
+[node name="RowSep3" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=800000003]
+layout_mode = 2
+
+[node name="Row4" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=700000005]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="block" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row4" unique_id=1807838400]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -241,7 +271,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="block_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=1807838401]
+[node name="block_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row4" unique_id=1807838401]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -251,7 +281,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="collect" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=1046440850]
+[node name="RowSep4" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=800000004]
+layout_mode = 2
+
+[node name="Row5" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=700000006]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="collect" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row5" unique_id=1046440850]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -261,7 +299,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="collect_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions" unique_id=1046440851]
+[node name="collect_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Actions/Row5" unique_id=1046440851]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -271,17 +309,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000004]
+[node name="GroupSep2" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000004]
 layout_mode = 2
 
-[node name="Inventory" type="GridContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000005]
+[node name="Inventory" type="VBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000030]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 10
-columns = 2
+theme_override_constants/separation = 6
 
-[node name="hotbar" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=1807838402]
+[node name="Row1" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=700000007]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="hotbar" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row1" unique_id=1807838402]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -291,7 +332,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="hotbar_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=1807838403]
+[node name="hotbar_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row1" unique_id=1807838403]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -301,7 +342,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="drop_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=530082810]
+[node name="RowSep1" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=800000005]
+layout_mode = 2
+
+[node name="Row2" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=700000008]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="drop_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row2" unique_id=530082810]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -311,7 +360,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="drop_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=530082811]
+[node name="drop_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row2" unique_id=530082811]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -321,7 +370,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="move_slot" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=1752798040]
+[node name="RowSep2" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=800000006]
+layout_mode = 2
+
+[node name="Row3" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=700000009]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="move_slot" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row3" unique_id=1752798040]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -331,7 +388,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="move_slot_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=1779799297]
+[node name="move_slot_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row3" unique_id=1779799297]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -341,7 +398,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="split_stack" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=1046440839]
+[node name="RowSep3" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=800000007]
+layout_mode = 2
+
+[node name="Row4" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=700000010]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="split_stack" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row4" unique_id=1046440839]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -351,7 +416,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="split_stack_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=2114349431]
+[node name="split_stack_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row4" unique_id=2114349431]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -361,7 +426,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="force_swap" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=1046440840]
+[node name="RowSep4" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=800000008]
+layout_mode = 2
+
+[node name="Row5" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=700000011]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="force_swap" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row5" unique_id=1046440840]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -371,7 +444,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="force_swap_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=2114349432]
+[node name="force_swap_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row5" unique_id=2114349432]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -381,7 +454,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="equip_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=675061625]
+[node name="RowSep5" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=800000009]
+layout_mode = 2
+
+[node name="Row6" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=700000012]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="equip_item" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row6" unique_id=675061625]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -391,7 +472,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="equip_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory" unique_id=1183452710]
+[node name="equip_item_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Inventory/Row6" unique_id=1183452710]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -401,17 +482,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000006]
+[node name="GroupSep3" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000006]
 layout_mode = 2
 
-[node name="Menu" type="GridContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000007]
+[node name="Menu" type="VBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer" unique_id=600000050]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 10
-columns = 2
+theme_override_constants/separation = 6
 
-[node name="menu" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu" unique_id=1752798050]
+[node name="Row1" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu" unique_id=700000013]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="menu" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu/Row1" unique_id=1752798050]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -421,7 +505,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="menu_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu" unique_id=1752798051]
+[node name="menu_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu/Row1" unique_id=1752798051]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -431,7 +515,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="toggle_help" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu" unique_id=375990422]
+[node name="RowSep1" type="HSeparator" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu" unique_id=800000010]
+layout_mode = 2
+
+[node name="Row2" type="HBoxContainer" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu" unique_id=700000014]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="toggle_help" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu/Row2" unique_id=375990422]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -441,7 +533,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="toggle_help_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu" unique_id=1812131701]
+[node name="toggle_help_key" type="Label" parent="CanvasLayer/controls_help/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupsContainer/Menu/Row2" unique_id=1812131701]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 size_flags_horizontal = 3
