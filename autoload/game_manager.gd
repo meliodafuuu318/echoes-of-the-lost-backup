@@ -14,10 +14,6 @@ var player_health: float = 10
 var anting_anting_saved_pos: Vector2
 var anting_anting_collected: bool = false
 
-## Whether the player has entered the cabin's viewing range and seen the
-## cabin_discovered_timeline yet. Set once, in outside.gd, after that
-## timeline finishes playing — checked before the timeline is triggered so
-## it only ever plays once per run (see outside.gd's CabinViewArea).
 var cabin_found: bool = false
 
 ## Seed for the procedural grass patch layout on the Outside map (see

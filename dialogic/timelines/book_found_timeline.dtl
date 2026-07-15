@@ -1,4 +1,2 @@
-if {Cabin.book_found} == false:
-	player_character: What's this?
-else:
+if {Cabin.book_found} == true:
 	Press Tab to open menu.

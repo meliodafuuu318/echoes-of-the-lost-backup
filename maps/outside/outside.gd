@@ -102,22 +102,12 @@ func _on_cabin_view_area_body_entered(body: Node2D) -> void:
 		return
 	if GameManager.cabin_found:
 		return
-	
-	# Disconnect immediately (rather than after the timeline finishes) so a
-	# second body_entered firing while the timeline is still playing can't
-	# start a second overlapping Dialogic.start() call.
+
 	cabin_view_area.body_entered.disconnect(_on_cabin_view_area_body_entered)
 	_play_cabin_discovered_timeline(body as Player)
 
 
 func _play_cabin_discovered_timeline(player: Player) -> void:
-	# Movement is driven by the StateMachine child node's own
-	# _physics_process (idle.gd/walk.gd's physics_update() reads input and
-	# calls move_and_slide() from there), not by Player itself — Player
-	# never overrides _physics_process. So freezing has to target
-	# state_machine directly; player.set_physics_process(false) alone is a
-	# no-op for movement since it only toggles Player's own callback, which
-	# was never doing anything, and doesn't propagate to children.
 	player.velocity = Vector2.ZERO
 	player.state_machine.set_physics_process(false)
 	
@@ -125,12 +115,7 @@ func _play_cabin_discovered_timeline(player: Player) -> void:
 	await Dialogic.timeline_ended
 	
 	player.state_machine.set_physics_process(true)
-	
-	# The timeline itself sets its own Dialogic-side {Cabin.cabin_found}
-	# variable, but that only lives inside Dialogic's variable system and
-	# isn't picked up by SaveManager. GameManager.cabin_found is the actual
-	# source of truth that gets persisted (see save_manager.gd), so it's set
-	# here once the timeline has finished playing.
+
 	GameManager.cabin_found = true
 	
 	cabin_view_area.queue_free()
