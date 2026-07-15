@@ -107,6 +107,7 @@ glossary/default_case_sensitive=true
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://btek13clu5nc4"
 
 [editor]
 
