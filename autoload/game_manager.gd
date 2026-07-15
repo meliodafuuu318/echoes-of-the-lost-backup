@@ -14,6 +14,12 @@ var player_health: float = 10
 var anting_anting_saved_pos: Vector2
 var anting_anting_collected: bool = false
 
+## Whether the player has entered the cabin's viewing range and seen the
+## cabin_discovered_timeline yet. Set once, in outside.gd, after that
+## timeline finishes playing — checked before the timeline is triggered so
+## it only ever plays once per run (see outside.gd's CabinViewArea).
+var cabin_found: bool = false
+
 ## Seed for the procedural grass patch layout on the Outside map (see
 ## grass_spawner.gd). 0 means "not generated yet" — the spawner rolls a
 ## fresh nonzero seed on first entry and stores it here so the exact same
@@ -137,6 +143,7 @@ func reset() -> void:
 	# Collectibles
 	anting_anting_saved_pos = Vector2.ZERO
 	anting_anting_collected = false
+	cabin_found = false
 	
 	# World layout
 	grass_patch_seed = 0

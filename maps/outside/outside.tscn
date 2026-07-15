@@ -14,6 +14,9 @@
 [ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="14_soyoe"]
 [ext_resource type="Script" uid="uid://c2e6ig4ixkbs3" path="res://maps/outside/grass_spawner.gd" id="15_grass"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cabinview"]
+radius = 180.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdwuj"]
 texture = ExtResource("1_0lnqv")
 texture_region_size = Vector2i(64, 64)
@@ -624,6 +627,15 @@ position = Vector2(518, 25)
 
 [node name="Cabin" parent="Objects" unique_id=1945979290 instance=ExtResource("2_0lnqv")]
 position = Vector2(429, 258)
+
+[node name="CabinViewArea" type="Area2D" parent="Objects" unique_id=847213590]
+position = Vector2(429, 258)
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/CabinViewArea" unique_id=847213591]
+shape = SubResource("CircleShape2D_cabinview")
 
 [node name="Spawns" type="Node2D" parent="." unique_id=597417931]
 

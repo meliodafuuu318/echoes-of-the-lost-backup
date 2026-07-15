@@ -1,0 +1,2 @@
+player_character: There's a cabin over there. Maybe I can rest inside.
+set {Cabin.cabin_found} = true

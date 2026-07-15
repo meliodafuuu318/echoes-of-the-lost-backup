@@ -41,7 +41,9 @@ directories/dch_directory={
 "player_character": "res://characters/player/player_character.dch"
 }
 directories/dtl_directory={
+"book_found_timeline": "res://dialogic/timelines/book_found_timeline.dtl",
 "bridge_timeline": "res://dialogic/timelines/bridge_timeline.dtl",
+"cabin_discovered_timeline": "res://dialogic/timelines/cabin_discovered_timeline.dtl",
 "item_collect_timeline": "res://dialogic/timelines/item_collect_timeline.dtl",
 "opening_scene_timeline": "res://dialogic/timelines/opening_scene_timeline.dtl",
 "quest_completed_timeline": "res://dialogic/timelines/quest_completed_timeline.dtl",
@@ -52,6 +54,10 @@ variables={
 "Bridge": {
 "HasHammer": false,
 "LogsRequired": ""
+},
+"Cabin": {
+"book_found": false,
+"cabin_found": false
 },
 "Item": {
 "already_collected": false,

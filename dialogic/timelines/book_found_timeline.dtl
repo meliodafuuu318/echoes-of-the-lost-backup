@@ -1,0 +1,4 @@
+if {Cabin.book_found} == false:
+	player_character: What's this?
+else:
+	Press Tab to open menu.
