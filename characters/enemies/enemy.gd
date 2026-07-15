@@ -16,6 +16,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	health_component.health_changed.connect(_on_health_changed)
 	health_component.died.connect(_on_death)
 	

@@ -22,6 +22,7 @@ var facing_direction: Vector2 = Vector2.DOWN
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	print(health_component.health)
 	ARTIFACT_INV.update.connect(_on_artifact_inv_updated)
 	_on_artifact_inv_updated()  # apply buffs from whatever artifacts are already owned, and sync health_component
