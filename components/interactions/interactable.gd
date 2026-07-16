@@ -5,7 +5,7 @@ extends Area2D
 @export var is_interactable: bool = true
 
 
-var interact: Callable = func():
+var interact: Callable = func(_player: Player):
 	pass
 
 

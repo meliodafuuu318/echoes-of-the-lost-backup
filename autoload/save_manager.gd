@@ -249,6 +249,7 @@ func _serialize_game_manager() -> Dictionary:
 		],
 		"anting_anting_collected": GameManager.anting_anting_collected,
 		"cabin_found": GameManager.cabin_found,
+		"book_found": GameManager.book_found,
 		"grass_patch_seed": GameManager.grass_patch_seed,
 		# The generic per-node data dict. Only JSON-safe values (bool, int,
 		# float, String, Array, Dictionary) are safe in here — if any node
@@ -291,6 +292,7 @@ func _deserialize_game_manager(d: Dictionary) -> void:
 	GameManager.anting_anting_saved_pos = Vector2(pos_arr[0], pos_arr[1])
 	GameManager.anting_anting_collected = d.get("anting_anting_collected", false)
 	GameManager.cabin_found = d.get("cabin_found", false)
+	GameManager.book_found = d.get("book_found", false)
 
 	GameManager.grass_patch_seed = d.get("grass_patch_seed", 0)
 
@@ -299,7 +301,7 @@ func _deserialize_game_manager(d: Dictionary) -> void:
 
 func clear_all_saves() -> void:
 	for slot in range(SAVE_SLOTS):
-		delete_save(slot)
+		delete_save(slot)	
 	
 	delete_save(AUTOSAVE_SLOT)
 	

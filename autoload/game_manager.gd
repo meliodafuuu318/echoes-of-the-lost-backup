@@ -15,6 +15,7 @@ var anting_anting_saved_pos: Vector2
 var anting_anting_collected: bool = false
 
 var cabin_found: bool = false
+var book_found: bool = false
 
 ## Seed for the procedural grass patch layout on the Outside map (see
 ## grass_spawner.gd). 0 means "not generated yet" — the spawner rolls a
@@ -140,6 +141,7 @@ func reset() -> void:
 	anting_anting_saved_pos = Vector2.ZERO
 	anting_anting_collected = false
 	cabin_found = false
+	book_found = false
 	
 	# World layout
 	grass_patch_seed = 0

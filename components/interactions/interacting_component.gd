@@ -10,9 +10,16 @@ func _input(event: InputEvent) -> void:
 			can_interact = false
 			await current_interactions[0].hide_label()
 			
-			await current_interactions[0].interact.call()
+			await current_interactions[0].interact.call(_get_player())
 			
 			can_interact = true
+
+
+func _get_player() -> Player:
+	var players := get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		return players[0]
+	return null
 
 
 func _process(_delta: float) -> void:

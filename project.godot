@@ -55,10 +55,6 @@ variables={
 "HasHammer": false,
 "LogsRequired": ""
 },
-"Cabin": {
-"book_found": false,
-"cabin_found": false
-},
 "Item": {
 "already_collected": false,
 "amount": 0,
@@ -113,7 +109,7 @@ glossary/default_case_sensitive=true
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-mouse_cursor/custom_image="uid://btek13clu5nc4"
+mouse_cursor/custom_image="uid://bd5mv6etc5eg4"
 
 [editor]
 

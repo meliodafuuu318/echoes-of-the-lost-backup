@@ -1,2 +1,2 @@
-if {Cabin.book_found} == true:
-	Press Tab to open menu.
+player_character: This could be useful.
+Press Tab to open menu.

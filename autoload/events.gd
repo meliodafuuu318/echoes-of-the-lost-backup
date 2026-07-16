@@ -25,6 +25,8 @@ signal game_over(win: bool)
 ## than from the (hidden, often-different) sprite on the world pickup scene.
 signal artifact_collected
 
+signal book_found
+
 enum Map {HOUSE, OUTSIDE}
 
 ## Cached clock, kept in sync with whatever the day/night cycle emits via

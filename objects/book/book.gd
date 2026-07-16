@@ -1,11 +1,21 @@
-extends Area2D
+extends Node2D
+
+@onready var interactable: Interactable = $Interactable
+@onready var book: Node2D = $"."
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	if GameManager.book_found:
+		book.hide()
+	interactable.interact = _on_interact
+	
+	
+func _on_interact(player: Player) -> void:
+	if GameManager.book_found:
+		return
+	
+	Dialogic.start("book_found_timeline")
+	
+	GameManager.book_found = true
+	Events.book_found.emit()
+	book.queue_free()

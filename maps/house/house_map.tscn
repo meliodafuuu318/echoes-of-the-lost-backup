@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c3cu1la4um177" path="res://maps/house/bed.gd" id="3_mhr02"]
 [ext_resource type="PackedScene" uid="uid://bqj31sewmuvba" path="res://components/triggers/scene_transition_trigger.tscn" id="3_tpley"]
 [ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="4_k7ipq"]
+[ext_resource type="PackedScene" uid="uid://do8t5ja600wya" path="res://objects/book/book.tscn" id="6_mhr02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3onaq"]
 
@@ -26,6 +27,9 @@ size = Vector2(31, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtr1d"]
 size = Vector2(44, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dutb6"]
+size = Vector2(18, 18)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxb3u"]
 radius = 31.016125
@@ -91,6 +95,10 @@ shape = SubResource("RectangleShape2D_oxb3u")
 position = Vector2(-6, -93)
 shape = SubResource("RectangleShape2D_wtr1d")
 
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Collisions" unique_id=638070358]
+position = Vector2(-92.83327, -64.999985)
+shape = SubResource("RectangleShape2D_dutb6")
+
 [node name="Bed" type="Node2D" parent="." unique_id=1022824335]
 position = Vector2(46, 61)
 script = ExtResource("3_mhr02")
@@ -112,3 +120,6 @@ to Sleep"
 label_settings = SubResource("LabelSettings_tpley")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="book" parent="." unique_id=964789849 instance=ExtResource("6_mhr02")]
+position = Vector2(128, 83)
