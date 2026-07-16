@@ -110,7 +110,7 @@ func _on_cabin_view_area_body_entered(body: Node2D) -> void:
 func _play_cabin_discovered_timeline(player: Player) -> void:
 	player.velocity = Vector2.ZERO
 	player.state_machine.set_physics_process(false)
-	player.animation_state.start("Idle")
+	player.state_machine._transition_to_next_state(PlayerState.IDLE)
 	
 	Dialogic.start("cabin_discovered_timeline")
 	await Dialogic.timeline_ended
