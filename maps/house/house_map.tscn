@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://3s5rfvjydnns"]
 
+[ext_resource type="Script" uid="uid://bovi8otq63n3e" path="res://maps/house/house_map.gd" id="1_xe18k"]
 [ext_resource type="Texture2D" uid="uid://dmqihlplc502b" path="res://maps/house/assets/cabin_inside.jpg" id="2_frhdl"]
 [ext_resource type="PackedScene" uid="uid://bg56qrcw4qyi0" path="res://components/interactions/interactable.tscn" id="3_0mefl"]
 [ext_resource type="Script" uid="uid://c3cu1la4um177" path="res://maps/house/bed.gd" id="3_mhr02"]
@@ -40,6 +41,7 @@ outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [node name="HouseMap" type="Node2D" unique_id=1696503527]
+script = ExtResource("1_xe18k")
 
 [node name="CabinInside" type="Sprite2D" parent="." unique_id=1836241847]
 z_index = -2
