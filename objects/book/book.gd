@@ -10,7 +10,7 @@ func _ready() -> void:
 	interactable.interact = _on_interact
 	
 	
-func _on_interact(player: Player) -> void:
+func _on_interact(_player: Player) -> void:
 	if GameManager.book_found:
 		return
 	
