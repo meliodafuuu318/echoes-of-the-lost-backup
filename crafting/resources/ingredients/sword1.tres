@@ -6,4 +6,5 @@
 [resource]
 script = ExtResource("2_fgxex")
 material = ExtResource("1_hoayu")
+amount = 1
 metadata/_custom_type_script = "uid://bd0uwms5htkhu"

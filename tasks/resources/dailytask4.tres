@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Task" format=3 uid="uid://lij5keljwpgj"]
 
-[ext_resource type="Resource" uid="uid://cnkt4rivm68pq" path="res://inventory/resources/inventory_items/log.tres" id="1_beint"]
+[ext_resource type="Resource" uid="uid://dvg7qv1mvy0th" path="res://inventory/resources/inventory_items/stone.tres" id="1_beint"]
 [ext_resource type="Script" uid="uid://b6dk4cvvnwlv7" path="res://tasks/resource_scripts/task.gd" id="2_7gftq"]
 
 [resource]
@@ -11,5 +11,5 @@ description = "Walk 200 units"
 task_type = 3
 target_amount = 200
 reward_item = ExtResource("1_beint")
-reward_item_amount = 1
+reward_item_amount = 2
 metadata/_custom_type_script = "uid://b6dk4cvvnwlv7"
