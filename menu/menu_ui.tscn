@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://5h0y7t4b5sil" path="res://settings/assets/settings_bg.png" id="14_ewbfs"]
 [ext_resource type="PackedScene" uid="uid://c2genglyom37o" path="res://guide/scenes/guide_ui.tscn" id="14_oogfd"]
 [ext_resource type="PackedScene" uid="uid://cjiognj6crq3e" path="res://settings/scenes/settings_ui.tscn" id="15_ewbfs"]
+[ext_resource type="Texture2D" uid="uid://0st4q4ke6pop" path="res://menu/lock.png" id="15_pp4pa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ife3i"]
 atlas = ExtResource("5_wvcyl")
@@ -66,6 +67,7 @@ grow_vertical = 2
 mouse_force_pass_scroll_events = false
 
 [node name="inventory" type="NinePatchRect" parent="." unique_id=1099475165]
+visible = false
 light_mask = 4
 visibility_layer = 4
 z_index = 2
@@ -284,7 +286,6 @@ offset_right = 310.0
 offset_bottom = 76.0
 
 [node name="settings" type="NinePatchRect" parent="." unique_id=14314597]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -299,6 +300,30 @@ offset_bottom = 93.666664
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_ewbfs")
+
+[node name="locks" type="Node2D" parent="settings" unique_id=1928888301]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="settings/locks" unique_id=1110846266]
+offset_left = 0.6666667
+offset_top = 0.6666667
+offset_right = 17.0
+offset_bottom = 17.0
+texture = ExtResource("15_pp4pa")
+
+[node name="TextureRect2" type="TextureRect" parent="settings/locks" unique_id=1444531834]
+offset_left = 0.6666667
+offset_top = 20.333334
+offset_right = 17.0
+offset_bottom = 36.666668
+texture = ExtResource("15_pp4pa")
+
+[node name="TextureRect3" type="TextureRect" parent="settings/locks" unique_id=1173163149]
+offset_left = 1.3333334
+offset_top = 40.000004
+offset_right = 17.666668
+offset_bottom = 56.333336
+texture = ExtResource("15_pp4pa")
 
 [node name="tabs" type="Node2D" parent="settings" unique_id=17113993]
 

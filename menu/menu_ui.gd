@@ -19,6 +19,7 @@ var tabs_locked: bool = true
 @onready var crafting_display: CraftingUI = $crafting/crafting_ui
 #@onready var animation_player: AnimationPlayer = $inventory/player_view/AnimationPlayer
 @onready var settings_ui_tabs: Node2D = $settings/tabs
+@onready var locks: Node2D = $settings/locks
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -26,6 +27,7 @@ func _ready() -> void:
 	tabs_locked = not GameManager.book_found
 	if tabs_locked:
 		switch_tabs("settings")
+		locks.show()
 
 	if hotbar_ui == null:
 		var nodes = get_tree().get_nodes_in_group("hotbar")
@@ -163,6 +165,7 @@ func unlock_tabs() -> void:
 	tabs_locked = false
 	settings_ui_tabs.visible = true
 	switch_tabs("inventory")
+	locks.hide()
 
 
 func _setup_tabs() -> void:
