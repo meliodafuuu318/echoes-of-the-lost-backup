@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 @onready var interactable: Interactable = $Interactable
 @onready var book: Node2D = $"."
