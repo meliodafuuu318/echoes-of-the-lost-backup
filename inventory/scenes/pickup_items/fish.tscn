@@ -9,17 +9,17 @@
 radius = 16.0
 
 [node name="fish" type="Area2D" unique_id=1016754833]
-position = Vector2(0, -16)
 script = ExtResource("1_axvc4")
 item = ExtResource("2_5y1lk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=611316851]
+position = Vector2(0, -14)
 texture = ExtResource("1_q4ysj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2007662968]
+position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_dutb6")
 
 [node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_21ep8")]
-position = Vector2(0, 16)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

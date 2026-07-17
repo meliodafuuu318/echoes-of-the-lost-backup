@@ -9,15 +9,17 @@
 radius = 15.033297
 
 [node name="honey" type="Area2D" unique_id=603628447]
-position = Vector2(0, -15)
 script = ExtResource("1_yq7e7")
 item = ExtResource("2_iu24b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053753293]
+position = Vector2(0, -13.5)
 texture = ExtResource("1_lnsb0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=439274742]
+position = Vector2(0, -13.5)
 shape = SubResource("CircleShape2D_dutb6")
 
 [node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_yq7e7")]
-position = Vector2(0, 15)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
