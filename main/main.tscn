@@ -15,6 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://gjv6832hvevp" path="res://inventory/assets/items/anting-anting.png" id="12_fwcvl"]
 [ext_resource type="Script" uid="uid://brlbsgswkslfx" path="res://main/light_rays.gd" id="13_5xyti"]
 [ext_resource type="Shader" uid="uid://b124s7dln7xrl" path="res://main/main.gdshader" id="14_73k8k"]
+[ext_resource type="Script" uid="uid://d1n4u7ilx8tk8" path="res://main/cave_darkness_overlay.gd" id="15_cvdrk"]
+[ext_resource type="Shader" uid="uid://bkhwl8as43ye6" path="res://main/cave_darkness.gdshader" id="16_cvdrk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvdrk"]
+shader = ExtResource("16_cvdrk")
+shader_parameter/light_center = Vector2(576, 324)
+shader_parameter/inner_radius = 120.0
+shader_parameter/outer_radius = 340.0
+shader_parameter/dark_color = Color(0, 0, 0, 0.92)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3onaq"]
 shader = ExtResource("14_73k8k")
@@ -560,6 +569,7 @@ main_menu = NodePath("../../CanvasLayer/MainMenu")
 opening_overlay = NodePath("../../opening_overlay")
 
 [node name="hotbar_ui" parent="HUD" unique_id=385176462 instance=ExtResource("11_fwcvl")]
+z_index = 1
 
 [node name="anting_anting_found" type="Node2D" parent="HUD" unique_id=794313499]
 visible = false
@@ -594,6 +604,22 @@ offset_right = 363.0
 offset_bottom = 8.0
 scale = Vector2(15, 15)
 texture = ExtResource("12_fwcvl")
+
+[node name="CaveDarkness" type="CanvasLayer" parent="." unique_id=1884377600 node_paths=PackedStringArray("overlay_rect", "player")]
+layer = 0
+visible = false
+script = ExtResource("15_cvdrk")
+overlay_rect = NodePath("ColorRect")
+player = NodePath("../Player")
+
+[node name="ColorRect" type="ColorRect" parent="CaveDarkness" unique_id=1589077600]
+material = SubResource("ShaderMaterial_cvdrk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="CRT" type="CanvasLayer" parent="." unique_id=1884377545]
 
