@@ -27,7 +27,7 @@ signal artifact_collected
 
 signal book_found
 
-enum Map {HOUSE, OUTSIDE}
+enum Map {HOUSE, OUTSIDE, CAVE}
 
 ## Cached clock, kept in sync with whatever the day/night cycle emits via
 ## time_tick. Lets other systems (e.g. SaveManager) ask "what time is it

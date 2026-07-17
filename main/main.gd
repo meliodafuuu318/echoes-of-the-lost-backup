@@ -3,6 +3,7 @@ extends Node
 const TARGET_SCENE: Dictionary[Events.Map, String] = {
 	Events.Map.HOUSE: "uid://3s5rfvjydnns", 
 	Events.Map.OUTSIDE: "uid://c5g3ll83gblw0", 
+	Events.Map.CAVE: "uid://bpknxhu5f3i70",
 }
 const GAME_OVER = preload("uid://bfd2ikvbrexa8")
 const LOADING_SCREEN: PackedScene = preload("uid://da3fy45kwnqqm")

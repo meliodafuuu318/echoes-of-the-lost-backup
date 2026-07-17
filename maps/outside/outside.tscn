@@ -8,14 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://cvlm0l4vat8ul" path="res://maps/outside/assets/Bridges.png" id="4_kh3qa"]
 [ext_resource type="PackedScene" uid="uid://c6ruyruebjijq" path="res://objects/stone/stone.tscn" id="5_f1t0a"]
 [ext_resource type="Script" uid="uid://bfcg8k1d17qnv" path="res://maps/outside/enemy_spawner.gd" id="8_kh3qa"]
+[ext_resource type="Texture2D" uid="uid://dkwyw5jdvfuep" path="res://maps/cave/assets/cave_entrance.png" id="8_soyoe"]
 [ext_resource type="PackedScene" uid="uid://buckmemkx0asn" path="res://characters/enemies/manananggal/manananggal.tscn" id="8_y1hac"]
+[ext_resource type="PackedScene" uid="uid://bqj31sewmuvba" path="res://components/triggers/scene_transition_trigger.tscn" id="9_djl86"]
 [ext_resource type="Script" uid="uid://b75ja0ay8qcvs" path="res://maps/outside/bridge_interaction_marker.gd" id="12_m3fot"]
 [ext_resource type="PackedScene" uid="uid://bg56qrcw4qyi0" path="res://components/interactions/interactable.tscn" id="12_s076l"]
 [ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="14_soyoe"]
 [ext_resource type="Script" uid="uid://c2e6ig4ixkbs3" path="res://maps/outside/grass_spawner.gd" id="15_grass"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cabinview"]
-radius = 180.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdwuj"]
 texture = ExtResource("1_0lnqv")
@@ -412,6 +411,12 @@ physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_12tx8")
 sources/2 = SubResource("TileSetAtlasSource_s076l")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cabinview"]
+radius = 180.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sm82"]
+size = Vector2(35, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3fot"]
 size = Vector2(32, 32)
 
@@ -454,7 +459,7 @@ tile_set = SubResource("TileSet_m3fot")
 y_sort_enabled = true
 
 [node name="Tree" parent="Trees" unique_id=263276032 instance=ExtResource("3_0lnqv")]
-position = Vector2(75, 135)
+position = Vector2(60, 66)
 
 [node name="Tree4" parent="Trees" unique_id=1585964720 instance=ExtResource("3_0lnqv")]
 position = Vector2(385, 634)
@@ -529,10 +534,10 @@ position = Vector2(926, 355)
 position = Vector2(778, 485)
 
 [node name="Tree2" parent="Trees" unique_id=393214683 instance=ExtResource("3_0lnqv")]
-position = Vector2(182, 79)
+position = Vector2(193, 55)
 
 [node name="Tree3" parent="Trees" unique_id=382209589 instance=ExtResource("3_0lnqv")]
-position = Vector2(210, 141)
+position = Vector2(90, 151)
 
 [node name="Stones" type="Node2D" parent="." unique_id=798038600]
 
@@ -612,7 +617,7 @@ position = Vector2(614, 113)
 position = Vector2(793, 256)
 
 [node name="stone6" parent="Stones" unique_id=920793315 instance=ExtResource("5_f1t0a")]
-position = Vector2(136, 137)
+position = Vector2(159, 136)
 
 [node name="stone7" parent="Stones" unique_id=130830014 instance=ExtResource("5_f1t0a")]
 position = Vector2(201, 244)
@@ -631,11 +636,32 @@ position = Vector2(429, 258)
 [node name="CabinViewArea" type="Area2D" parent="Objects" unique_id=847213590]
 position = Vector2(429, 258)
 collision_layer = 0
-collision_mask = 1
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/CabinViewArea" unique_id=847213591]
 shape = SubResource("CircleShape2D_cabinview")
+
+[node name="cave" type="StaticBody2D" parent="Objects" unique_id=1358975873]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/cave" unique_id=627700640]
+position = Vector2(124, -3)
+scale = Vector2(0.3263889, 0.3263889)
+texture = ExtResource("8_soyoe")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/cave" unique_id=107930561]
+position = Vector2(125.00001, 14.000001)
+scale = Vector2(6.5, 6.5)
+polygon = PackedVector2Array(-2.7692337, 2.6153846, -2.7692337, -2.4615386, 2.6153831, -2.3076925, 2.6153831, 2.6153846, 9.384613, 2.6153846, 9.384613, 0.76923084, 3.999998, -4, -5.0769253, -4, -10.000003, 0.76923084, -10.153849, 2.6153846)
+
+[node name="SceneTransitionTrigger" parent="Objects/cave" unique_id=60058399 instance=ExtResource("9_djl86")]
+target_map = 2
+target_spawn = "EnterCaveSpawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/cave/SceneTransitionTrigger" unique_id=2121253408]
+position = Vector2(124, 15)
+shape = SubResource("RectangleShape2D_4sm82")
 
 [node name="Spawns" type="Node2D" parent="." unique_id=597417931]
 
@@ -647,6 +673,9 @@ position = Vector2(213, 374)
 
 [node name="BossSpawn" type="Marker2D" parent="Spawns" unique_id=1646863804]
 position = Vector2(875, 1234)
+
+[node name="ExitCaveSpawn" type="Marker2D" parent="Spawns" unique_id=1627638447]
+position = Vector2(125, 39)
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=806440033 node_paths=PackedStringArray("tilemap_layer")]
 script = ExtResource("8_kh3qa")

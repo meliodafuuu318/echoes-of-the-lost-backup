@@ -12,6 +12,8 @@ radius = 23.0
 script = ExtResource("1_uiwvh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1139932497]
+position = Vector2(-2.3841858e-07, 0.5)
+scale = Vector2(0.8125, 0.96875)
 texture = ExtResource("1_c3c6b")
 
 [node name="Interactable" parent="." unique_id=808461377 node_paths=PackedStringArray("interact_label") instance=ExtResource("3_uiwvh")]
