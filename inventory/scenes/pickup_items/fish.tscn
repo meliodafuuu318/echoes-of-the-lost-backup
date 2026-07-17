@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://nhifma7xjkqp"]
+
+[ext_resource type="Script" uid="uid://dads21wuk0x0g" path="res://inventory/item_scripts/fish.gd" id="1_axvc4"]
+[ext_resource type="Texture2D" uid="uid://bhpoclvynkaia" path="res://inventory/assets/items/fish.png" id="1_q4ysj"]
+[ext_resource type="Resource" uid="uid://dq8rr5mkrfw7l" path="res://inventory/resources/inventory_items/fish.tres" id="2_5y1lk"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="2_21ep8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 16.0
+
+[node name="fish" type="Area2D" unique_id=1016754833]
+position = Vector2(0, -16)
+script = ExtResource("1_axvc4")
+item = ExtResource("2_5y1lk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=611316851]
+texture = ExtResource("1_q4ysj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2007662968]
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_21ep8")]
+position = Vector2(0, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

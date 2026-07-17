@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b5g5pliddihqp"]
+
+[ext_resource type="Texture2D" uid="uid://dibheqs6tpemb" path="res://inventory/assets/items/honey.png" id="1_lnsb0"]
+[ext_resource type="Script" uid="uid://h40e51lb07mr" path="res://inventory/item_scripts/honey.gd" id="1_yq7e7"]
+[ext_resource type="Resource" uid="uid://cea1bjctvfqwo" path="res://inventory/resources/inventory_items/honey.tres" id="2_iu24b"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="2_yq7e7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 15.033297
+
+[node name="honey" type="Area2D" unique_id=603628447]
+position = Vector2(0, -15)
+script = ExtResource("1_yq7e7")
+item = ExtResource("2_iu24b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053753293]
+texture = ExtResource("1_lnsb0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=439274742]
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_yq7e7")]
+position = Vector2(0, 15)

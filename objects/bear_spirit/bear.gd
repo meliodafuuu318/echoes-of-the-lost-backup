@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 @onready var interactable: Interactable = $Interactable
 

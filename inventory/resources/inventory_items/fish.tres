@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" format=3 uid="uid://dq8rr5mkrfw7l"]
+
+[ext_resource type="Script" uid="uid://bwncfogr4i5ed" path="res://inventory/resource_scripts/consumable_inv_item.gd" id="1_2tcak"]
+[ext_resource type="Texture2D" uid="uid://bhpoclvynkaia" path="res://inventory/assets/items/fish.png" id="2_p2pex"]
+
+[resource]
+script = ExtResource("1_2tcak")
+heal_amount = -1
+id = "2"
+name = "Fish"
+texture = ExtResource("2_p2pex")
+max_stack = 64
+description = "A freshly caught fish with firm, flaky flesh. A reliable source of nourishment once properly cooked. Eating it raw is unsafe and may leave you feeling far worse than hungry."
+metadata/_custom_type_script = "uid://bwncfogr4i5ed"

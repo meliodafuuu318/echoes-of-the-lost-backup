@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" format=3 uid="uid://cea1bjctvfqwo"]
+
+[ext_resource type="Script" uid="uid://bwncfogr4i5ed" path="res://inventory/resource_scripts/consumable_inv_item.gd" id="1_fhism"]
+[ext_resource type="Texture2D" uid="uid://dibheqs6tpemb" path="res://inventory/assets/items/honey.png" id="2_r4uum"]
+
+[resource]
+script = ExtResource("1_fhism")
+heal_amount = 3
+id = "9"
+name = "Honey"
+texture = ExtResource("2_r4uum")
+max_stack = 64
+description = "Golden honey gathered from a wild hive using a sturdy wooden bowl. Sweet, nourishing, and exceedingly rare. Many spirits are said to favor its rich aroma, making it a highly valued offering."
+metadata/_custom_type_script = "uid://bwncfogr4i5ed"

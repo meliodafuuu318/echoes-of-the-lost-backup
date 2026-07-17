@@ -142,7 +142,7 @@ animations = [{
 radius = 31.0
 height = 116.0
 
-[node name="bear" type="StaticBody2D" unique_id=1218871824]
+[node name="bear" type="CharacterBody2D" unique_id=485008546]
 z_index = -1
 script = ExtResource("1_p880v")
 

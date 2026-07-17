@@ -55,7 +55,10 @@ directories/dtl_directory={
 layout/style_directory={}
 variables={
 "BearSpirit": {
-"introduced": false
+"introduced": false,
+"player_has_fish": false,
+"player_has_honey": false,
+"traded_today": false
 },
 "Bridge": {
 "HasHammer": false,

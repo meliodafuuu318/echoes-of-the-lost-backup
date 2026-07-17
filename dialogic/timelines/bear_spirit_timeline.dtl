@@ -1,11 +1,26 @@
-if {BearSpirit.introduced} != true:
-	bear_spirit: Ah... a visitor. It has been some time since footsteps found their way this deep.
-	bear_spirit: I was not always still like this. I was a bear once — flesh, fur, hunger, the whole clumsy business of living.
-	bear_spirit: Now I am only the shape of one, kept here by whatever this shrine remembers of me.
-	bear_spirit: I do not ask for much. An offering, freely given, is worth more than anything taken.
-	bear_spirit: Leave what you can spare, and I will see that you leave with something worth the trade — an old habit of mine, from when debts still meant something out there in the light.
-	bear_spirit: Sit with me a while if you like. I don't move much these days, but I'm told I make good company. Better than the dark, at least.
-	bear_spirit: Now then — what have you brought me?
+if {BearSpirit.traded_today} != true:
+	if {BearSpirit.introduced} != true:
+		bear_spirit: Ah... a visitor. It has been some time since footsteps found their way this deep.
+		bear_spirit: I was not always still like this. I was a bear once — flesh, fur, hunger, the whole clumsy business of living.
+		bear_spirit: Now I am only the shape of one, kept here by whatever this shrine remembers of me.
+		bear_spirit: I do not ask for much. An offering, freely given, is worth more than anything taken.
+		bear_spirit: Leave what you can spare, and I will see that you leave with something worth the trade — an old habit of mine, from when debts still meant something out there in the light.
+		bear_spirit: Sit with me a while if you like. I don't move much these days, but I'm told I make good company. Better than the dark, at least.
+		bear_spirit: Now then — what have you brought me?
+		- Give Fish
+			if {BearSpirit.player_has_fish} == true:
+			else:
+		- Give Honey
+			if {BearSpirit.player_has_honey} == true:
+			else:
+	else:
+		bear_spirit: Ah... It's you again,
+		bear_spirit: What have you brought for me this time?
+	- Give Fish
+		if {BearSpirit.player_has_fish} == true:
+		else:
+	- Give Honey
+		if {BearSpirit.player_has_honey} == true:
+		else:
 else:
-	bear_spirit: Ah... It's you again,
-	bear_spirit: What have you brought for me this time?
+	bear_spirit: I'm already satisfied with your gift today. Come back again tomorrow.
