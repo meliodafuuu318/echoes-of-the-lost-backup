@@ -6,7 +6,7 @@ extends StaticBody2D
 
 func _ready() -> void:
 	if GameManager.book_found:
-		book.hide()
+		book.queue_free()
 	interactable.interact = _on_interact
 	
 	
