@@ -251,6 +251,7 @@ func _serialize_game_manager() -> Dictionary:
 		"cabin_found": GameManager.cabin_found,
 		"book_found": GameManager.book_found,
 		"cabin_entered": GameManager.cabin_entered,
+		"bear_introduced": GameManager.bear_introduced,
 		"grass_patch_seed": GameManager.grass_patch_seed,
 		# The generic per-node data dict. Only JSON-safe values (bool, int,
 		# float, String, Array, Dictionary) are safe in here — if any node
@@ -295,6 +296,7 @@ func _deserialize_game_manager(d: Dictionary) -> void:
 	GameManager.cabin_found = d.get("cabin_found", false)
 	GameManager.book_found = d.get("book_found", false)
 	GameManager.cabin_entered = d.get("cabin_entered", false)
+	GameManager.bear_introduced = d.get("bear_introduced", false)
 
 	GameManager.grass_patch_seed = d.get("grass_patch_seed", 0)
 

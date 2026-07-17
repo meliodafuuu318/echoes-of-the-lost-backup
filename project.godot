@@ -38,9 +38,11 @@ SaveManager="*uid://bewrxl1sxi7av"
 [dialogic]
 
 directories/dch_directory={
+"bear_spirit": "res://dialogic/bear_spirit.dch",
 "player_character": "res://characters/player/player_character.dch"
 }
 directories/dtl_directory={
+"bear_spirit_timeline": "res://dialogic/timelines/bear_spirit_timeline.dtl",
 "book_found_timeline": "res://dialogic/timelines/book_found_timeline.dtl",
 "bridge_timeline": "res://dialogic/timelines/bridge_timeline.dtl",
 "cabin_discovered_timeline": "res://dialogic/timelines/cabin_discovered_timeline.dtl",
@@ -52,6 +54,9 @@ directories/dtl_directory={
 }
 layout/style_directory={}
 variables={
+"BearSpirit": {
+"introduced": false
+},
 "Bridge": {
 "HasHammer": false,
 "LogsRequired": ""

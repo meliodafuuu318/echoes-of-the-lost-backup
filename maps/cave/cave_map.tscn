@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cm2yrpnn21t5y" path="res://maps/cave/assets/cave_tileset.png" id="1_x3hk1"]
 [ext_resource type="PackedScene" uid="uid://bqj31sewmuvba" path="res://components/triggers/scene_transition_trigger.tscn" id="2_lt1wi"]
+[ext_resource type="PackedScene" uid="uid://cqt0y83etj0t3" path="res://objects/bear_spirit/bear.tscn" id="3_maagw"]
+[ext_resource type="PackedScene" uid="uid://bg56qrcw4qyi0" path="res://components/interactions/interactable.tscn" id="4_15h1k"]
+[ext_resource type="FontFile" uid="uid://tig3jhgl6ohj" path="res://day_night/fonts/pixelmix.ttf" id="5_40itj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ar51l"]
 texture = ExtResource("1_x3hk1")
@@ -252,6 +255,9 @@ texture = ExtResource("1_x3hk1")
 [sub_resource type="TileSet" id="TileSet_dutb6"]
 sources/0 = SubResource("TileSetAtlasSource_maagw")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 96.0833
+
 [node name="cave_map" type="Node2D" unique_id=1581424729]
 position = Vector2(256, 224)
 
@@ -295,7 +301,7 @@ build_mode = 1
 polygon = PackedVector2Array(-96, 112, -96, 125, -32, 125, -32, 112)
 
 [node name="Shrine" type="CollisionPolygon2D" parent="CaveWalls" unique_id=1166713900]
-position = Vector2(-24, -144)
+position = Vector2(-25, -178)
 scale = Vector2(3, 3)
 polygon = PackedVector2Array(-8, -4.333334, 8, -4.333334, 8, 4.666666, -8, 4.666666)
 
@@ -316,5 +322,30 @@ position = Vector2(-8, 198)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="shrine" unique_id=829027187]
 z_index = -1
-tile_map_data = PackedByteArray("AAD+//b/AAACAAUAAAD///b/AAACAAUAAAD///f/AAACAAUAAAD+//f/AAACAAUAAAD9//b/AAACAAUAAAD9//f/AAACAAUAAAADAPT/AAABAAUAAAADAPn/AAABAAUAAAD+//n/AAABAAUAAAD+//T/AAABAAUAAAD5//T/AAABAAUAAAD5//n/AAABAAUAAAA=")
+tile_map_data = PackedByteArray("AAADAPT/AAABAAUAAAADAPn/AAABAAUAAAD+//n/AAABAAUAAAD+//T/AAACAAUAAAD5//T/AAABAAUAAAD5//n/AAABAAUAAAD9//T/AAACAAUAAAD9//X/AAACAAUAAAD+//X/AAACAAUAAAD///X/AAACAAUAAAD///T/AAACAAUAAAA=")
 tile_set = SubResource("TileSet_dutb6")
+
+[node name="bear" parent="shrine" unique_id=1218871824 instance=ExtResource("3_maagw")]
+position = Vector2(-25, -195)
+scale = Vector2(0.5, 0.5)
+
+[node name="Interactable" parent="shrine/bear" unique_id=808461377 node_paths=PackedStringArray("interact_label") instance=ExtResource("4_15h1k")]
+interact_label = NodePath("Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shrine/bear/Interactable" unique_id=1990390163]
+position = Vector2(0, 32)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Label" type="Label" parent="shrine/bear/Interactable" unique_id=856298312]
+offset_left = -55.999996
+offset_top = -34.0
+offset_right = 204.60608
+offset_bottom = 29.000008
+scale = Vector2(0.45, 0.45)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_40itj")
+theme_override_font_sizes/font_size = 30
+text = "Press [E} to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
