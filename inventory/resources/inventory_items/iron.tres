@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MaterialItem" format=3 uid="uid://dxr1e282jpluw"]
+
+[ext_resource type="Script" uid="uid://bt73fxi71tjnc" path="res://inventory/resource_scripts/material_inv_item.gd" id="1_2hwcy"]
+[ext_resource type="Texture2D" uid="uid://df2mx7okkrgba" path="res://inventory/assets/items/iron.png" id="2_w5gtl"]
+
+[resource]
+script = ExtResource("1_2hwcy")
+id = "10"
+name = "Iron"
+texture = ExtResource("2_w5gtl")
+max_stack = 64
+description = "A sturdy piece of refined iron, prized for its exceptional quality. Obtaining one is no simple task, as only the Bear Spirit is willing to part with it—and even then, only on rare occasions. An indispensable material for crafting powerful tools and weapons."
+item_type = 2
+metadata/_custom_type_script = "uid://bt73fxi71tjnc"

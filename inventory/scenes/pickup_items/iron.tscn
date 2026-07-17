@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dkw775heecpvc"]
+
+[ext_resource type="Texture2D" uid="uid://df2mx7okkrgba" path="res://inventory/assets/items/iron.png" id="1_2sohn"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="2_ninhv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 12.0415945
+
+[node name="iron" type="Area2D" unique_id=1848461341]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=443397562]
+position = Vector2(0, -10)
+texture = ExtResource("1_2sohn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1770472027]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_ninhv")]
