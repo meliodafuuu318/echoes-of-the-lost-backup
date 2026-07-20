@@ -455,6 +455,20 @@ tile_map_data = PackedByteArray("AAAeADkAAQAOABUAAAAfADkAAQAPABUAAAAeAEQAAQAOABw
 enabled = false
 tile_set = SubResource("TileSet_m3fot")
 
+[node name="Off-Island Trees" type="Node2D" parent="." unique_id=1791479254]
+
+[node name="Tree11" parent="Off-Island Trees" unique_id=430900774 instance=ExtResource("3_0lnqv")]
+position = Vector2(1251, 1108)
+
+[node name="Tree12" parent="Off-Island Trees" unique_id=1831821941 instance=ExtResource("3_0lnqv")]
+position = Vector2(183, 1248)
+
+[node name="Tree13" parent="Off-Island Trees" unique_id=1956927583 instance=ExtResource("3_0lnqv")]
+position = Vector2(380, 1303)
+
+[node name="Tree14" parent="Off-Island Trees" unique_id=1943693933 instance=ExtResource("3_0lnqv")]
+position = Vector2(1041, 1241)
+
 [node name="Trees" type="Node2D" parent="." unique_id=1755935009]
 y_sort_enabled = true
 
@@ -483,18 +497,6 @@ position = Vector2(1163, 383)
 
 [node name="Tree10" parent="Trees" unique_id=946549348 instance=ExtResource("3_0lnqv")]
 position = Vector2(1118, 212)
-
-[node name="Tree11" parent="Trees" unique_id=430900774 instance=ExtResource("3_0lnqv")]
-position = Vector2(1251, 1108)
-
-[node name="Tree12" parent="Trees" unique_id=1831821941 instance=ExtResource("3_0lnqv")]
-position = Vector2(183, 1248)
-
-[node name="Tree13" parent="Trees" unique_id=1956927583 instance=ExtResource("3_0lnqv")]
-position = Vector2(380, 1303)
-
-[node name="Tree14" parent="Trees" unique_id=1943693933 instance=ExtResource("3_0lnqv")]
-position = Vector2(1041, 1241)
 
 [node name="Tree15" parent="Trees" unique_id=1061046684 instance=ExtResource("3_0lnqv")]
 position = Vector2(327, 653)
