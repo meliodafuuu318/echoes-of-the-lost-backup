@@ -28,6 +28,6 @@ func reset_display() -> void:
 
 
 func _update_stats(monster: Monster) -> void:
-	var stats_text := "HP: %d   ATK: %d" % [monster.max_health, monster.attack_damage]
+	var stats_text := "HP: %d   ATK: %.1f" % [monster.max_health, monster.attack_damage]
 	monster_stats.text = stats_text
 	monster_stats.visible = true

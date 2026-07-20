@@ -466,6 +466,7 @@ position = Vector2(385, 634)
 
 [node name="Tree5" parent="Trees" unique_id=1877594081 instance=ExtResource("3_0lnqv")]
 position = Vector2(749, 178)
+is_honey_tree = true
 
 [node name="Tree6" parent="Trees" unique_id=1783475956 instance=ExtResource("3_0lnqv")]
 position = Vector2(987, 626)
@@ -475,6 +476,7 @@ position = Vector2(1112, 681)
 
 [node name="Tree8" parent="Trees" unique_id=1238285245 instance=ExtResource("3_0lnqv")]
 position = Vector2(619, 734)
+is_honey_tree = true
 
 [node name="Tree9" parent="Trees" unique_id=1819729673 instance=ExtResource("3_0lnqv")]
 position = Vector2(1163, 383)

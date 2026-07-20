@@ -7,6 +7,19 @@ extends StaticBody2D
 @export var apple_scene: PackedScene = preload("res://inventory/scenes/pickup_items/apple.tscn")
 @export var spawn_radius: float = 50.0
 
+@export_group("Honey Tree")
+## If true, this tree gives honey instead of apples when collected, and
+## a swarm of bees bursts out to defend it. Only a couple of trees in the
+## whole map should have this on.
+@export var is_honey_tree: bool = false
+@export var bee_scene: PackedScene = preload("res://characters/enemies/bee/bee.tscn")
+@export var bee_count: int = 3
+@export var bee_spawn_radius: float = 20.0
+
+const APPLE_ITEM_PATH := "res://inventory/resources/inventory_items/apple.tres"
+const HONEY_ITEM_PATH := "res://inventory/resources/inventory_items/honey.tres"
+const PLAYER_INV_PATH := "res://inventory/resources/player_inv.tres"
+
 var has_died: bool = false
 var _hovered: bool = false
 var spawned_drops: Array = []
@@ -123,16 +136,17 @@ func _try_collect() -> void:
 		Dialogic.start("item_collect_timeline")
 		return
 	
-	var _item: InvItem = load("res://inventory/resources/inventory_items/apple.tres")
-	var _inv: Inventory = load("res://inventory/resources/player_inv.tres")
+	var item_path := HONEY_ITEM_PATH if is_honey_tree else APPLE_ITEM_PATH
+	var _item: InvItem = load(item_path)
+	var _inv: Inventory = load(PLAYER_INV_PATH)
 	
 	if _item == null or _inv == null:
-		push_warning("apple: missing item or inventory resource.")
+		push_warning("tree: missing item or inventory resource.")
 		Dialogic.VAR.set_variable("Item.already_collected", true)
 		Dialogic.start("item_collect_timeline")
 		return
 	
-	var collected_amount = randi_range(2, 4)
+	var collected_amount = randi_range(1, 2) if is_honey_tree else randi_range(2, 4)
 	
 	Dialogic.VAR.set_variable("Item.already_collected", false)
 	Dialogic.VAR.set_variable("Item.name", _item.name)
@@ -140,10 +154,34 @@ func _try_collect() -> void:
 	
 	GameManager.store_data_value(get_path(), "last_collection_day", current_day)
 	_inv.insert(_item, collected_amount)
-	print("🍎 Collected %d apples! Come back tomorrow for more." % collected_amount)
-	DailyTaskManager.update_task_progress("1", collected_amount)
+	
+	if is_honey_tree:
+		print("🍯 Collected %d honey! The hive is not going to let that slide." % collected_amount)
+		_spawn_bees()
+	else:
+		print("🍎 Collected %d apples! Come back tomorrow for more." % collected_amount)
+		DailyTaskManager.update_task_progress("1", collected_amount)
 	
 	Dialogic.start("item_collect_timeline")
+
+
+## Bursts 3 (by default) bees out of the tree to defend the hive. They
+## spawn close enough to the player -- who has to be standing right next to
+## the tree to have clicked it -- that they pick up the chase on their own
+## via the normal Wander -> Follow detection, no forced state needed. Each
+## one is told to treat the tree itself as "home" so they all converge back
+## on it once they give up the chase (see Bee.despawn_delay).
+func _spawn_bees() -> void:
+	if bee_scene == null:
+		return
+
+	for i in range(bee_count):
+		var bee: Bee = bee_scene.instantiate()
+		var angle := randf() * TAU
+		var distance := randf_range(4.0, bee_spawn_radius)
+		bee.global_position = global_position + Vector2(cos(angle), sin(angle)) * distance
+		bee.home_position = global_position
+		get_parent().call_deferred("add_child", bee)
 	
 func _on_mouse_entered() -> void:
 	_hovered = true
