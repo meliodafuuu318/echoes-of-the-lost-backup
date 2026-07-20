@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://qa7lmujnhp8h" path="res://monsters/monster.gd" id="2_nlgsv"]
 [ext_resource type="Resource" uid="uid://dya7ge0cpx6fj" path="res://monsters/resources/manananggal.tres" id="3_k8yxh"]
 [ext_resource type="Resource" uid="uid://bg76y623874po" path="res://monsters/resources/boss.tres" id="4_k8yxh"]
+[ext_resource type="Resource" uid="uid://bsjpustt2xlds" path="res://monsters/resources/bee.tres" id="5_55a20"]
 
 [node name="MonsterManager" type="Node" unique_id=2029985088]
 script = ExtResource("1_702tl")
-monsters = Array[ExtResource("2_nlgsv")]([ExtResource("3_k8yxh"), ExtResource("4_k8yxh")])
+monsters = Array[ExtResource("2_nlgsv")]([ExtResource("3_k8yxh"), ExtResource("4_k8yxh"), ExtResource("5_55a20")])

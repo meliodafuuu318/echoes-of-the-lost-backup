@@ -22,6 +22,15 @@ class_name AutoShadow2D
 @export_range(0.05, 1.0, 0.01) var height_ratio: float = 0.3
 ## Optional texture to use instead of the procedural ellipse (e.g. a soft blob PNG).
 @export var shadow_texture: Texture2D
+## Manual override for the sprite's "drawn size" (in pixels) used for sizing.
+## Auto-detection reads the sprite sheet's frame CELL size (texture size /
+## hframes / vframes), which only matches the actual art when each frame is
+## tightly cropped. If a frame has a lot of empty padding around a small
+## sprite (e.g. a bee centered in a large 64x64 cell), the cell is way
+## bigger than what's actually drawn and the shadow balloons to match.
+## Set this to the sprite's real on-screen footprint to bypass that
+## auto-detection. Leave at (0, 0) to keep using the frame/region size.
+@export var size_override: Vector2 = Vector2.ZERO
 
 @export_group("Look")
 @export var shadow_color: Color = Color(0, 0, 0, 0.45)
@@ -102,13 +111,18 @@ func _get_drawn_frame_info() -> Dictionary:
 
 
 func _update_shadow() -> void:
-	var info := _get_drawn_frame_info()
-	if info.is_empty():
-		visible = false
-		return
-	visible = true
+	var drawn_size: Vector2
 
-	var drawn_size: Vector2 = info["size"]
+	if size_override != Vector2.ZERO:
+		drawn_size = size_override
+		visible = true
+	else:
+		var info := _get_drawn_frame_info()
+		if info.is_empty():
+			visible = false
+			return
+		visible = true
+		drawn_size = info["size"]
 
 	# Position is fixed at the parent's local (0, 0), plus any manual tweak.
 	# Adjust your sprite/object's own placement so its origin lines up with
