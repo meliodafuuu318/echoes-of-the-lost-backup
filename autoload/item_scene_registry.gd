@@ -8,7 +8,8 @@ const PICKUP_SCENES: Dictionary = {
 	"6": preload("res://inventory/scenes/pickup_items/sword.tscn"),
 	"7": preload("res://inventory/scenes/pickup_items/stone.tscn"),
 	"8": preload("res://inventory/scenes/pickup_items/hammer.tscn"),
-	"9": preload("res://inventory/scenes/pickup_items/honey.tscn")
+	"9": preload("res://inventory/scenes/pickup_items/honey.tscn"),
+	"10": preload("res://inventory/scenes/pickup_items/iron.tscn"),
 }
 
 func get_scene(item: InvItem) -> PackedScene:

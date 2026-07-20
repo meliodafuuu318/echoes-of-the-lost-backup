@@ -9,9 +9,6 @@ class_name ConsumableItem
 
 func use(player: Node) -> bool:
 	print("ConsumableItem.use() called — heal_amount: ", heal_amount, " player: ", player)
-	if heal_amount <= 0:
-		push_warning("ConsumableItem: heal_amount is 0 or less, item won't do anything")
-		return false
 	if not player.has_method("heal"):
 		push_warning("ConsumableItem: player has no heal() method")
 		return false

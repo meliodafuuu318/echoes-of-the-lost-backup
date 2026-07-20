@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://dkw775heecpvc"]
 
 [ext_resource type="Texture2D" uid="uid://df2mx7okkrgba" path="res://inventory/assets/items/iron.png" id="1_2sohn"]
+[ext_resource type="Script" uid="uid://dt3j4r66dhnfg" path="res://inventory/item_scripts/iron.gd" id="1_f2iv1"]
+[ext_resource type="Resource" uid="uid://dxr1e282jpluw" path="res://inventory/resources/inventory_items/iron.tres" id="2_1tohb"]
 [ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="2_ninhv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
 radius = 12.0415945
 
 [node name="iron" type="Area2D" unique_id=1848461341]
+script = ExtResource("1_f2iv1")
+item = ExtResource("2_1tohb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=443397562]
 position = Vector2(0, -10)
@@ -17,3 +21,5 @@ position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_dutb6")
 
 [node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_ninhv")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
