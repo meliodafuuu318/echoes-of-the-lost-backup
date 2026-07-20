@@ -58,6 +58,7 @@ variables={
 "introduced": false,
 "player_has_fish": false,
 "player_has_honey": false,
+"reward_item": "",
 "traded_today": false
 },
 "Bridge": {

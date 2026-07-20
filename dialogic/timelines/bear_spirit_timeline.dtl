@@ -9,18 +9,59 @@ if {BearSpirit.traded_today} != true:
 		bear_spirit: Now then — what have you brought me?
 		- Give Fish
 			if {BearSpirit.player_has_fish} == true:
+				[signal arg="give_fish"]
+				if {BearSpirit.reward_item} != "":
+					bear_spirit: A fine offering. Here — take this.
+					bear_spirit: You received {BearSpirit.reward_item}.
+					[end_timeline]
+				else:
+					bear_spirit: I've already accepted your gift for today. Come back tomorrow.
+					[end_timeline]
 			else:
+				bear_spirit: You don't seem to be carrying any fish.
+				[end_timeline]
 		- Give Honey
 			if {BearSpirit.player_has_honey} == true:
+				[signal arg="give_honey"]
+				if {BearSpirit.reward_item} != "":
+					bear_spirit: Honey... a rare gift indeed. Take this in return.
+					bear_spirit: You received {BearSpirit.reward_item}.
+					[end_timeline]
+				else:
+					bear_spirit: I've already accepted your gift for today. Come back tomorrow.
+					[end_timeline]
 			else:
+				bear_spirit: You don't seem to be carrying any honey.
+				[end_timeline]
 	else:
 		bear_spirit: Ah... It's you again,
 		bear_spirit: What have you brought for me this time?
 	- Give Fish
 		if {BearSpirit.player_has_fish} == true:
+			[signal arg="give_fish"]
+			if {BearSpirit.reward_item} != "":
+				bear_spirit: A fine offering. Here — take this.
+				bear_spirit: You received {BearSpirit.reward_item}.
+				[end_timeline]
+			else:
+				bear_spirit: I've already accepted your gift for today. Come back tomorrow.
+				[end_timeline]
 		else:
+			bear_spirit: You don't seem to be carrying any fish.
+			[end_timeline]
 	- Give Honey
 		if {BearSpirit.player_has_honey} == true:
+			[signal arg="give_honey"]
+			if {BearSpirit.reward_item} != "":
+				bear_spirit: Honey... a rare gift indeed. Take this in return.
+				bear_spirit: You received {BearSpirit.reward_item}.
+				[end_timeline]
+			else:
+				bear_spirit: I've already accepted your gift for today. Come back tomorrow.
+				[end_timeline]
 		else:
+			bear_spirit: You don't seem to be carrying any honey.
+			[end_timeline]
 else:
 	bear_spirit: I'm already satisfied with your gift today. Come back again tomorrow.
+	[end_timeline]
