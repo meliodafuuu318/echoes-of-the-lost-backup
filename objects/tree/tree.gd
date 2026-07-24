@@ -7,6 +7,8 @@ extends StaticBody2D
 @export var apple_scene: PackedScene = preload("res://inventory/scenes/pickup_items/apple.tscn")
 @export var spawn_radius: float = 50.0
 
+@export var growth_stage: int = 3
+
 @export_group("Honey Tree")
 ## If true, this tree gives honey instead of apples when collected, and
 ## a swarm of bees bursts out to defend it. Only a couple of trees in the
@@ -19,6 +21,11 @@ extends StaticBody2D
 const APPLE_ITEM_PATH := "res://inventory/resources/inventory_items/apple.tres"
 const HONEY_ITEM_PATH := "res://inventory/resources/inventory_items/honey.tres"
 const PLAYER_INV_PATH := "res://inventory/resources/player_inv.tres"
+
+const STAGE_0 = preload("uid://xm8w1p8mmjly")
+const STAGE_1 = preload("uid://gaep3va887hq")
+const STAGE_2 = preload("uid://bebirijxy1xsf")
+const TREE = preload("uid://bgwep03ls5j3a")
 
 var has_died: bool = false
 var _hovered: bool = false
@@ -51,11 +58,13 @@ func _ready() -> void:
 	health_component.died.connect(_on_died)
 	Events.time_tick.connect(_on_time_tick)
 	
+	update_sprite()
+	
 	var value = GameManager.get_data_entry(get_path())
 	if not value:
 		sprite_2d.frame = randi_range(0, 1)
 		return
-	
+		
 	health_component.health = value["hp"]
 	var pos_arr: Array = value["pos"]
 	global_position = Vector2(pos_arr[0], pos_arr[1])
@@ -214,3 +223,16 @@ func _spawn_drop(item_scene: PackedScene, drop: Dictionary) -> void:
 	drop_instance.set_meta("tree_save_path", get_path())
 	drop_instance.set_meta("drop_id", drop["id"])
 	get_parent().call_deferred("add_child", drop_instance)
+
+
+func update_sprite():
+	sprite_2d.hframes = 1
+	if growth_stage == 3:
+		sprite_2d.texture = TREE
+		sprite_2d.hframes = 2
+	elif growth_stage == 2:
+		sprite_2d.texture = STAGE_2
+	elif growth_stage == 1:
+		sprite_2d.texture = STAGE_1
+	elif growth_stage == 0:
+		sprite_2d.texture = STAGE_0
