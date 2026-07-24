@@ -58,7 +58,7 @@ func _ready() -> void:
 		_shadow_sprite.centered = true
 		add_child(_shadow_sprite)
 	
-	if not get_tree().get_first_node_in_group("player"):
+	if not (get_parent() is Player):
 		_connect_target_signals()
 	_update_shadow()
 

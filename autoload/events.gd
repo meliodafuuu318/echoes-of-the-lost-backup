@@ -27,6 +27,11 @@ signal artifact_collected
 
 signal book_found
 
+## Emitted by Tree._on_died() when a honey tree is felled, so whatever owns
+## the map's tree list (TreesContainer) can mark a replacement among the
+## remaining on-island trees and keep exactly 2 honey trees active.
+signal honey_tree_died(tree: Node)
+
 enum Map {HOUSE, OUTSIDE, CAVE}
 
 ## Cached clock, kept in sync with whatever the day/night cycle emits via

@@ -2,8 +2,6 @@ extends InvItem
 
 class_name ConsumableItem
 
-const OUTSIDE = preload("uid://c5g3ll83gblw0")
-
 @export var is_sapling: bool
 
 @export_group("Heal")

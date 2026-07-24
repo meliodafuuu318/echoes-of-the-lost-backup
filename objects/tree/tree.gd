@@ -5,7 +5,23 @@ extends StaticBody2D
 
 @export var log_scene: PackedScene = preload("res://inventory/scenes/pickup_items/log.tscn")
 @export var apple_scene: PackedScene = preload("res://inventory/scenes/pickup_items/apple.tscn")
+## Path assumed from the log/apple pickup scenes' naming convention -- update
+## this if the actual sapling world-pickup scene lives somewhere else.
+@export var sapling_scene: PackedScene = preload("res://inventory/scenes/pickup_items/sapling.tscn")
 @export var spawn_radius: float = 50.0
+
+@export_group("Sapling Drop Odds")
+## Chance (out of 1.0) that a felled tree drops 2 saplings.
+@export var sapling_double_drop_chance: float = 0.15
+## Chance (out of 1.0) that a felled tree drops 1 sapling (rolled after the
+## double-drop chance, so total sapling-drop odds are double + single).
+@export var sapling_single_drop_chance: float = 0.30
+
+@export_group("Early Stage Look")
+## Tint applied to the sapling/young-tree sprites (stages 0-2) so their
+## brighter source art matches the fully-grown tree's darker, desaturated
+## palette. Stage 3 always renders at Color.WHITE (its native colors).
+@export var early_stage_modulate: Color = Color(0.43, 0.44, 0.64)
 
 @export var growth_stage: int = 3
 ## How many in-game days a freshly planted sapling spends at each stage
@@ -31,6 +47,18 @@ const STAGE_0 = preload("uid://xm8w1p8mmjly")
 const STAGE_1 = preload("uid://gaep3va887hq")
 const STAGE_2 = preload("uid://bebirijxy1xsf")
 const TREE = preload("uid://bgwep03ls5j3a")
+
+## Sprite2D Y offsets, one per growth stage. The scene's baseline (-39) is
+## calibrated for the full-grown TREE texture (90px tall); the sapling stage
+## textures are much shorter, so using that same offset for them makes the
+## sprite float well above the ground instead of sitting at the tree's actual
+## root point. These were computed from each stage image's own visual
+## content bounds so its base lands on the same ground line as the grown
+## tree's base does.
+const TREE_OFFSET_Y := -39.0
+const STAGE_2_OFFSET_Y := -17.0
+const STAGE_1_OFFSET_Y := -7.0
+const STAGE_0_OFFSET_Y := -1.0
 
 var has_died: bool = false
 var _hovered: bool = false
@@ -69,23 +97,31 @@ func _ready() -> void:
 	health_component.died.connect(_on_died)
 	Events.time_tick.connect(_on_time_tick)
 	
+	var value = GameManager.get_data_entry(get_path())
+	
+	# Restore growth_stage (and catch it up to the current day) BEFORE the
+	# sprite is built, so sprite_2d.hframes already matches this tree's real
+	# stage by the time sprite_2d.frame is touched below. Previously this ran
+	# *after* the frame restore, so a stage-0/1/2 tree (1 hframe) could still
+	# be sitting at the previous call's hframes == 2 when frame got set --
+	# and the no-save-data branch below always rolled randi_range(0, 1)
+	# regardless of stage, a coin flip to crash on any freshly-planted or
+	# freshly-loaded sapling (frame 1 is out of bounds when hframes == 1).
+	if value.has("growth_stage"):
+		growth_stage = value["growth_stage"]
+		planted_day = value.get("planted_day", -1)
+		_advance_growth(GameManager.day)  # catch up on any days that passed while this tree wasn't loaded
+	
 	update_sprite()
 	
-	var value = GameManager.get_data_entry(get_path())
 	if not value:
-		sprite_2d.frame = randi_range(0, 1)
+		sprite_2d.frame = randi_range(0, sprite_2d.hframes * sprite_2d.vframes - 1)
 		return
 		
 	health_component.health = value["hp"]
 	var pos_arr: Array = value["pos"]
 	global_position = Vector2(pos_arr[0], pos_arr[1])
-	sprite_2d.frame = value["frame"]
-	
-	if value.has("growth_stage"):
-		growth_stage = value["growth_stage"]
-		planted_day = value.get("planted_day", -1)
-		_advance_growth(GameManager.day)  # catch up on any days that passed while this tree wasn't loaded
-		update_sprite()
+	sprite_2d.frame = clampi(value["frame"], 0, sprite_2d.hframes * sprite_2d.vframes - 1)
 	
 	if value.has("dead") and value["dead"]:
 		has_died = true
@@ -129,11 +165,23 @@ func _on_died() -> void:
 	has_died = true
 	spawned_drops = []
 	
+	if is_honey_tree:
+		# Let TreesContainer know a honey tree just went down so it can mark
+		# a replacement among the remaining on-island trees.
+		Events.honey_tree_died.emit(self)
+	
 	var log_count = randi_range(1, 3)
 	
 	var last_collection_day = GameManager.get_data_value(get_path(), "last_collection_day")
 	var should_spawn_apples = last_collection_day != current_day
 	var apple_count = randi_range(3,4) if should_spawn_apples else 0
+	
+	var sapling_roll = randf()
+	var sapling_count = 0
+	if sapling_roll < sapling_double_drop_chance:
+		sapling_count = 2
+	elif sapling_roll < sapling_double_drop_chance + sapling_single_drop_chance:
+		sapling_count = 1
 	
 	for i in range(log_count):
 		var angle = randf() * TAU
@@ -154,6 +202,16 @@ func _on_died() -> void:
 		var apple_drop := {"id": "apple_%d" % spawned_drops.size(), "item": "apple", "pos": [apple_position.x, apple_position.y]}
 		spawned_drops.append(apple_drop)
 		_spawn_drop(apple_scene, apple_drop)
+
+	for i in range(sapling_count):
+		var angle = randf() * TAU
+		var distance = randf_range(20.0, spawn_radius)
+		var offset = Vector2(cos(angle), sin(angle)) * distance
+
+		var sapling_position = global_position + offset
+		var sapling_drop := {"id": "sapling_%d" % spawned_drops.size(), "item": "sapling", "pos": [sapling_position.x, sapling_position.y]}
+		spawned_drops.append(sapling_drop)
+		_spawn_drop(sapling_scene, sapling_drop)
 
 	queue_free()
 	DailyTaskManager.update_task_progress("3", 1)
@@ -244,6 +302,8 @@ func _spawn_drops(drops: Array) -> void:
 				item_scene = log_scene
 			"apple":
 				item_scene = apple_scene
+			"sapling":
+				item_scene = sapling_scene
 			_:
 				continue
 
@@ -260,16 +320,34 @@ func _spawn_drop(item_scene: PackedScene, drop: Dictionary) -> void:
 
 
 func update_sprite():
-	sprite_2d.hframes = 1
+	# hframes MUST be set before texture: AutoShadow2D (on the Shadow sibling
+	# node) listens to Sprite2D.texture_changed and reads sprite_2d.hframes
+	# synchronously the instant that signal fires to size itself. Setting
+	# texture first (old order) meant the signal fired while hframes still
+	# held the *previous* stage's value, so on the growth_stage == 3 tree
+	# specifically, hframes was still 1 at that instant -- the shadow sized
+	# itself off the whole 140x90 two-frame sheet instead of one 70x90
+	# frame, i.e. exactly the "shadow uses the entire sprite frame" bug.
+	# Shadow position/scale are otherwise left alone entirely -- AutoShadow2D
+	# re-anchors itself to (0, 0) and re-sizes itself off the sprite on its
+	# own, so this script only ever needs to move the sprite (and, if you
+	# add stage-specific hitboxes later, the collision shapes) per stage.
 	if growth_stage == 3:
-		sprite_2d.texture = TREE
 		sprite_2d.hframes = 2
+		sprite_2d.texture = TREE
+		sprite_2d.position.y = TREE_OFFSET_Y
 	elif growth_stage == 2:
+		sprite_2d.hframes = 1
 		sprite_2d.texture = STAGE_2
+		sprite_2d.position.y = STAGE_2_OFFSET_Y
 	elif growth_stage == 1:
+		sprite_2d.hframes = 1
 		sprite_2d.texture = STAGE_1
+		sprite_2d.position.y = STAGE_1_OFFSET_Y
 	elif growth_stage == 0:
+		sprite_2d.hframes = 1
 		sprite_2d.texture = STAGE_0
+		sprite_2d.position.y = STAGE_0_OFFSET_Y
 
 	# A sapling/young tree has nothing to collect yet -- turn off its
 	# clickable area entirely (this also suppresses the mouse-enter/exit
@@ -279,3 +357,10 @@ func update_sprite():
 	$interaction_area.input_pickable = growth_stage == 3
 	if growth_stage < 3 and _hovered:
 		_on_mouse_exited()
+
+	# Stages 0-2 use brighter source art than the grown tree; tint them to
+	# match instead of having color jump the moment growth_stage hits 3.
+	# Hover brightening (_on_mouse_entered/_on_mouse_exited) only ever runs
+	# while growth_stage == 3, since input_pickable is off otherwise, so it
+	# can't clobber this.
+	modulate = Color.WHITE if growth_stage == 3 else early_stage_modulate

@@ -21,3 +21,5 @@ position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_dutb6")
 
 [node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_uctrk")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
