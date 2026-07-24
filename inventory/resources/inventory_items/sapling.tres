@@ -10,4 +10,5 @@ id = "11"
 name = "Tree Sapling"
 texture = ExtResource("2_rh3w1")
 max_stack = 64
+description = "A young tree ready to take root. Plant it in fertile soil, and with a few days of patience, it will grow into a sturdy tree."
 metadata/_custom_type_script = "uid://bwncfogr4i5ed"
