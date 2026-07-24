@@ -72,7 +72,8 @@ func update_display() -> void:
 	# Update label with task name and progress
 	var display_progress = min(task.current_progress, task.target_amount)
 	var progress_text = "%s (%d/%d)" % [task.task_name, display_progress, task.target_amount]
-	var reward_text = "Reward: %s x%d" % [task.reward_item.name, task.reward_item_amount]
+	var reward_item_name = task.reward_item.name if task.reward_item else "???"
+	var reward_text = "Reward: %s x%d" % [reward_item_name, task.reward_item_amount]
 	var desc_text = "Description: %s" % [task.description]
 	label.text = progress_text
 	reward.text = reward_text

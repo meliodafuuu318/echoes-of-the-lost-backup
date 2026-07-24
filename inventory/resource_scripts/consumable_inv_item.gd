@@ -21,6 +21,9 @@ func use(player: Node) -> bool:
 		player.heal(heal_amount)
 		return true
 	elif is_sapling:
-		return true
+		if not player.has_method("try_plant_sapling"):
+			push_warning("ConsumableItem: player has no try_plant_sapling() method")
+			return false
+		return player.try_plant_sapling()
 	else:
 		return false

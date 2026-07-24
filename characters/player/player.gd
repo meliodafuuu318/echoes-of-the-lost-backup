@@ -7,6 +7,14 @@ const WEAPON_INV: Inventory = preload("uid://4c04xqhej0fr")
 
 const PLAYER_INV_DEFAULT = preload("uid://ck24isuiv3du3")
 
+const PLANT_DISTANCE := 24.0
+const PLANT_CHECK_RADIUS := 12.0
+## Same layers the player's own CollisionShape2D already collides with
+## (see player.tscn), so "is this spot blocked" matches whatever would
+## actually stop the player from walking there -- trees, stones, the
+## cabin, enemies, etc.
+const PLANT_BLOCK_MASK := 244
+
 @export var speed: float = 100.0
 
 var walk_distance_accum: float = 0.0
@@ -105,3 +113,47 @@ func reset_inventory_for_new_game() -> void:
 	INV.copy_from(PLAYER_INV_DEFAULT)
 	ARTIFACT_INV.clear()
 	WEAPON_INV.clear()
+
+
+## Called by ConsumableItem.use() when a sapling is used. Checks the spot
+## directly in front of the player and, if it's clear, plants a stage-0
+## tree there. Returns whether the sapling should actually be consumed.
+func try_plant_sapling() -> bool:
+	if GameManager.map != Events.Map.OUTSIDE:
+		print("🌱 Can't plant a sapling here.")
+		return false
+
+	var trees_container := _find_trees_container()
+	if trees_container == null:
+		push_warning("Player: couldn't find the outside map's Trees container to plant into.")
+		return false
+
+	var plant_position := global_position + facing_direction * PLANT_DISTANCE
+
+	var shape := CircleShape2D.new()
+	shape.radius = PLANT_CHECK_RADIUS
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = shape
+	query.transform = Transform2D(0.0, plant_position)
+	query.collision_mask = PLANT_BLOCK_MASK
+	query.collide_with_bodies = true
+	query.collide_with_areas = false
+
+	var space_state := get_world_2d().direct_space_state
+	if not space_state.intersect_shape(query, 1).is_empty():
+		print("🌱 Something's in the way -- can't plant a sapling there.")
+		return false
+
+	trees_container.plant_tree(plant_position)
+	return true
+
+
+## The currently-loaded map lives as the sole child of Main's WorldContainer
+## (see main.gd) -- this digs into it to find the "Trees" node that
+## trees_container.gd is attached to, without hardcoding the map's own
+## root node name.
+func _find_trees_container() -> Node:
+	var world_container := get_tree().current_scene.get_node_or_null("WorldContainer")
+	if world_container == null or world_container.get_child_count() == 0:
+		return null
+	return world_container.get_child(0).find_child("Trees", true, false)

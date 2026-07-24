@@ -2,21 +2,33 @@
 
 [ext_resource type="Script" uid="uid://cf0ajsu05p2h4" path="res://inventory/resource_scripts/inventory.gd" id="1_xixeb"]
 [ext_resource type="Script" uid="uid://dld72vt2wtgge" path="res://inventory/resource_scripts/inv_slot.gd" id="2_m4j26"]
+[ext_resource type="Resource" uid="uid://dq8rr5mkrfw7l" path="res://inventory/resources/inventory_items/fish.tres" id="3_fk41w"]
+[ext_resource type="Resource" uid="uid://cea1bjctvfqwo" path="res://inventory/resources/inventory_items/honey.tres" id="4_nwif7"]
+[ext_resource type="Resource" uid="uid://dxr1e282jpluw" path="res://inventory/resources/inventory_items/iron.tres" id="5_lrq83"]
+[ext_resource type="Resource" uid="uid://didq6k3sel0d6" path="res://inventory/resources/inventory_items/sapling.tres" id="6_lthfn"]
 
 [sub_resource type="Resource" id="Resource_de57d"]
 script = ExtResource("2_m4j26")
+item = ExtResource("3_fk41w")
+amount = 1
 metadata/_custom_type_script = "uid://dld72vt2wtgge"
 
 [sub_resource type="Resource" id="Resource_loe11"]
 script = ExtResource("2_m4j26")
+item = ExtResource("4_nwif7")
+amount = 1
 metadata/_custom_type_script = "uid://dld72vt2wtgge"
 
 [sub_resource type="Resource" id="Resource_lxows"]
 script = ExtResource("2_m4j26")
+item = ExtResource("5_lrq83")
+amount = 1
 metadata/_custom_type_script = "uid://dld72vt2wtgge"
 
 [sub_resource type="Resource" id="Resource_7rcjy"]
 script = ExtResource("2_m4j26")
+item = ExtResource("6_lthfn")
+amount = 1
 metadata/_custom_type_script = "uid://dld72vt2wtgge"
 
 [sub_resource type="Resource" id="Resource_xt1vo"]

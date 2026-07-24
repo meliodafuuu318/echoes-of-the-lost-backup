@@ -8,6 +8,11 @@ extends StaticBody2D
 @export var spawn_radius: float = 50.0
 
 @export var growth_stage: int = 3
+## How many in-game days a freshly planted sapling spends at each stage
+## before advancing to the next. Only relevant to trees planted at runtime
+## (growth_stage starts below 3) -- pre-placed map trees stay at the
+## default stage 3 forever since they never get a planted_day.
+@export var days_per_growth_stage: int = 1
 
 @export_group("Honey Tree")
 ## If true, this tree gives honey instead of apples when collected, and
@@ -31,6 +36,10 @@ var has_died: bool = false
 var _hovered: bool = false
 var spawned_drops: Array = []
 var current_day: int = 0
+## The in-game day this tree was planted on. -1 for trees that were already
+## in the map from the start (never grows, always stage 3). Set by
+## TreesContainer.plant_tree() right after instantiate().
+var planted_day: int = -1
 
 
 func _exit_tree() -> void:
@@ -43,6 +52,8 @@ func _exit_tree() -> void:
 	# GameManager.anting_anting_saved_pos already does correctly.
 	save_data["pos"] = [global_position.x, global_position.y]
 	save_data["frame"] = sprite_2d.frame
+	save_data["growth_stage"] = growth_stage
+	save_data["planted_day"] = planted_day
 
 	if has_died:
 		save_data["dead"] = true
@@ -70,6 +81,12 @@ func _ready() -> void:
 	global_position = Vector2(pos_arr[0], pos_arr[1])
 	sprite_2d.frame = value["frame"]
 	
+	if value.has("growth_stage"):
+		growth_stage = value["growth_stage"]
+		planted_day = value.get("planted_day", -1)
+		_advance_growth(GameManager.day)  # catch up on any days that passed while this tree wasn't loaded
+		update_sprite()
+	
 	if value.has("dead") and value["dead"]:
 		has_died = true
 		spawned_drops = value.get("drops", [])
@@ -91,6 +108,20 @@ func _ready() -> void:
 		
 func _on_time_tick(day: int, _hour: int, _minute: int) -> void:
 	current_day = day
+	_advance_growth(day)
+
+
+## Recomputes growth_stage from how many days have passed since planting.
+## No-op for pre-placed trees (planted_day == -1) and once fully grown.
+func _advance_growth(day: int) -> void:
+	if planted_day < 0 or growth_stage >= 3 or days_per_growth_stage <= 0:
+		return
+
+	var elapsed_days := day - planted_day
+	var new_stage: int = clampi(elapsed_days / days_per_growth_stage, 0, 3)
+	if new_stage != growth_stage:
+		growth_stage = new_stage
+		update_sprite()
 
 func _on_died() -> void:
 	if has_died:
@@ -135,6 +166,9 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		
 func _try_collect() -> void:
 	if Dialogic.current_timeline != null:
+		return
+	
+	if growth_stage < 3:
 		return
 	
 	var last_collection_day = GameManager.get_data_value(get_path(), "last_collection_day")
@@ -236,3 +270,12 @@ func update_sprite():
 		sprite_2d.texture = STAGE_1
 	elif growth_stage == 0:
 		sprite_2d.texture = STAGE_0
+
+	# A sapling/young tree has nothing to collect yet -- turn off its
+	# clickable area entirely (this also suppresses the mouse-enter/exit
+	# hover highlight, since both ride on input_pickable) rather than just
+	# rejecting the click in _try_collect(), so it doesn't even look
+	# interactive until it's grown.
+	$interaction_area.input_pickable = growth_stage == 3
+	if growth_stage < 3 and _hovered:
+		_on_mouse_exited()

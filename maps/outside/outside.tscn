@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjn1jwdb5uc6j" path="res://maps/outside/assets/forest_floor.png" id="2_hdwuj"]
 [ext_resource type="PackedScene" uid="uid://bikbcp5i10kqp" path="res://objects/tree/tree.tscn" id="3_0lnqv"]
 [ext_resource type="Texture2D" uid="uid://cvlm0l4vat8ul" path="res://maps/outside/assets/Bridges.png" id="4_kh3qa"]
+[ext_resource type="Script" uid="uid://3oe42xsw1hgs" path="res://maps/outside/trees_container.gd" id="5_c36rx"]
 [ext_resource type="PackedScene" uid="uid://c6ruyruebjijq" path="res://objects/stone/stone.tscn" id="5_f1t0a"]
 [ext_resource type="Script" uid="uid://bfcg8k1d17qnv" path="res://maps/outside/enemy_spawner.gd" id="8_kh3qa"]
 [ext_resource type="Texture2D" uid="uid://dkwyw5jdvfuep" path="res://maps/cave/assets/cave_entrance.png" id="8_soyoe"]
@@ -455,22 +456,9 @@ tile_map_data = PackedByteArray("AAAeADkAAQAOABUAAAAfADkAAQAPABUAAAAeAEQAAQAOABw
 enabled = false
 tile_set = SubResource("TileSet_m3fot")
 
-[node name="Off-Island Trees" type="Node2D" parent="." unique_id=1791479254]
-
-[node name="Tree11" parent="Off-Island Trees" unique_id=430900774 instance=ExtResource("3_0lnqv")]
-position = Vector2(1251, 1108)
-
-[node name="Tree12" parent="Off-Island Trees" unique_id=1831821941 instance=ExtResource("3_0lnqv")]
-position = Vector2(183, 1248)
-
-[node name="Tree13" parent="Off-Island Trees" unique_id=1956927583 instance=ExtResource("3_0lnqv")]
-position = Vector2(380, 1303)
-
-[node name="Tree14" parent="Off-Island Trees" unique_id=1943693933 instance=ExtResource("3_0lnqv")]
-position = Vector2(1041, 1241)
-
 [node name="Trees" type="Node2D" parent="." unique_id=1755935009]
 y_sort_enabled = true
+script = ExtResource("5_c36rx")
 
 [node name="Tree" parent="Trees" unique_id=263276032 instance=ExtResource("3_0lnqv")]
 position = Vector2(60, 66)
@@ -542,6 +530,20 @@ position = Vector2(193, 55)
 
 [node name="Tree3" parent="Trees" unique_id=382209589 instance=ExtResource("3_0lnqv")]
 position = Vector2(90, 151)
+
+[node name="Off-Island Trees" type="Node2D" parent="Trees" unique_id=1791479254]
+
+[node name="Tree11" parent="Trees/Off-Island Trees" unique_id=430900774 instance=ExtResource("3_0lnqv")]
+position = Vector2(1251, 1108)
+
+[node name="Tree12" parent="Trees/Off-Island Trees" unique_id=1831821941 instance=ExtResource("3_0lnqv")]
+position = Vector2(183, 1248)
+
+[node name="Tree13" parent="Trees/Off-Island Trees" unique_id=1956927583 instance=ExtResource("3_0lnqv")]
+position = Vector2(380, 1303)
+
+[node name="Tree14" parent="Trees/Off-Island Trees" unique_id=1943693933 instance=ExtResource("3_0lnqv")]
+position = Vector2(1041, 1241)
 
 [node name="Stones" type="Node2D" parent="." unique_id=798038600]
 
