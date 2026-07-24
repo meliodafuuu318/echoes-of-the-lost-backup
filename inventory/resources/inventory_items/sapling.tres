@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConsumableItem" format=3 uid="uid://didq6k3sel0d6"]
+
+[ext_resource type="Script" uid="uid://bwncfogr4i5ed" path="res://inventory/resource_scripts/consumable_inv_item.gd" id="1_ha2ck"]
+[ext_resource type="Texture2D" uid="uid://glrsydsgi76f" path="res://inventory/assets/items/sapling.png" id="2_rh3w1"]
+
+[resource]
+script = ExtResource("1_ha2ck")
+is_sapling = true
+id = "11"
+name = "Tree Sapling"
+texture = ExtResource("2_rh3w1")
+max_stack = 64
+metadata/_custom_type_script = "uid://bwncfogr4i5ed"

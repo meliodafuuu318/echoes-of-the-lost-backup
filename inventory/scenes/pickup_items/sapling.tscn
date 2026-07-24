@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dh5xy1vepnmc5"]
+
+[ext_resource type="Texture2D" uid="uid://glrsydsgi76f" path="res://inventory/assets/items/sapling.png" id="1_oalrt"]
+[ext_resource type="Script" uid="uid://djrnc0tr7lyht" path="res://inventory/item_scripts/sapling.gd" id="1_uctrk"]
+[ext_resource type="Resource" uid="uid://didq6k3sel0d6" path="res://inventory/resources/inventory_items/sapling.tres" id="2_lqcuc"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="2_uctrk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 14.0
+
+[node name="sapling" type="Area2D" unique_id=2014775684]
+script = ExtResource("1_uctrk")
+item = ExtResource("2_lqcuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=103679598]
+position = Vector2(1, -13)
+texture = ExtResource("1_oalrt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=613528339]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_uctrk")]

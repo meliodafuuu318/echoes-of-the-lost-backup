@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_2tcak")
+can_heal = true
 heal_amount = -1
 id = "2"
 name = "Fish"

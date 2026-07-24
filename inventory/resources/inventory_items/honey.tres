@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_fhism")
+can_heal = true
 heal_amount = 3
 id = "9"
 name = "Honey"

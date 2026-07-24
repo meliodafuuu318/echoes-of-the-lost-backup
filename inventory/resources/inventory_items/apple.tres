@@ -1,16 +1,15 @@
 [gd_resource type="Resource" script_class="ConsumableItem" format=3 uid="uid://dkjnsdqo4euow"]
 
-[ext_resource type="PackedScene" uid="uid://dpf0fj4b5xr03" path="res://inventory/scenes/pickup_items/apple.tscn" id="1_itd72"]
 [ext_resource type="Script" uid="uid://bwncfogr4i5ed" path="res://inventory/resource_scripts/consumable_inv_item.gd" id="1_kjgve"]
 [ext_resource type="Texture2D" uid="uid://cbqr1km2llkhr" path="res://inventory/assets/items/apple-icon.png" id="2_itd72"]
 
 [resource]
 script = ExtResource("1_kjgve")
+can_heal = true
 heal_amount = 2
 id = "1"
 name = "Apple"
 texture = ExtResource("2_itd72")
 max_stack = 64
 description = "A crisp, ruby-red fruit plucked from ancient branches. Its sweetness offers a moment of respite in the shadows."
-pickup_scene = ExtResource("1_itd72")
 metadata/_custom_type_script = "uid://bwncfogr4i5ed"
