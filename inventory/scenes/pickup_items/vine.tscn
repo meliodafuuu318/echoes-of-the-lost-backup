@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bnbd8xht2bkf"]
+
+[ext_resource type="Texture2D" uid="uid://k6ek2iuu7s21" path="res://inventory/assets/items/vines.png" id="1_o5y6t"]
+[ext_resource type="Script" uid="uid://ctcr66diy68ko" path="res://inventory/item_scripts/vine.gd" id="1_ph7ps"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="2_hpv7m"]
+[ext_resource type="Resource" uid="uid://be7ikqndlpibk" path="res://inventory/resources/inventory_items/vine.tres" id="2_ow62j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 12.0
+
+[node name="vine" type="Area2D" unique_id=114185246]
+script = ExtResource("1_ph7ps")
+item = ExtResource("2_ow62j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=309591752]
+position = Vector2(0, -11)
+texture = ExtResource("1_o5y6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=919842020]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_hpv7m")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

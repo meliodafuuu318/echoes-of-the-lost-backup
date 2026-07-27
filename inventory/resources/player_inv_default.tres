@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dq8rr5mkrfw7l" path="res://inventory/resources/inventory_items/fish.tres" id="4_fb41p"]
 [ext_resource type="Resource" uid="uid://dxr1e282jpluw" path="res://inventory/resources/inventory_items/iron.tres" id="5_fb41p"]
 [ext_resource type="Resource" uid="uid://didq6k3sel0d6" path="res://inventory/resources/inventory_items/sapling.tres" id="6_vvokm"]
+[ext_resource type="Resource" uid="uid://be7ikqndlpibk" path="res://inventory/resources/inventory_items/vine.tres" id="7_8rope"]
 
 [sub_resource type="Resource" id="Resource_de57d"]
 script = ExtResource("2_fb41p")
@@ -33,6 +34,8 @@ metadata/_custom_type_script = "uid://dld72vt2wtgge"
 
 [sub_resource type="Resource" id="Resource_xt1vo"]
 script = ExtResource("2_fb41p")
+item = ExtResource("7_8rope")
+amount = 1
 metadata/_custom_type_script = "uid://dld72vt2wtgge"
 
 [sub_resource type="Resource" id="Resource_p87wa"]

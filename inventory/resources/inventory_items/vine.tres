@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MaterialItem" format=3 uid="uid://be7ikqndlpibk"]
+
+[ext_resource type="Script" uid="uid://bt73fxi71tjnc" path="res://inventory/resource_scripts/material_inv_item.gd" id="1_g7w1u"]
+[ext_resource type="Texture2D" uid="uid://k6ek2iuu7s21" path="res://inventory/assets/items/vines.png" id="2_2qvj3"]
+
+[resource]
+script = ExtResource("1_g7w1u")
+id = "12"
+name = "Vine"
+texture = ExtResource("2_2qvj3")
+max_stack = 64
+item_type = 2
+metadata/_custom_type_script = "uid://bt73fxi71tjnc"

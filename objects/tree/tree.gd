@@ -8,6 +8,7 @@ extends StaticBody2D
 ## Path assumed from the log/apple pickup scenes' naming convention -- update
 ## this if the actual sapling world-pickup scene lives somewhere else.
 @export var sapling_scene: PackedScene = preload("res://inventory/scenes/pickup_items/sapling.tscn")
+@export var vine_scene: PackedScene = preload("res://inventory/scenes/pickup_items/vine.tscn")
 @export var spawn_radius: float = 50.0
 
 @export_group("Sapling Drop Odds")
@@ -182,6 +183,8 @@ func _on_died() -> void:
 		sapling_count = 2
 	elif sapling_roll < sapling_double_drop_chance + sapling_single_drop_chance:
 		sapling_count = 1
+		
+	var vine_count = randi_range(0, 1)
 	
 	for i in range(log_count):
 		var angle = randf() * TAU
@@ -212,6 +215,16 @@ func _on_died() -> void:
 		var sapling_drop := {"id": "sapling_%d" % spawned_drops.size(), "item": "sapling", "pos": [sapling_position.x, sapling_position.y]}
 		spawned_drops.append(sapling_drop)
 		_spawn_drop(sapling_scene, sapling_drop)
+		
+	for i in range(vine_count):
+		var angle = randf() * TAU
+		var distance = randf_range(20.0, spawn_radius)
+		var offset = Vector2(cos(angle), sin(angle)) * distance
+
+		var vine_position = global_position + offset
+		var vine_drop := {"id": "vine_%d" % spawned_drops.size(), "item": "vine", "pos": [vine_position.x, vine_position.y]}
+		spawned_drops.append(vine_drop)
+		_spawn_drop(vine_scene, vine_drop)
 
 	queue_free()
 	DailyTaskManager.update_task_progress("3", 1)
