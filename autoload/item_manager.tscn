@@ -14,7 +14,8 @@
 [ext_resource type="Resource" uid="uid://dxr1e282jpluw" path="res://inventory/resources/inventory_items/iron.tres" id="12_rm60j"]
 [ext_resource type="Resource" uid="uid://didq6k3sel0d6" path="res://inventory/resources/inventory_items/sapling.tres" id="13_q1urr"]
 [ext_resource type="Resource" uid="uid://be7ikqndlpibk" path="res://inventory/resources/inventory_items/vine.tres" id="14_n5lu3"]
+[ext_resource type="Resource" uid="uid://1wg4qobbo64x" path="res://inventory/resources/inventory_items/rope.tres" id="15_flhih"]
 
 [node name="ItemManager" type="Node" unique_id=677585866]
 script = ExtResource("1_xbg3m")
-items = Array[ExtResource("2_kqmtm")]([ExtResource("3_nnmfd"), ExtResource("4_eptyw"), ExtResource("5_rm60j"), ExtResource("6_q1urr"), ExtResource("7_n5lu3"), ExtResource("8_flhih"), ExtResource("9_t26wx"), ExtResource("10_eptyw"), ExtResource("11_rm60j"), ExtResource("12_rm60j"), ExtResource("13_q1urr"), ExtResource("14_n5lu3")])
+items = Array[ExtResource("2_kqmtm")]([ExtResource("3_nnmfd"), ExtResource("4_eptyw"), ExtResource("5_rm60j"), ExtResource("6_q1urr"), ExtResource("7_n5lu3"), ExtResource("8_flhih"), ExtResource("9_t26wx"), ExtResource("10_eptyw"), ExtResource("11_rm60j"), ExtResource("12_rm60j"), ExtResource("13_q1urr"), ExtResource("14_n5lu3"), ExtResource("15_flhih")])

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d202t3rb1a04f"]
+
+[ext_resource type="Texture2D" uid="uid://c1ecg0w8q3sa4" path="res://inventory/assets/items/rope.png" id="1_35kql"]
+[ext_resource type="Script" uid="uid://blwtk6hid54wu" path="res://inventory/item_scripts/rope.gd" id="1_564c2"]
+[ext_resource type="PackedScene" uid="uid://q4c6xbqrtvlh" path="res://objects/shadow/shadow.tscn" id="2_m0g22"]
+[ext_resource type="Resource" uid="uid://1wg4qobbo64x" path="res://inventory/resources/inventory_items/rope.tres" id="2_rdmht"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dutb6"]
+radius = 13.0
+
+[node name="rope" type="Area2D" unique_id=1673439873]
+script = ExtResource("1_564c2")
+item = ExtResource("2_rdmht")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1585339411]
+position = Vector2(0, -12)
+texture = ExtResource("1_35kql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503930214]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_dutb6")
+
+[node name="Shadow" parent="." unique_id=96700984 instance=ExtResource("2_m0g22")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

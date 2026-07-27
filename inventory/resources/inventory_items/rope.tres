@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MaterialItem" format=3 uid="uid://1wg4qobbo64x"]
+
+[ext_resource type="Script" uid="uid://bt73fxi71tjnc" path="res://inventory/resource_scripts/material_inv_item.gd" id="1_puwem"]
+[ext_resource type="Texture2D" uid="uid://c1ecg0w8q3sa4" path="res://inventory/assets/items/rope.png" id="2_4rvyi"]
+
+[resource]
+script = ExtResource("1_puwem")
+id = "13"
+name = "Rope"
+texture = ExtResource("2_4rvyi")
+max_stack = 64
+item_type = 2
+metadata/_custom_type_script = "uid://bt73fxi71tjnc"

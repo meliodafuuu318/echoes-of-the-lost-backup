@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://buupnxiyueb6i"]
+
+[ext_resource type="Script" uid="uid://bd0uwms5htkhu" path="res://crafting/resource_scripts/ingredient.gd" id="1_s4u8s"]
+[ext_resource type="Resource" uid="uid://d3p2goe8elxfn" path="res://crafting/resources/ingredients/rope1.tres" id="2_yvors"]
+[ext_resource type="Resource" uid="uid://1wg4qobbo64x" path="res://inventory/resources/inventory_items/rope.tres" id="3_7w6dw"]
+[ext_resource type="Script" uid="uid://cso2ko871nwd0" path="res://crafting/resource_scripts/recipe.gd" id="4_g68b1"]
+
+[resource]
+script = ExtResource("4_g68b1")
+id = "4"
+name = "Rope"
+ingredients = Array[ExtResource("1_s4u8s")]([ExtResource("2_yvors")])
+product = ExtResource("3_7w6dw")
+metadata/_custom_type_script = "uid://cso2ko871nwd0"
