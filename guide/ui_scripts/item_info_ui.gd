@@ -39,7 +39,7 @@ func _update_stats(item: InvItem) -> void:
 	
 	if item is WeaponItem:
 		stats_text = "Attack: %d" % item.damage
-	elif item is ConsumableItem:
+	elif item is ConsumableItem and item.can_heal:
 		stats_text = "Heal: %d" % item.heal_amount
 
 	item_stats.text = stats_text

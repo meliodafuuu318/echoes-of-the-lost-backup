@@ -6,7 +6,7 @@ signal item_selected(item: InvItem)
 
 const ITEM_UI_SCENE: PackedScene = preload("res://guide/scenes/item_ui.tscn")
 
-@onready var grid: GridContainer = $GridContainer
+@onready var grid: GridContainer = $ScrollContainer/GridContainer
 
 var current_selected: ItemUI = null
 

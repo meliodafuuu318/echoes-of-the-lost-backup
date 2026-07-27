@@ -10,28 +10,36 @@ offset_right = 430.0
 offset_bottom = 500.0
 script = ExtResource("1_2hbgg")
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=1171964971]
-layout_mode = 0
-offset_right = 253.0
-offset_bottom = 361.0
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1700040811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
 
-[node name="item_ui" parent="GridContainer" unique_id=2042140593 instance=ExtResource("1_5who0")]
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1171964971]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="item_ui" parent="ScrollContainer/GridContainer" unique_id=2042140593 instance=ExtResource("1_5who0")]
 layout_mode = 2
 
-[node name="item_ui2" parent="GridContainer" unique_id=1009483928 instance=ExtResource("1_5who0")]
+[node name="item_ui2" parent="ScrollContainer/GridContainer" unique_id=1009483928 instance=ExtResource("1_5who0")]
 layout_mode = 2
 
-[node name="item_ui3" parent="GridContainer" unique_id=1536938740 instance=ExtResource("1_5who0")]
+[node name="item_ui3" parent="ScrollContainer/GridContainer" unique_id=1536938740 instance=ExtResource("1_5who0")]
 layout_mode = 2
 
-[node name="item_ui4" parent="GridContainer" unique_id=2097969477 instance=ExtResource("1_5who0")]
+[node name="item_ui4" parent="ScrollContainer/GridContainer" unique_id=2097969477 instance=ExtResource("1_5who0")]
 layout_mode = 2
 
-[node name="item_ui5" parent="GridContainer" unique_id=610229713 instance=ExtResource("1_5who0")]
+[node name="item_ui5" parent="ScrollContainer/GridContainer" unique_id=610229713 instance=ExtResource("1_5who0")]
 layout_mode = 2
 
-[node name="item_ui6" parent="GridContainer" unique_id=1481881479 instance=ExtResource("1_5who0")]
+[node name="item_ui6" parent="ScrollContainer/GridContainer" unique_id=1481881479 instance=ExtResource("1_5who0")]
 layout_mode = 2
 
-[node name="item_ui7" parent="GridContainer" unique_id=1259017840 instance=ExtResource("1_5who0")]
+[node name="item_ui7" parent="ScrollContainer/GridContainer" unique_id=1259017840 instance=ExtResource("1_5who0")]
 layout_mode = 2
