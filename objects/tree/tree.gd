@@ -37,7 +37,7 @@ extends StaticBody2D
 ## whole map should have this on.
 @export var is_honey_tree: bool = false
 @export var bee_scene: PackedScene = preload("res://characters/enemies/bee/bee.tscn")
-@export var bee_count: int = 3
+#@export var bee_count: int = 1
 @export var bee_spawn_radius: float = 20.0
 
 const APPLE_ITEM_PATH := "res://inventory/resources/inventory_items/apple.tres"
@@ -225,6 +225,9 @@ func _on_died() -> void:
 		var vine_drop := {"id": "vine_%d" % spawned_drops.size(), "item": "vine", "pos": [vine_position.x, vine_position.y]}
 		spawned_drops.append(vine_drop)
 		_spawn_drop(vine_scene, vine_drop)
+		
+	if is_honey_tree:
+		_spawn_bees(3)
 
 	queue_free()
 	DailyTaskManager.update_task_progress("3", 1)
@@ -271,7 +274,7 @@ func _try_collect() -> void:
 	
 	if is_honey_tree:
 		print("🍯 Collected %d honey! The hive is not going to let that slide." % collected_amount)
-		_spawn_bees()
+		_spawn_bees(1)
 	else:
 		print("🍎 Collected %d apples! Come back tomorrow for more." % collected_amount)
 		DailyTaskManager.update_task_progress("1", collected_amount)
@@ -279,13 +282,7 @@ func _try_collect() -> void:
 	Dialogic.start("item_collect_timeline")
 
 
-## Bursts 3 (by default) bees out of the tree to defend the hive. They
-## spawn close enough to the player -- who has to be standing right next to
-## the tree to have clicked it -- that they pick up the chase on their own
-## via the normal Wander -> Follow detection, no forced state needed. Each
-## one is told to treat the tree itself as "home" so they all converge back
-## on it once they give up the chase (see Bee.despawn_delay).
-func _spawn_bees() -> void:
+func _spawn_bees(bee_count: int) -> void:
 	if bee_scene == null:
 		return
 
