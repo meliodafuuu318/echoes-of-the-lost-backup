@@ -57,9 +57,9 @@ const TREE = preload("uid://bgwep03ls5j3a")
 ## content bounds so its base lands on the same ground line as the grown
 ## tree's base does.
 const TREE_OFFSET_Y := -39.0
-const STAGE_2_OFFSET_Y := -17.0
-const STAGE_1_OFFSET_Y := -7.0
-const STAGE_0_OFFSET_Y := -1.0
+const STAGE_2_OFFSET_Y := -20.0
+const STAGE_1_OFFSET_Y := -10.0
+const STAGE_0_OFFSET_Y := -6.0
 
 var has_died: bool = false
 var _hovered: bool = false
